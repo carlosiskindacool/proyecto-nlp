@@ -1,0 +1,8 @@
+sistema,escenario,bleu,chrf,n_pares,pares,nota
+identidad,,85.7,88.9,213,lote1.csv,
+reglas_equipo,equipo,84.1,87.9,213,lote1.csv,
+reglas_flo,flo,89.6,92.1,213,lote1.csv,
+reglas_equipo_con_ambiguos,equipo,84.1,87.9,213,lote1.csv,incluye términos ambiguos
+reglas_flo_con_ambiguos,flo,88.5,91.2,213,lote1.csv,incluye términos ambiguos
+llm_zero_shot,,90.4,93.2,213,lote1.csv,backend claude-code
+llm_dicc_flo,flo,91.1,93.8,213,lote1.csv,backend claude-code
