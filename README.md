@@ -1,2 +1,5 @@
-# proyecto-nlp
-Repositorio desarrollo proyecto IIC3670 Procesamiento de Lenguaje Natural
+# Proyecto NLP: Chilenismos
+
+## Objetivo
+
+(Describir el objetivo del proyecto)

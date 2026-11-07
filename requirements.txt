@@ -1,0 +1,6 @@
+requests
+datasets
+sacrebleu
+transformers
+torch
+sentencepiece
