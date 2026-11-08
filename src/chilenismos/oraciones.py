@@ -1,7 +1,7 @@
 """
-Busca en el corpus oraciones que contienen términos del diccionario (candidatas para anotar).
+Paso 2 del flujo: busca en el corpus oraciones que contienen términos del diccionario (candidatas para anotar).
 
-python idea_flo/oraciones.py --corpus RUTA/data [--escenario flo] [--fuentes mc4,news,complaints]
+python src/chilenismos/oraciones.py [--corpus data/raw/corpus] [--escenario flo] [--fuentes mc4,news,complaints]
     [--max-por-termino 8] [--archivos 61,62] [--out data/interim/candidatas.csv]
 
 Por defecto excluye los tuits: antes de publicar texto de tuits hay que consultar al profesor
@@ -14,14 +14,13 @@ import glob
 import os
 import random
 import re
-import sys
 from collections import defaultdict
 from multiprocessing import Pool
 
 import pyarrow.parquet as pq
 
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "src", "chilenismos"))
 from dicc import RUTAS, cargar_entradas
+from rutas import CANDIDATAS, CORPUS, ESCENARIO
 
 TOK = re.compile(r"\w+", re.U)
 URL = re.compile(r"https?://\S+|www\.\S+")
@@ -53,19 +52,21 @@ def buscar(i):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--corpus", required=True, help="carpeta con los .parquet (columnas text, source)")
-    ap.add_argument("--escenario", default="flo", choices=["equipo", "flo"])
+    ap.add_argument("--corpus", default=CORPUS, help="carpeta con los .parquet (columnas text, source)")
+    ap.add_argument("--escenario", default=ESCENARIO, choices=["equipo", "flo"])
     ap.add_argument("--fuentes", default="mc4,news,complaints")
     ap.add_argument("--incluir-tuits", action="store_true")
     ap.add_argument("--max-por-termino", type=int, default=8)
     ap.add_argument("--archivos", help="índices separados por coma (para pruebas)")
-    ap.add_argument("--out", default="data/interim/candidatas.csv")
+    ap.add_argument("--out", default=CANDIDATAS)
     args = ap.parse_args()
 
     fuentes = set(args.fuentes.split(","))
     if args.incluir_tuits:
         fuentes.add("twitter")
     archivos = sorted(glob.glob(os.path.join(args.corpus, "*.parquet")))
+    if not archivos:
+        raise SystemExit(f"No hay .parquet en {args.corpus}: descarga el corpus ahí o usa --corpus.")
     if args.archivos:
         archivos = [archivos[int(i)] for i in args.archivos.split(",")]
     entradas = cargar_entradas(RUTAS[args.escenario], incluir_ambiguos=True)

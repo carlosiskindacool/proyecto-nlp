@@ -1,9 +1,9 @@
 """
-Borrador de pares chileno -> neutro con un LLM, usando el diccionario como contexto.
+Paso 3 del flujo: borrador de pares chileno -> neutro con un LLM, usando el diccionario como contexto.
 Una persona revisa y corrige el borrador después (columna `neutro`) y anota su nombre en `revisor1`
 (y en `revisor2` si hay segunda revisión).
 
-python idea_flo/borrador.py [--entrada data/interim/candidatas.csv] [--escenario flo]
+python src/chilenismos/borrador.py [--entrada data/interim/candidatas.csv] [--escenario flo]
     [--backend claude-code|anthropic] [--salida annotation/borrador.csv] [--limite 0] [--seco]
 
 --seco imprime el prompt del primer lote sin llamar al LLM. Ver llm.py para los backends.
@@ -11,20 +11,19 @@ python idea_flo/borrador.py [--entrada data/interim/candidatas.csv] [--escenario
 import argparse
 import csv
 import os
-import sys
 
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "src", "chilenismos"))
-from dicc import RUTAS, cargar_entradas, construir_reglas, entradas_en  # noqa: E402
-from llm import SISTEMA, TAM_LOTE, prompt_usuario, traducir  # noqa: E402
+from dicc import RUTAS, cargar_entradas, construir_reglas, entradas_en
+from llm import SISTEMA, TAM_LOTE, prompt_usuario, traducir
+from rutas import BORRADOR, CANDIDATAS, ESCENARIO
 
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--entrada", default="data/interim/candidatas.csv")
-    ap.add_argument("--escenario", default="flo", choices=["equipo", "flo"])
+    ap.add_argument("--entrada", default=CANDIDATAS)
+    ap.add_argument("--escenario", default=ESCENARIO, choices=["equipo", "flo"])
     ap.add_argument("--backend", default="claude-code", choices=["claude-code", "anthropic"])
     ap.add_argument("--modelo")
-    ap.add_argument("--salida", default="annotation/borrador.csv")
+    ap.add_argument("--salida", default=BORRADOR)
     ap.add_argument("--limite", type=int, default=0, help="solo las primeras N oraciones")
     ap.add_argument("--seco", action="store_true")
     args = ap.parse_args()

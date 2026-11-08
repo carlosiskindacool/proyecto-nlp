@@ -1,6 +1,6 @@
 """
 python src/chilenismos/baselines.py [--pares annotation/lote1.csv] [--escenario equipo|flo|ambos]
-    [--incluir-ambiguos] [--solo-validados] [--resumen resultados/comparacion_baselines.csv] [--modelo google/mt5-base] [--sin-mt5]
+    [--incluir-ambiguos] [--solo-validados] [--resumen reports/comparacion_baselines.csv] [--modelo google/mt5-base] [--sin-mt5]
     [--out data/processed/predicciones.csv]
 
 Escenario de diccionario para el baseline de reglas (variable ESCENARIO o --escenario):
@@ -16,9 +16,9 @@ import re
 import sacrebleu
 
 from dicc import RUTAS, cargar_reglas
+import rutas
 
-ESCENARIO = "equipo"  # "equipo" | "flo" | "ambos"
-PARES_POR_DEFECTO = ("data/processed/pares.csv", "annotation/lote1.csv")
+ESCENARIO = rutas.ESCENARIO  # "equipo" | "flo" | "ambos"
 
 
 def cargar_pares(path):
@@ -77,15 +77,16 @@ def guardar_resumen(path, filas):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--pares", default=next((p for p in PARES_POR_DEFECTO if os.path.exists(p)), PARES_POR_DEFECTO[0]))
+    ap.add_argument("--pares", default=rutas.PARES_EVAL)
     ap.add_argument("--escenario", default=ESCENARIO, choices=["equipo", "flo", "ambos"])
     ap.add_argument("--diccionario", help="ruta propia; reemplaza la del escenario (solo con equipo o flo)")
     ap.add_argument("--incluir-ambiguos", action="store_true",
                     help="usar también términos marcados ambiguo=1 (palabras con uso estándar muy frecuente)")
     ap.add_argument("--solo-validados", action="store_true", help="solo reemplazos con reemplazo_validado=1")
-    ap.add_argument("--resumen", help="CSV donde agregar BLEU y chrF de cada sistema")
+    ap.add_argument("--resumen", nargs="?", const=rutas.RESULTADOS,
+                    help=f"CSV donde agregar BLEU y chrF de cada sistema (sin valor: {rutas.RESULTADOS.relative_to(rutas.RAIZ)})")
     ap.add_argument("--modelo", default="google/mt5-base")
-    ap.add_argument("--out", default="data/processed/predicciones.csv")
+    ap.add_argument("--out", default=rutas.PREDICCIONES)
     ap.add_argument("--sin-mt5", action="store_true")
     args = ap.parse_args()
 

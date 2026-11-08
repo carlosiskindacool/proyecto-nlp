@@ -1,8 +1,8 @@
 """
-Desde la raíz del repo:
-    python3 -m venv .venv && source .venv/bin/activate
-    pip install -r requirements.txt
-    python src/chilenismos/diccionario.py
+Paso 1 del flujo: baja Wikcionario (es) y Wiktionary (en) y arma el diccionario automático.
+
+python src/chilenismos/diccionario.py [--out data/processed/diccionario.csv]
+La caché de la API queda en data/raw/cache_{es,en}.jsonl.
 """
 import argparse
 import csv
@@ -13,12 +13,13 @@ import time
 from collections import Counter
  
 import requests
+
+from rutas import CACHE_WIKCIONARIO, DICCIONARIOS
  
 FUENTES = {
     "es": ("https://es.wiktionary.org/w/api.php", "Categoría:ES:Chile"),
     "en": ("https://en.wiktionary.org/w/api.php", "Category:Chilean Spanish"),
 }
-CACHE_DIR = "data/raw"
 HEADERS = {"User-Agent": "IIC3670-jerga-chilena/0.1"}
  
 TERMINO_OK = re.compile(r"[a-záéíóúüñ]+(?:[ -][a-záéíóúüñ]+)*")
@@ -208,7 +209,7 @@ def construir():
         titulos = titulos_categoria(url, categoria)
         print(f"{fuente}: {len(titulos)} páginas en la categoría")
         parse = parse_es if fuente == "es" else parse_en
-        for titulo, wt in wikitextos(url, titulos, os.path.join(CACHE_DIR, f"cache_{fuente}.jsonl")):
+        for titulo, wt in wikitextos(url, titulos, os.path.join(CACHE_WIKCIONARIO, f"cache_{fuente}.jsonl")):
             s = parse(wt)
             f = por_termino.setdefault(titulo, {"fuentes": [], "sentido": None, "de_es": False})
             f["fuentes"].append(fuente)
@@ -226,9 +227,9 @@ def construir():
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--out", default="data/processed/diccionario.csv")
+    ap.add_argument("--out", default=DICCIONARIOS["equipo"])
     args = ap.parse_args()
-    os.makedirs(CACHE_DIR, exist_ok=True)
+    os.makedirs(CACHE_WIKCIONARIO, exist_ok=True)
     os.makedirs(os.path.dirname(args.out) or ".", exist_ok=True)
     filas = construir()
     cols = ["termino", "fuentes", "glosa", "ejemplo", "campo", "registro", "reemplazo", "keep", "motivo"]
