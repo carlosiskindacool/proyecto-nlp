@@ -8,3 +8,22 @@ data/interim/*
 data/processed/*
 models/*
 !**/.gitkeep
+
+# data/diccionario: las planillas y los libros en Excel traen ejemplos tomados de tuits.
+# No se suben hasta consultar al profesor (términos de la plataforma, datos personales).
+data/diccionario/**/*.xlsx
+data/diccionario/procesado/informes/
+
+# data/diccionario/crudo: descargas en bruto que se pueden volver a bajar (11 MB de HTML de Román)
+# y texto de artículos académicos (con derechos de autor)
+data/diccionario/crudo/roman/
+data/diccionario/crudo/articulos/
+
+# data/diccionario/reglas_medicion: solo se sube el resumen por regla; las listas de formas se regeneran con 10_medir_reglas.py
+data/diccionario/reglas_medicion/*
+!data/diccionario/reglas_medicion/resumen_por_regla.csv
+
+# data/diccionario: no se suben las descargas en bruto, los intermedios ni los duplicados (se regeneran con los scripts del pipeline)
+data/diccionario/crudo/
+data/diccionario/procesado/es_acepciones.jsonl
+data/diccionario/procesado/terminos.jsonl

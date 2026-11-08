@@ -4,3 +4,6 @@ sacrebleu
 transformers
 torch
 sentencepiece
+anthropic
+pyarrow
+openpyxl

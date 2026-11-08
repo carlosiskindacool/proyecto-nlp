@@ -1,23 +1,39 @@
 """
-python src/chilenismos/baselines.py [--pares data/processed/pares.csv]
-    [--diccionario data/processed/diccionario.csv] [--modelo google/mt5-base]
-    [--sin-mt5] [--out data/processed/predicciones.csv]
+python src/chilenismos/baselines.py [--pares annotation/lote1.csv] [--escenario equipo|flo|ambos]
+    [--incluir-ambiguos] [--solo-validados] [--resumen resultados/comparacion_baselines.csv] [--modelo google/mt5-base] [--sin-mt5]
+    [--out data/processed/predicciones.csv]
+
+Escenario de diccionario para el baseline de reglas (variable ESCENARIO o --escenario):
+  equipo : diccionario automático del equipo (data/processed/diccionario.csv)
+  flo    : diccionario revisado a mano (data/curado/diccionario_flo_parte1.csv)
+  ambos  : corre los dos y los compara con los mismos pares
 """
 import argparse
 import csv
+import os
 import re
 
 import sacrebleu
 
+from dicc import RUTAS, cargar_reglas
 
-def cargar_reglas(path):
+ESCENARIO = "equipo"  # "equipo" | "flo" | "ambos"
+PARES_POR_DEFECTO = ("data/processed/pares.csv", "annotation/lote1.csv")
+
+
+def cargar_pares(path):
+    """Acepta `chileno,neutro` (coma) o el formato de annotation/lote1.csv (`termino;oracion;neutro`)."""
     with open(path, encoding="utf-8") as f:
-        reglas = {r["termino"]: r["reemplazo"] for r in csv.DictReader(f)
-                  if r["keep"] == "1" and r["reemplazo"]}
-    if not reglas:
-        raise SystemExit("El diccionario no tiene términos con keep=1 y `reemplazo`.")
-    alternativas = "|".join(re.escape(t) for t in sorted(reglas, key=len, reverse=True))
-    return reglas, re.compile(rf"(?<!\w)({alternativas})(?!\w)", re.I)
+        cabecera = f.readline()
+        f.seek(0)
+        filas = list(csv.DictReader(f, delimiter=";" if cabecera.count(";") > cabecera.count(",") else ","))
+    pares = []
+    for r in filas:
+        chileno = (r.get("chileno") or r.get("oracion") or "").strip()
+        neutro = (r.get("neutro") or "").strip()
+        if chileno and neutro:
+            pares.append({"chileno": chileno, "neutro": neutro, "termino": r.get("termino", "")})
+    return pares
 
 
 def traducir_reglas(s, reglas, patron):
@@ -43,31 +59,66 @@ def traducir_mt5(frases, modelo, lote=16):
     return salidas
 
 
+def guardar_resumen(path, filas):
+    """Agrega o actualiza filas (clave: sistema) en un CSV de resultados."""
+    campos = ["sistema", "escenario", "bleu", "chrf", "n_pares", "pares", "nota"]
+    previas = {}
+    if os.path.exists(path):
+        with open(path, encoding="utf-8") as f:
+            previas = {r["sistema"]: r for r in csv.DictReader(f)}
+    for r in filas:
+        previas[r["sistema"]] = r
+    os.makedirs(os.path.dirname(path) or ".", exist_ok=True)
+    with open(path, "w", newline="", encoding="utf-8") as f:
+        w = csv.DictWriter(f, fieldnames=campos)
+        w.writeheader()
+        w.writerows(previas.values())
+
+
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--pares", default="data/processed/pares.csv")
-    ap.add_argument("--diccionario", default="data/processed/diccionario.csv")
+    ap.add_argument("--pares", default=next((p for p in PARES_POR_DEFECTO if os.path.exists(p)), PARES_POR_DEFECTO[0]))
+    ap.add_argument("--escenario", default=ESCENARIO, choices=["equipo", "flo", "ambos"])
+    ap.add_argument("--diccionario", help="ruta propia; reemplaza la del escenario (solo con equipo o flo)")
+    ap.add_argument("--incluir-ambiguos", action="store_true",
+                    help="usar también términos marcados ambiguo=1 (palabras con uso estándar muy frecuente)")
+    ap.add_argument("--solo-validados", action="store_true", help="solo reemplazos con reemplazo_validado=1")
+    ap.add_argument("--resumen", help="CSV donde agregar BLEU y chrF de cada sistema")
     ap.add_argument("--modelo", default="google/mt5-base")
     ap.add_argument("--out", default="data/processed/predicciones.csv")
     ap.add_argument("--sin-mt5", action="store_true")
     args = ap.parse_args()
 
-    with open(args.pares, encoding="utf-8") as f:
-        pares = [r for r in csv.DictReader(f) if r["chileno"].strip() and r["neutro"].strip()]
+    pares = cargar_pares(args.pares)
     fuente = [p["chileno"] for p in pares]
     ref = [p["neutro"] for p in pares]
+    opciones = dict(incluir_ambiguos=args.incluir_ambiguos, solo_validados=args.solo_validados)
 
-    reglas, patron = cargar_reglas(args.diccionario)
-    preds = {"identidad": fuente, "reglas": [traducir_reglas(s, reglas, patron) for s in fuente]}
+    sufijo = "_con_ambiguos" if args.incluir_ambiguos else ""
+    escenarios = ["equipo", "flo"] if args.escenario == "ambos" else [args.escenario]
+    preds, tamanos = {"identidad": fuente}, {}
+    for esc in escenarios:
+        ruta = args.diccionario if args.diccionario and len(escenarios) == 1 else RUTAS[esc]
+        reglas, patron = cargar_reglas(ruta, **opciones)
+        preds[f"reglas_{esc}{sufijo}"] = [traducir_reglas(s, reglas, patron) for s in fuente]
+        tamanos[esc] = len(reglas)
     if not args.sin_mt5:
         preds["mt5"] = traducir_mt5(fuente, args.modelo)
 
-    print(f"{len(pares)} pares | {len(reglas)} reglas\n")
-    print(f"{'sistema':<10} {'BLEU':>6} {'chrF':>6}")
+    print(f"{len(pares)} pares | formas con regla: {tamanos}\n")
+    print(f"{'sistema':<18} {'BLEU':>6} {'chrF':>6}")
+    resumen = []
     for nombre, hip in preds.items():
-        print(f"{nombre:<10} {sacrebleu.corpus_bleu(hip, [ref]).score:6.1f} "
-              f"{sacrebleu.corpus_chrf(hip, [ref]).score:6.1f}")
+        bleu, chrf = sacrebleu.corpus_bleu(hip, [ref]).score, sacrebleu.corpus_chrf(hip, [ref]).score
+        print(f"{nombre:<18} {bleu:6.1f} {chrf:6.1f}")
+        esc = nombre.split("_")[1] if nombre.startswith("reglas_") else ""
+        resumen.append({"sistema": nombre, "escenario": esc, "bleu": f"{bleu:.1f}", "chrf": f"{chrf:.1f}",
+                        "n_pares": len(pares), "pares": os.path.basename(args.pares),
+                        "nota": "incluye términos ambiguos" if sufijo and esc else ""})
+    if args.resumen:
+        guardar_resumen(args.resumen, resumen)
 
+    os.makedirs(os.path.dirname(args.out) or ".", exist_ok=True)
     with open(args.out, "w", newline="", encoding="utf-8") as f:
         w = csv.writer(f)
         w.writerow(["chileno", "neutro", *preds])
