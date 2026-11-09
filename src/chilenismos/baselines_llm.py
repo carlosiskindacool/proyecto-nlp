@@ -1,33 +1,32 @@
 """
 Baselines con LLM (idea de Flo): zero-shot y con el diccionario como contexto.
 
-python idea_flo/baselines_llm.py [--pares annotation/lote1.csv] [--escenario flo] [--backend claude-code|anthropic]
-    [--limite 0] [--resumen resultados/comparacion_baselines.csv] [--seco]
+python src/chilenismos/baselines_llm.py [--pares annotation/lote1.csv] [--escenario flo] [--backend claude-code|anthropic]
+    [--limite 0] [--resumen reports/comparacion_baselines.csv] [--seco]
 
 --seco muestra el prompt del primer lote sin llamar al LLM. Ver llm.py para los backends.
 """
 import argparse
 import csv
 import os
-import sys
 
 import sacrebleu
 
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "src", "chilenismos"))
-from baselines import PARES_POR_DEFECTO, cargar_pares, guardar_resumen  # noqa: E402
-from dicc import RUTAS, cargar_entradas, construir_reglas, entradas_en  # noqa: E402
-from llm import TAM_LOTE, prompt_usuario, traducir  # noqa: E402
+import rutas
+from baselines import cargar_pares, guardar_resumen
+from dicc import RUTAS, cargar_entradas, construir_reglas, entradas_en
+from llm import TAM_LOTE, prompt_usuario, traducir
 
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--pares", default=next((p for p in PARES_POR_DEFECTO if os.path.exists(p)), PARES_POR_DEFECTO[0]))
-    ap.add_argument("--escenario", default="flo", choices=["equipo", "flo"])
+    ap.add_argument("--pares", default=rutas.PARES_EVAL)
+    ap.add_argument("--escenario", default=rutas.ESCENARIO, choices=["equipo", "flo"])
     ap.add_argument("--backend", default="claude-code", choices=["claude-code", "anthropic"])
     ap.add_argument("--modelo", help="modelo del backend (por defecto el del backend)")
     ap.add_argument("--limite", type=int, default=0)
-    ap.add_argument("--resumen")
-    ap.add_argument("--out", default="data/processed/predicciones_llm.csv")
+    ap.add_argument("--resumen", nargs="?", const=rutas.RESULTADOS)
+    ap.add_argument("--out", default=rutas.PREDICCIONES_LLM)
     ap.add_argument("--seco", action="store_true")
     args = ap.parse_args()
 

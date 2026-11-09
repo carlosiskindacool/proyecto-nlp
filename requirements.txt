@@ -1,9 +1,14 @@
-requests
-datasets
+# flujo de generación del dataset
+requests        # diccionario.py (API de Wikcionario)
+pyarrow         # oraciones.py (corpus en .parquet)
+anthropic       # opcional: llm.py con --backend anthropic (por defecto se usa el CLI de Claude Code)
+
+# baselines y modelos
 sacrebleu
 transformers
 torch
 sentencepiece
-anthropic
-pyarrow
+datasets
+
+# planillas de data/diccionario/
 openpyxl

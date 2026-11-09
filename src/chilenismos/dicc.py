@@ -1,16 +1,13 @@
 """Carga de diccionarios de chilenismos para los baselines.
 
-Escenarios (variable ESCENARIO en baselines.py o --escenario):
+Escenarios (--escenario): las rutas están en rutas.DICCIONARIOS.
   equipo : data/processed/diccionario.csv (automático, de diccionario.py)
   flo    : data/curado/diccionario_flo_parte1.csv (revisado a mano, parte 1)
 """
 import csv
 import re
 
-RUTAS = {
-    "equipo": "data/processed/diccionario.csv",
-    "flo": "data/curado/diccionario_flo_parte1.csv",
-}
+from rutas import DICCIONARIOS as RUTAS  # noqa: F401  (se reexporta para los scripts)
 
 
 def _si(valor, defecto="0"):

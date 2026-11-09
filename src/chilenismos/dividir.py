@@ -1,11 +1,11 @@
 """
-Divide los pares revisados en train / val / test.
+Paso 4 del flujo: divide los pares revisados en train / val / test.
 
 El test son pares revisados hasta --max-test: con --revisores 1 (por defecto) basta revisor1; con --revisores 2 hacen falta
 revisor1 y revisor2 (doble revisión, permite medir acuerdo).
 El resto se reparte entre train y val sin repetir oraciones entre conjuntos.
 
-python idea_flo/dividir.py [--pares annotation/pares_revisados.csv] [--max-test 300]
+python src/chilenismos/dividir.py [--pares annotation/pares_revisados.csv] [--max-test 300]
     [--revisores 1|2] [--val 0.1] [--semilla 1] [--out data/processed]
 """
 import argparse
@@ -13,15 +13,17 @@ import csv
 import os
 import random
 
+from rutas import PARES_REVISADOS, SPLITS
+
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--pares", default="annotation/pares_revisados.csv")
+    ap.add_argument("--pares", default=PARES_REVISADOS)
     ap.add_argument("--max-test", type=int, default=300)
     ap.add_argument("--revisores", type=int, choices=[1, 2], default=1)
     ap.add_argument("--val", type=float, default=0.1)
     ap.add_argument("--semilla", type=int, default=1)
-    ap.add_argument("--out", default="data/processed")
+    ap.add_argument("--out", default=SPLITS)
     args = ap.parse_args()
 
     with open(args.pares, encoding="utf-8") as f:
