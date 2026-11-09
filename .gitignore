@@ -27,3 +27,7 @@ data/diccionario/reglas_medicion/*
 data/diccionario/crudo/
 data/diccionario/procesado/es_acepciones.jsonl
 data/diccionario/procesado/terminos.jsonl
+
+
+# annotation: los Excel de revisión (el de tuits trae texto de tuits)
+annotation/*.xlsx

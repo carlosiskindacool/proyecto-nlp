@@ -1,8 +1,34 @@
 sistema,escenario,bleu,chrf,n_pares,pares,nota
-identidad,,85.7,88.9,213,lote1.csv,
-reglas_equipo,equipo,84.1,87.9,213,lote1.csv,
-reglas_flo,flo,89.6,92.1,213,lote1.csv,
-reglas_equipo_con_ambiguos,equipo,84.1,87.9,213,lote1.csv,incluye términos ambiguos
-reglas_flo_con_ambiguos,flo,88.5,91.2,213,lote1.csv,incluye términos ambiguos
-llm_zero_shot,,90.4,93.2,213,lote1.csv,backend claude-code
-llm_dicc_flo,flo,91.1,93.8,213,lote1.csv,backend claude-code
+identidad,,85.7,88.9,213,annotation/lote1.csv,
+reglas_equipo,equipo,84.1,87.9,213,annotation/lote1.csv,
+reglas_flo,flo,89.6,92.1,213,annotation/lote1.csv,
+reglas_equipo_con_ambiguos,equipo,84.1,87.9,213,annotation/lote1.csv,incluye términos ambiguos
+reglas_flo_con_ambiguos,flo,88.5,91.2,213,annotation/lote1.csv,incluye términos ambiguos
+llm_zero_shot,,90.1,92.9,213,annotation/lote1.csv,backend claude-code
+llm_dicc_flo,flo,91.1,93.6,213,annotation/lote1.csv,backend claude-code
+identidad,,94.0,95.2,72,annotation/lote_1_noticias.csv,
+reglas_equipo,equipo,91.2,93.7,72,annotation/lote_1_noticias.csv,
+reglas_flo,flo,94.8,96.3,72,annotation/lote_1_noticias.csv,
+reglas_equipo_con_ambiguos,equipo,91.2,93.7,72,annotation/lote_1_noticias.csv,incluye términos ambiguos
+reglas_flo_con_ambiguos,flo,90.6,94.4,72,annotation/lote_1_noticias.csv,incluye términos ambiguos
+llm_zero_shot,,94.2,96.0,72,annotation/lote_1_noticias.csv,backend claude-code
+llm_dicc_flo,flo,95.7,97.3,72,annotation/lote_1_noticias.csv,backend claude-code
+llm_zero_shot,,83.2,86.8,165,annotation/lote_1_tuits.csv,backend claude-code
+llm_dicc_flo,flo,89.4,92.6,165,annotation/lote_1_tuits.csv,backend claude-code
+identidad,,82.7,85.8,165,annotation/lote_1_tuits.csv,
+reglas_equipo,equipo,81.3,85.6,165,annotation/lote_1_tuits.csv,
+reglas_flo,flo,86.1,89.3,165,annotation/lote_1_tuits.csv,
+reglas_equipo_con_ambiguos,equipo,81.3,85.6,165,annotation/lote_1_tuits.csv,incluye términos ambiguos
+reglas_flo_con_ambiguos,flo,83.5,88.9,165,annotation/lote_1_tuits.csv,incluye términos ambiguos
+mt5_sin_ajustar,,0.1,2.2,213,annotation/lote1.csv,google/mt5-small; sin ajuste
+mt5_sin_ajustar,,0.6,3.1,72,annotation/lote_1_noticias.csv,google/mt5-small; sin ajuste
+mt5_sin_ajustar,,0.2,2.3,165,annotation/lote_1_tuits.csv,google/mt5-small; sin ajuste
+mt5_flo,,81.0,87.1,213,annotation/lote1.csv,google/mt5-small; ajustado con borradores del LLM
+mt5_flo,,91.6,94.1,72,annotation/lote_1_noticias.csv,google/mt5-small; ajustado con borradores del LLM
+mt5_flo,,80.4,84.6,165,annotation/lote_1_tuits.csv,google/mt5-small; ajustado con borradores del LLM
+mt_ida_vuelta,,44.5,65.1,213,annotation/lote1.csv,Helsinki-NLP/opus-mt-es-en + Helsinki-NLP/opus-mt-en-es
+mt_ida_vuelta,,50.0,68.8,72,annotation/lote_1_noticias.csv,Helsinki-NLP/opus-mt-es-en + Helsinki-NLP/opus-mt-en-es
+mt_ida_vuelta,,33.9,54.6,165,annotation/lote_1_tuits.csv,Helsinki-NLP/opus-mt-es-en + Helsinki-NLP/opus-mt-en-es
+nllb_ida_vuelta,,38.5,60.5,213,annotation/lote1.csv,facebook/nllb-200-distilled-600M
+nllb_ida_vuelta,,34.5,55.4,72,annotation/lote_1_noticias.csv,facebook/nllb-200-distilled-600M
+nllb_ida_vuelta,,25.2,47.7,165,annotation/lote_1_tuits.csv,facebook/nllb-200-distilled-600M

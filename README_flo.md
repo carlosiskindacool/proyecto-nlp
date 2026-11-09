@@ -10,7 +10,7 @@ Este documento describe el **sistema B** (reglas + diccionario revisado a mano).
 ## Qué se hizo
 
 ### 1. Diccionario base y revisión (`data/diccionario/`)
-La carpeta `data/diccionario/` trae todo el trabajo previo: descargas (`crudo/`), planillas y libros de revisión (`procesado/`, `procesado/revision/`) y la medición de reglas ortográficas (`reglas_medicion/`). **Los Excel no se suben a git** porque traen ejemplos tomados de tuits (ver `.gitignore`).
+El trabajo previo (con esta estructura; **no se subió al repo, lo tiene solo Flo**; en `data/diccionario/` solo están `terminos.csv`, las acepciones y `roman_entradas.jsonl`) trae: descargas (`crudo/`), planillas y libros de revisión (`procesado/`, `procesado/revision/`) y la medición de reglas ortográficas (`reglas_medicion/`). **Los Excel no se suben a git** porque traen ejemplos tomados de tuits (ver `.gitignore`).
 
 - **Fuentes:** Wikcionario en español (categoría ES:Chile), Wiktionary en inglés (vía kaikki.org) y el diccionario de Román (1901–1918). 3.403 términos.
 - **Frecuencia:** cada término se buscó en una muestra de tuits del *Chilean Spanish Corpus* y se ordenó de más a menos frecuente. Se dividió en 5 libros; **solo el libro 1 (los más frecuentes) está revisado**.
@@ -26,8 +26,8 @@ La carpeta `data/diccionario/` trae todo el trabajo previo: descargas (`crudo/`)
 
 | Archivo | Qué es |
 |---|---|
-| `data/diccionario/` | El trabajo previo de Flo: fuentes, planillas, libros de revisión y reglas (movido desde `D:\datos\diccionario`). |
-| `data/curado/diccionario_flo_parte1.csv` | Diccionario revisado, una fila por término (444 filas: los pares verbo / verbo-se se separan). |
+| `data/diccionario/` | Del trabajo previo de Flo, solo lo que se sube (`terminos.csv`, acepciones, Román). Planillas, libros y descargas no se subieron: los tiene solo Flo. |
+| `data/curado/diccionario_flo_parte1.csv` | Diccionario revisado, una fila por término (443 filas: los pares verbo / verbo-se se separan). |
 | `data/curado/terminos_descartados_parte1.csv` | Los 220 descartados, con su nota. |
 | `src/chilenismos/dicc.py` | Carga un diccionario (del equipo o de Flo) y arma las reglas de reemplazo. |
 | `src/chilenismos/baselines.py` | Archivo del equipo, con la variable `ESCENARIO`, lectura del formato de `lote1.csv` y `--resumen`. |
@@ -65,29 +65,31 @@ python src/chilenismos/baselines.py --escenario flo --incluir-ambiguos --sin-mt5
 
 ## Resultados
 
-BLEU y chrF sobre los 213 pares de `annotation/lote1.csv` (`resultados/comparacion_baselines.csv`), con el sistema A como punto de comparación:
+BLEU / chrF en los tres conjuntos de pares, medidos sobre texto sin `@usuario` ni emojis (`resultados/comparacion_baselines.csv`; tabla completa con los 8 sistemas en el [README global](README.md)), con el sistema A como punto de comparación:
 
-| Sistema | BLEU | chrF |
-|---|---|---|
-| Identidad (no cambia nada) | 85,7 | 88,9 |
-| A. Reglas con el diccionario automático | 84,1 | 87,9 |
-| **B.** Reglas con el diccionario revisado | **89,6** | **92,1** |
-| **B.** Reglas con el diccionario revisado, incluyendo ambiguos | 88,5 | 91,2 |
+| Sistema | lote1.csv (213) | lote_1_noticias (72) | lote_1_tuits (165) |
+|---|---|---|---|
+| Identidad (no cambia nada) | 85,7 / 88,9 | 94,0 / 95,2 | 82,7 / 85,8 |
+| A. Reglas con el diccionario automático | 84,1 / 87,9 | 91,2 / 93,7 | 81,3 / 85,6 |
+| **B.** Reglas con el diccionario revisado | **89,6 / 92,1** | **94,8 / 96,3** | **86,1 / 89,3** |
+| **B.** … incluyendo ambiguos | 88,5 / 91,2 | 90,6 / 94,4 | 83,5 / 88,9 |
 
 - Con el diccionario revisado, 76 de 117 sustituciones coinciden con la referencia; con el automático, 12 de 95.
 - Sustituir también los términos marcados `ambiguo` baja 1,1 BLEU: por eso no se sustituyen por defecto.
-- Son números preliminares: `lote1.csv` se armó con términos del diccionario del equipo y las referencias cambian poco del original, así que la identidad ya parte alta. Los resultados del sistema C (LLM) están en [`idea_flo/README.md`](idea_flo/README.md).
+- **Posible favoritismo:** Flo revisó las referencias de los dos lotes de Flo y, con ese mismo diccionario, validó los reemplazos, así que B podría salir algo favorecido en esos dos conjuntos. Se corregirá con otro revisor en el futuro. `lote1.csv` no lo escribió Flo y ahí también gana B.
+- **Faltan palabras por revisar:** el diccionario se separó en 5 partes por frecuencia en los tuits y solo se revisó la primera (la más frecuente); faltan las otras cuatro.
+- `lote1.csv` se armó con términos del diccionario del equipo y las referencias cambian poco del original, así que la identidad ya parte alta. Los resultados del sistema C (LLM) están en [`idea_flo/README.md`](idea_flo/README.md).
 
 ## Pendiente de revisar
 
 **Flo todavía no revisa los libros 2 a 5.** Hoy el diccionario revisado cubre solo el libro 1 (las ~650 filas más frecuentes de 3.403 términos). Eso significa:
 
-- Las ~2.600 filas restantes están en `data/diccionario/procesado/revision/revision_2_de_5.xlsx` … `revision_5_de_5.xlsx` **sin decisión** (sí / no), sin definiciones corregidas y sin reemplazos.
+- Las ~2.600 filas restantes están en `archivos_fuera_del_repo/data/diccionario/procesado/revision/revision_2_de_5.xlsx` … `revision_5_de_5.xlsx` **sin decisión** (sí / no), sin definiciones corregidas y sin reemplazos.
 - `diccionario_flo_parte1.csv` **no incluye ninguno de esos términos**: los sistemas B y C no los conocen.
 - Todavía hay que decidir si vale la pena revisarlos; son los menos frecuentes (retorno decreciente). La comparación de `resultados/comparacion_baselines.csv` ayuda a decidirlo.
 - Lo que falta revisar por cada libro es lo mismo que se hizo con el libro 1: ¿el término entra?, ¿la definición es correcta?, y luego el reemplazo por sentido.
 
-También sigue pendiente aplicar las decisiones del libro 1 a las planillas `data/diccionario/procesado/variantes_parte*.xlsx` (pintar de gris los «no» y copiar las definiciones finales). Por ahora esas decisiones viven solo en `revisado_1_de_5.xlsx` y en `data/curado/`.
+También sigue pendiente aplicar las decisiones del libro 1 a las planillas `archivos_fuera_del_repo/data/diccionario/procesado/variantes_parte*.xlsx` (pintar de gris los «no» y copiar las definiciones finales). Por ahora esas decisiones viven solo en `revisado_1_de_5.xlsx` y en `data/curado/`.
 
 ## Limitaciones conocidas
 - **Una regla fija no desambigua.** *Pega* es «trabajo» o «inconveniente» según la oración; la regla usa solo el primer reemplazo.

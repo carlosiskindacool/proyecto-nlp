@@ -25,6 +25,7 @@ from dicc import RUTAS, cargar_entradas
 
 TOK = re.compile(r"\w+", re.U)
 URL = re.compile(r"https?://\S+|www\.\S+")
+MENCION = re.compile(r"@\w+")
 ARCHIVOS, SIMPLES, FRASES, FUENTES, TOPE = [], set(), defaultdict(list), set(), 8
 
 
@@ -39,6 +40,8 @@ def buscar(i):
         for t, fuente in zip(lote.column("text").to_pylist(), lote.column("source").to_pylist()):
             if fuente not in FUENTES or not (25 <= len(t) <= 240) or t.startswith("RT @"):
                 continue
+            if fuente != "twitter" and ("@" in t or "twitter.com" in t):
+                continue    # algunos textos de noticias y reclamos son tuits pegados
             toks = [x.lower() for x in TOK.findall(URL.sub(" ", t))]
             hallados = set(toks) & SIMPLES
             if FRASES:
@@ -47,7 +50,7 @@ def buscar(i):
                     hallados |= {f for f in FRASES[primera] if f" {f} " in relleno}
             for h in hallados:
                 if len(out[h]) < TOPE:
-                    out[h].append((re.sub(r"\s+", " ", URL.sub("", t)).strip(), fuente))
+                    out[h].append((re.sub(r"\s+", " ", MENCION.sub("@usuario", URL.sub("", t))).strip(), fuente))
     return out
 
 
@@ -58,6 +61,8 @@ def main():
     ap.add_argument("--fuentes", default="mc4,news,complaints")
     ap.add_argument("--incluir-tuits", action="store_true")
     ap.add_argument("--max-por-termino", type=int, default=8)
+    ap.add_argument("--terminos", type=int, default=0,
+                    help="solo los N términos más frecuentes del diccionario (sin especies); 0 = todos")
     ap.add_argument("--archivos", help="índices separados por coma (para pruebas)")
     ap.add_argument("--out", default="data/interim/candidatas.csv")
     args = ap.parse_args()
@@ -68,7 +73,10 @@ def main():
     archivos = sorted(glob.glob(os.path.join(args.corpus, "*.parquet")))
     if args.archivos:
         archivos = [archivos[int(i)] for i in args.archivos.split(",")]
-    entradas = cargar_entradas(RUTAS[args.escenario], incluir_ambiguos=True)
+    entradas = [e for e in cargar_entradas(RUTAS[args.escenario], incluir_ambiguos=True, exigir_reemplazo=False)
+                if e.get("tipo") != "especie"]
+    if args.terminos:
+        entradas = entradas[:args.terminos]
     simples, frases, termino_de = set(), defaultdict(list), {}
     for e in entradas:
         for forma in e["formas"]:

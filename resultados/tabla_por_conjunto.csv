@@ -1,0 +1,12 @@
+sistema,annotation/lote1.csv BLEU,annotation/lote_1_noticias.csv BLEU,annotation/lote_1_tuits.csv BLEU,annotation/lote1.csv chrF,annotation/lote_1_noticias.csv chrF,annotation/lote_1_tuits.csv chrF
+identidad,85.7,94.0,82.7,88.9,95.2,85.8
+reglas_equipo,84.1,91.2,81.3,87.9,93.7,85.6
+reglas_flo,89.6,94.8,86.1,92.1,96.3,89.3
+reglas_equipo_con_ambiguos,84.1,91.2,81.3,87.9,93.7,85.6
+reglas_flo_con_ambiguos,88.5,90.6,83.5,91.2,94.4,88.9
+llm_zero_shot,90.1,94.2,83.2,92.9,96.0,86.8
+llm_dicc_flo,91.1,95.7,89.4,93.6,97.3,92.6
+mt5_sin_ajustar,0.1,0.6,0.2,2.2,3.1,2.3
+mt5_flo,81.0,91.6,80.4,87.1,94.1,84.6
+mt_ida_vuelta,44.5,50.0,33.9,65.1,68.8,54.6
+nllb_ida_vuelta,38.5,34.5,25.2,60.5,55.4,47.7
