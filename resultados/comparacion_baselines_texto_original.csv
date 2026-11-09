@@ -1,0 +1,28 @@
+sistema,escenario,bleu,chrf,n_pares,pares,nota
+identidad,,85.7,88.9,213,annotation/lote1.csv,
+reglas_equipo,equipo,84.1,87.9,213,annotation/lote1.csv,
+reglas_flo,flo,89.6,92.1,213,annotation/lote1.csv,
+reglas_equipo_con_ambiguos,equipo,84.1,87.9,213,annotation/lote1.csv,incluye términos ambiguos
+reglas_flo_con_ambiguos,flo,88.5,91.2,213,annotation/lote1.csv,incluye términos ambiguos
+llm_zero_shot,,90.4,93.2,213,annotation/lote1.csv,backend claude-code
+llm_dicc_flo,flo,90.9,93.6,213,annotation/lote1.csv,backend claude-code
+identidad,,94.0,95.2,72,annotation/lote_1_noticias.csv,
+reglas_equipo,equipo,91.2,93.7,72,annotation/lote_1_noticias.csv,
+reglas_flo,flo,94.8,96.3,72,annotation/lote_1_noticias.csv,
+reglas_equipo_con_ambiguos,equipo,91.2,93.7,72,annotation/lote_1_noticias.csv,incluye términos ambiguos
+reglas_flo_con_ambiguos,flo,90.6,94.4,72,annotation/lote_1_noticias.csv,incluye términos ambiguos
+llm_zero_shot,,94.2,96.0,72,annotation/lote_1_noticias.csv,backend claude-code
+llm_dicc_flo,flo,95.7,97.3,72,annotation/lote_1_noticias.csv,backend claude-code
+llm_zero_shot,,85.3,88.7,165,annotation/lote_1_tuits.csv,backend claude-code
+llm_dicc_flo,flo,91.0,93.3,165,annotation/lote_1_tuits.csv,backend claude-code
+identidad,,83.6,86.7,165,annotation/lote_1_tuits.csv,
+reglas_equipo,equipo,82.3,86.5,165,annotation/lote_1_tuits.csv,
+reglas_flo,flo,86.9,90.0,165,annotation/lote_1_tuits.csv,
+reglas_equipo_con_ambiguos,equipo,82.3,86.5,165,annotation/lote_1_tuits.csv,incluye términos ambiguos
+reglas_flo_con_ambiguos,flo,84.5,89.6,165,annotation/lote_1_tuits.csv,incluye términos ambiguos
+mt5_sin_ajustar,,0.1,2.2,213,annotation/lote1.csv,google/mt5-small; sin ajuste
+mt5_sin_ajustar,,0.6,3.1,72,annotation/lote_1_noticias.csv,google/mt5-small; sin ajuste
+mt5_sin_ajustar,,0.1,2.0,165,annotation/lote_1_tuits.csv,google/mt5-small; sin ajuste
+mt5_flo,,66.1,83.6,213,annotation/lote1.csv,google/mt5-small; ajustado con borradores del LLM
+mt5_flo,,72.2,87.2,72,annotation/lote_1_noticias.csv,google/mt5-small; ajustado con borradores del LLM
+mt5_flo,,64.3,80.2,165,annotation/lote_1_tuits.csv,google/mt5-small; ajustado con borradores del LLM

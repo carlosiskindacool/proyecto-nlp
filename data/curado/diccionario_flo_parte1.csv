@@ -2,8 +2,8 @@ termino,grupo,tipo,definicion,reemplazo,ambiguo,reemplazo_validado,keep,variante
 ganar,ganar / ganarse,verbo,"ganar: 1) [EN] to position oneself, to situate oneself ganarse: 1) ubicarse, situarse en un determinado lugar.",ganar,1,1,1,,6387,
 ganarse,ganar / ganarse,verbo,"ganar: 1) [EN] to position oneself, to situate oneself ganarse: 1) ubicarse, situarse en un determinado lugar.",ubicarse,1,1,1,,6387,
 cagar,,verbo,1) [EN] to fail 2) [EN] to cheat someone,arruinar | engañar,1,1,1,,4916,"n=4916; verbo muy comun, familia cagada/cagado/cagazo/cagon (499, 500, 502, 503)"
-andar,,verbo,1) Mantener una relación amorosa con pocas formalidades o compromisos.,salir con alguien,1,1,1,,2724,n=2724; verbo muy comun
-cortar,,verbo,1) [EN] to stop an action 2) [EN] to shut off,interrumpir | apagar,1,1,1,,2190,
+andar,,verbo,1) Mantener una relación amorosa con pocas formalidades o compromisos.,salir con alguien,1,1,1,,2724,n=2724; verbo muy comun; Flo tiene dudas con este término (sentido de pareja vs. andar a secas): revisar
+cortar,,verbo,1) Terminar una relación (amorosa).,terminar una relación,1,1,1,,2190,
 correr,correr / correrse,verbo,"correr: 1) [EN] to throw out; to fire; to expel 2) [EN] to cop out, to shirk correrse: 1) Eludir una respuesta contestando de forma evasiva. 2) Evitar un trabajo, una responsabilidad fingiendo no estar enterado o mediante pretextos.",echar | despedir,1,1,1,,2051,
 correrse,correr / correrse,verbo,"correr: 1) [EN] to throw out; to fire; to expel 2) [EN] to cop out, to shirk correrse: 1) Eludir una respuesta contestando de forma evasiva. 2) Evitar un trabajo, una responsabilidad fingiendo no estar enterado o mediante pretextos.",esquivar | eludir,1,1,1,,2051,
 tirar,,verbo,"1) Conducir, transportar o llevar carga. 2) Practicar el coito.",transportar | tener relaciones sexuales,1,1,1,,2039,
@@ -21,7 +21,7 @@ curar,curar / curarse,verbo,"curar: 1) embriagar, emborrachar. curarse: 1) embri
 curarse,curar / curarse,verbo,"curar: 1) embriagar, emborrachar. curarse: 1) embriagarse, emborracharse.",emborracharse,1,1,1,,768,
 reducir,,verbo,1) comprar y vender objetos robados.,traficar objetos robados,1,1,1,,624,
 agarrar,,verbo,"1) pelear. 2) besuquear, besar.",pelear | besarse,1,1,1,,596,verbo muy comun (n=596); no se puede buscar sin contexto
-pelar,pelar / pelarse,verbo,"pelar: 1) hablar mal de alguien. pelarse: 1) hurtar, apropiarse indebidamente de un bien ajeno. 2) besar apasionadamente a alguien que no conoces, o que conociste recientemente, especialmente en una fiesta.",criticar | robar | besarse apasionadamente,1,1,1,,586,
+pelar,pelar / pelarse,verbo,"pelar: 1) hablar mal de alguien. pelarse: 1) hurtar, apropiarse indebidamente de un bien ajeno. 2) besar apasionadamente a alguien que no conoces, o que conociste recientemente, especialmente en una fiesta.",criticar | robar | besarse apasionadamente,1,1,1,,586,«pelar el chancho» es un dicho: no se traduce como «criticar»
 pelarse,pelar / pelarse,verbo,"pelar: 1) hablar mal de alguien. pelarse: 1) hurtar, apropiarse indebidamente de un bien ajeno. 2) besar apasionadamente a alguien que no conoces, o que conociste recientemente, especialmente en una fiesta.",,1,1,1,,586,
 funar,,verbo,"1) Efectuar un acto público de agravio y denuncia (una funa), contra una persona o entidad que ha cometido una mala acción o un crimen, usualmente frente a su domicilio o sede. Ocasionalmente se efectúa en el lugar en el que se cometió un crimen.",denunciar públicamente,0,1,1,,497,
 rayarse,,verbo,"1) trastornarse, perturbarse el comportamiento de manera anormal.",trastornarse,0,1,1,,448,
@@ -63,7 +63,7 @@ culiao,,adjetivo_participio,"1) Despreciable, ruin. 2) Usado para intensificar l
 tenida,,adjetivo_participio,1) [EN] outfit (set of clothing),atuendo,0,1,1,teniaz,1798,
 cagado,,adjetivo_participio,"1) Que tiene aversión a gastar o compartir sus bienes. 2) En situación difícil o desmejorada. [EN] cheap, worthless",tacaño | en mala situación,1,1,1,caga;cagao;cagaos;cagas;kaga;cagaa;cagah;kagada;kagao;kagaos;kagado;kagas;kagadas;caaa;kagados;cagaas;cagaoh;caada;kaaa;caao;caas;kaada;caaos;cagaz;kagaa;caaas;caaz;cagaah;cagadaz;kaas,1382,ver 499
 parado,,adjetivo_participio,"1) Que se cree superior a otros, exhibiendo sus posesiones o cualidades.",presumido,1,1,1,parao;paraos;paras;paraa;parah;paraoh;paraas;paraz,953,
-asado,,adjetivo_participio,"1) Carne, en especial de vacuno, cocinada a las brasas sobre un asador o una parrilla. 2) Plato formado por carnes, vísceras o embutidos asados, servidos con diversas guarniciones. 3) La reunión social de carácter festivo que se hace para consumir estos platos.",,1,1,1,asao;asaos;azado;asaa;asah;azadas;azas;asadoh;asaoh;azao,679,n=679; palabra estandar
+asado,,adjetivo_participio,"1) Carne, en especial de vacuno, cocinada a las brasas sobre un asador o una parrilla. 2) Plato formado por carnes, vísceras o embutidos asados, servidos con diversas guarniciones. 3) La reunión social de carácter festivo que se hace para consumir estos platos.",parrillada,1,1,1,asao;asaos;azado;asaa;asah;azadas;azas;asadoh;asaoh;azao,679,n=679; palabra estandar
 pesado,,adjetivo_participio,1) Que resulta desagradable de tratar.,antipático,1,1,1,pesa;pesao;pesaos;pesas;pesaa;pesah;pezado;pesaoh;pezada;pezados;pesaas;pezaos;pesaah;pezadah;pezadas;pezadaz;pezaoh;pezas,614,
 metido,,adjetivo_participio,"1) Dicho de una persona, que se entromete en asuntos que no son de su incumbencia.",entrometido,1,1,1,metios,567,
 brígido,,adjetivo_participio,"1) Dicho de una situación, de gran peligro, dificultad o intensidad, o bien que es muy impresionante o llamativa 2) Dicho de una persona o un lugar, que representa un peligro. 3) Dicho de una persona que está muy preparada. [EN] of great danger, difficulty or intensity, or that is very impressive or striking.; dangerous; very prepared",intenso | peligroso | impresionante,0,1,1,brigio;brigidoh;brigios;brigia;vrigido;brigias;brigidoz,450,ver 409
@@ -87,11 +87,10 @@ sacho,,especie,1) Especie de ancla rústica compuesta de una piedra encerrada de
 cole,,especie,1) aro de género usado para amarrarse el cabello.,liga para el pelo,0,1,1,coleh;koleh,115,
 weón,,otro,1) variante subestándar de «huevón». [EN] alternative form of huevón; alternative form of huevón; alternative form of huevón,tipo | amigo | tonto,1,1,1,weonz,5882,
 wn,,otro,1) [EN] abbreviation of huevón,tipo | amigo | tonto,1,1,1,,5259,
-no más,,otro,"1) solamente. 2) sin más, de todos modos.",solamente,1,1,1,no ma;no mah;no maz,4568,
 toma,,otro,"1) Tanto el asentamiento informal, que surge de la ocupación de terrenos vacíos por población con problemas de vivienda, así como el acto de dicha ocupación. [EN] an act of political civil disobedience through occupation protest that assumes control of a place, often a building or park",ocupación de terreno,1,1,1,tomah;tomoh,3488,
 CSM,,otro,"1) [EN] initialism of conchasumadre (“motherfucker, son of a bitch”, literally “your mother's pussy”)",,0,1,1,czm,3127,
 negro,,otro,1) Persona de piel más oscura que la piel de quien emplea tal epíteto.,,1,1,1,negroh;negrah;negraz,2881,
-fonda,,otro,1) Establecimiento provisorio que expende bebida y comida durante las fiestas populares.,puesto de comida típica,1,1,1,fondah;fondaz;fondoh,2446,
+fonda,,otro,1) Feria costumbrista: establecimiento provisorio de comida y bebida en las fiestas populares.,feria costumbrista,1,1,1,fondah;fondaz;fondoh,2446,
 pucha,,otro,"1) Expresa sorpresa, decepción, contrariedad, disgusto o enojo. [EN] expresses pity, disappointment or sympathy",caramba | qué lástima,0,1,1,puxa;pusha;puxas;pusho;pushas;puxo;puxos;pushah,2362,
 pucho,,otro,"1) colilla de un cigarrillo. 2) Por extensión, el cigarrillo mismo. 3) Pequeña cantidad restante de alguna cosa. 4) último hijo, de sexo masculino o femenino, nacido bastantes años más tarde que el anterior. [EN] cigarette",cigarrillo | colilla | poca cantidad | hijo menor,1,1,1,puxa;pusha;puxas;pusho;pushas;puxo;puxos;pushah,2362,
 pajarón,,otro,"1) distraído. [EN] absentminded, distracted, scatty; a person, who pays no attention, an absentminded, distracted person, a daydreamer; lovebird",distraído,0,1,1,pajarone,120,

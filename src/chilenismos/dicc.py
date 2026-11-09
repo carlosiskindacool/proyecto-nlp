@@ -17,8 +17,9 @@ def _si(valor, defecto="0"):
     return str(valor if valor not in (None, "") else defecto).strip().lower() in ("1", "si", "sí", "true")
 
 
-def cargar_entradas(path, incluir_ambiguos=False, solo_validados=False):
-    """Filas del diccionario que pueden usarse como regla: keep=1, con `reemplazo`.
+def cargar_entradas(path, incluir_ambiguos=False, solo_validados=False, exigir_reemplazo=True):
+    """Filas del diccionario que pueden usarse como regla: keep=1, con `reemplazo`
+    (con exigir_reemplazo=False se devuelven también las filas sin reemplazo, por ejemplo para buscar oraciones).
 
     `ambiguo`, `reemplazo_validado` y `variantes` solo existen en el diccionario de flo;
     si faltan, se asume no ambiguo, validado y sin variantes."""
@@ -26,7 +27,7 @@ def cargar_entradas(path, incluir_ambiguos=False, solo_validados=False):
         filas = list(csv.DictReader(f))
     entradas = []
     for r in filas:
-        if not _si(r.get("keep"), "1") or not (r.get("reemplazo") or "").strip():
+        if not _si(r.get("keep"), "1") or (exigir_reemplazo and not (r.get("reemplazo") or "").strip()):
             continue
         if _si(r.get("ambiguo")) and not incluir_ambiguos:
             continue
@@ -34,9 +35,9 @@ def cargar_entradas(path, incluir_ambiguos=False, solo_validados=False):
             continue
         formas = [r["termino"]] + [v for v in (r.get("variantes") or "").split(";") if v.strip()]
         # `reemplazo` puede traer alternativas por sentido: "arruinar | engañar". La regla usa la primera.
-        alternativas = [x.strip() for x in r["reemplazo"].split("|") if x.strip()]
+        alternativas = [x.strip() for x in (r.get("reemplazo") or "").split("|") if x.strip()]
         entradas.append({**r, "formas": [x.strip().lower() for x in formas],
-                         "alternativas": alternativas, "reemplazo": alternativas[0]})
+                         "alternativas": alternativas, "reemplazo": alternativas[0] if alternativas else ""})
     return entradas
 
 
