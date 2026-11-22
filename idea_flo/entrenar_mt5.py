@@ -131,7 +131,7 @@ def main():
     for ruta, ps in conjuntos.items():
         hip = traducir(mod, tok, [p["chileno"] for p in ps], dev)
         ref = [p["neutro"] for p in ps]
-        salidas += [(os.path.basename(ruta), p["chileno"], r, h) for p, r, h in zip(ps, ref, hip)]
+        salidas += [(os.path.basename(ruta), p["chileno"], r, p["termino"], h) for p, r, h in zip(ps, ref, hip)]
         bleu, chrf = sacrebleu.corpus_bleu(hip, [ref]).score, sacrebleu.corpus_chrf(hip, [ref]).score
         print(f"{os.path.basename(ruta):<24} {nombre:<22} BLEU {bleu:5.1f} chrF {chrf:5.1f}")
         filas.append({"sistema": nombre, "escenario": "", "bleu": f"{bleu:.1f}", "chrf": f"{chrf:.1f}", "n_pares": len(ps),
@@ -139,7 +139,7 @@ def main():
     os.makedirs(os.path.dirname(args.out_pred) or ".", exist_ok=True)
     with open(args.out_pred, "w", newline="", encoding="utf-8-sig") as f:
         w = csv.writer(f)
-        w.writerow(["conjunto", "chileno", "referencia", nombre])
+        w.writerow(["conjunto", "chileno", "referencia", "termino", nombre])
         w.writerows(salidas)
     if args.resumen:
         guardar_resumen(args.resumen, filas)

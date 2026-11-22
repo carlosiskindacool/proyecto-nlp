@@ -64,8 +64,8 @@ def main():
         os.makedirs(os.path.dirname(salida) or ".", exist_ok=True)
         with open(salida, "w", newline="", encoding="utf-8") as f:
             w = csv.writer(f)
-            w.writerow(["chileno", "neutro", *preds])
-            w.writerows(zip(fuente, ref, *preds.values()))
+            w.writerow(["chileno", "neutro", "termino", *preds])
+            w.writerows(zip(fuente, ref, [p["termino"] for p in pares], *preds.values()))
 
 
 if __name__ == "__main__":
