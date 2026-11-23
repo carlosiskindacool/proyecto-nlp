@@ -6,7 +6,6 @@ __pycache__/
 data/raw/*
 data/interim/*
 data/processed/*
-models/*
 !**/.gitkeep
 
 # data/diccionario: las planillas y los libros en Excel traen ejemplos tomados de tuits.
