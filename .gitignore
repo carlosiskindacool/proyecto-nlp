@@ -31,3 +31,7 @@ data/diccionario/procesado/terminos.jsonl
 
 # annotation: los Excel de revisión (el de tuits trae texto de tuits)
 annotation/*.xlsx
+
+# models: configuración, tokenizer y registros de entrenamiento descargados de Drive (no se suben)
+models/mt5/*.json
+models/mt5_moe/*.json
