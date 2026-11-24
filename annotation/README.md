@@ -1,15 +1,15 @@
 # annotation: pares chileno → neutro para anotar
 
 Aquí viven los **pares** (oración con jerga y su versión en español neutro) con que se evalúan y se entrenan los sistemas.
-Visión general del proyecto: [`../README.md`](../README.md). Cómo se generan los lotes: [`../idea_flo/README.md`](../idea_flo/README.md).
+Visión general del proyecto: [`../README.md`](../README.md). Cómo se generaron los lotes: [`../archivo/idea_flo/README.md`](../archivo/idea_flo/README.md).
 
 ## Archivos
 
 | Archivo | Qué es | ¿Se sube a git? |
 |---|---|---|
-| `lote1.csv` | Primer lote del equipo: 213 pares, 96 términos. Con él se comparan los 8 sistemas de [`../resultados/`](../resultados/comparacion_baselines.csv). No se sabe de qué fuente salen las oraciones ni cómo se escribió la versión neutra (probablemente un modelo). | Sí |
+| `lote1.csv` | Primer lote del equipo: 213 pares, 96 términos. Con él se evalúan los sistemas (ver [`../resultados/`](../resultados/)). No se sabe de qué fuente salen las oraciones ni cómo se escribió la versión neutra (probablemente un modelo). | Sí |
 | `lote_1_noticias.csv` | Lote 1 generado con el plan de Flo, con oraciones de **noticias**. El borrador neutro lo propuso un LLM y lo revisó Flo (72 pares usados, 21 descartados). | Sí |
-| `lote_1_tuits.csv` | Lote 1 generado con oraciones de **tuits**. El borrador neutro lo propuso un LLM y lo revisó Flo (165 pares usados, 29 descartados). | **No** (ver «Tuits») |
+| `lote_1_tuits.csv` | Lote 1 generado con oraciones de **tuits**. El borrador neutro lo propuso un LLM y lo revisó Flo (165 pares usados, 29 descartados). | Sí (ver «Tuits») |
 | `revision_lote_1_noticias.xlsx`, `revision_lote_1_tuits.xlsx` | El mismo contenido en Excel, para revisar cómodamente (ver «Cómo se revisa un par»). | **No** |
 
 ## Formato

@@ -9,8 +9,8 @@ Datos del proyecto. Visión general: [`../README.md`](../README.md).
 | [`curado/`](curado/) | **El diccionario revisado a mano** (libro 1): `diccionario_flo_parte1.csv` (443 filas con definición, reemplazo, marca de ambiguo y variantes) y `terminos_descartados_parte1.csv` (los 220 que no entran). Es lo que leen los sistemas B y C. | Sí |
 | [`diccionario/`](diccionario/) | El trabajo previo de revisión: términos unidos, acepciones del Wikcionario, entradas de Román y el resumen de las reglas de ortografía. Ningún sistema lo lee; es respaldo y documentación. | Solo en parte (ver abajo) |
 | `raw/` | Descargas que hace `src/chilenismos/diccionario.py` (la caché del Wikcionario). | No |
-| `interim/` | Intermedios: candidatas de oraciones (`candidatas_*.csv`). Pueden traer texto de tuits. | No |
-| `processed/` | Salidas de los scripts: `diccionario.csv` del equipo, `predicciones*.csv`, y el borrador de entrenamiento en `interim/`. | No |
+| `interim/` | Intermedios: candidatas de oraciones (`candidatas_*.csv`) y `borrador_entrenamiento.csv`, los pares con que se entrena mT5. Pueden traer texto de tuits. | Solo `borrador_entrenamiento.csv` y `candidatas_entrenamiento.csv` |
+| `processed/` | Salidas de los scripts: `diccionario.csv` del equipo, `predicciones_*.csv` y `eval_extrinseca.csv`. | Sí, esos archivos (con `git add -f`); el resto no |
 
 ## `curado/diccionario_flo_parte1.csv`
 
@@ -28,7 +28,7 @@ Datos del proyecto. Visión general: [`../README.md`](../README.md).
 | `n_tuits_muestra` | En cuántos tuits de la muestra aparece |
 | `notas` | Notas de la revisión |
 
-Más detalle en [`../README_flo.md`](../README_flo.md).
+Más detalle en [`../archivo/README_flo.md`](../archivo/README_flo.md).
 
 ## `diccionario/`
 

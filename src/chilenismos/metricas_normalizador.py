@@ -22,7 +22,7 @@ Métricas por palabra (micro, sobre todo el conjunto):
   que el sistema estropea más palabras de las que corrige.
 
 Todo se informa de 0 a 100. BLEU y chrF se calculan sobre el texto normalizado; el CSV también guarda
-`bleu_crudo` y `chrf_crudo`, sobre el texto original, comparables con resultados/tabla_por_conjunto.md.
+`bleu_crudo` y `chrf_crudo`, sobre el texto original, comparables con archivo/resultados/tabla_por_conjunto.md.
 """
 import argparse
 import csv
