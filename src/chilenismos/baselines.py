@@ -5,7 +5,7 @@ python src/chilenismos/baselines.py [--pares annotation/lote1.csv ...] [--escena
 
 Escenario de diccionario para el baseline de reglas (variable ESCENARIO o --escenario):
   equipo : diccionario automático del equipo (data/processed/diccionario.csv)
-  flo    : diccionario revisado a mano (data/curado/diccionario_flo_parte1.csv)
+  flo    : diccionario revisado a mano por el equipo (data/curado/diccionario_flo.csv)
   ambos  : corre los dos y los compara con los mismos pares
 
 --pares acepta varios archivos: cada sistema se evalúa en cada conjunto de pares y el resumen

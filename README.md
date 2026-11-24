@@ -61,7 +61,7 @@ proyecto-nlp/
 │   ├── lote1.csv             213 pares del equipo
 │   └── lote_1_noticias.csv, lote_1_tuits.csv    72 y 165 pares revisados por Flo
 ├── data/
-│   ├── curado/               diccionario revisado: diccionario_flo_parte1.csv y términos descartados
+│   ├── curado/               diccionario revisado: diccionario_flo.csv y terminos_descartados.csv
 │   ├── diccionario/          el trabajo previo de Flo (ver abajo)
 │   ├── raw/, interim/, processed/   salidas de los scripts; no se suben a git
 ├── resultados/

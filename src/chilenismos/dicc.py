@@ -2,14 +2,14 @@
 
 Escenarios (variable ESCENARIO en baselines.py o --escenario):
   equipo : data/processed/diccionario.csv (automático, de diccionario.py)
-  flo    : data/curado/diccionario_flo_parte1.csv (revisado a mano, parte 1)
+  flo    : data/curado/diccionario_flo.csv (revisado a mano por el equipo: libro 1 y repartos 2 a 5)
 """
 import csv
 import re
 
 RUTAS = {
     "equipo": "data/processed/diccionario.csv",
-    "flo": "data/curado/diccionario_flo_parte1.csv",
+    "flo": "data/curado/diccionario_flo.csv",
 }
 
 

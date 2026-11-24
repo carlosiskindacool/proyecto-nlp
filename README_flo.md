@@ -27,20 +27,20 @@ El trabajo previo (con esta estructura; **no se subió al repo, lo tiene solo Fl
 | Archivo | Qué es |
 |---|---|
 | `data/diccionario/` | Del trabajo previo de Flo, solo lo que se sube (`terminos.csv`, acepciones, Román). Planillas, libros y descargas no se subieron: los tiene solo Flo. |
-| `data/curado/diccionario_flo_parte1.csv` | Diccionario revisado, una fila por término (443 filas: los pares verbo / verbo-se se separan). |
-| `data/curado/terminos_descartados_parte1.csv` | Los 220 descartados, con su nota. |
+| `data/curado/diccionario_flo.csv` | Diccionario revisado, una fila por término (1.985 filas: libro 1 y repartos 2 a 5; los pares verbo / verbo-se se separan). La columna `reviso` dice quién lo revisó. |
+| `data/curado/terminos_descartados.csv` | Los 1.327 descartados (o unificados con otra entrada), con quién los revisó y su nota. |
 | `src/chilenismos/dicc.py` | Carga un diccionario (del equipo o de Flo) y arma las reglas de reemplazo. |
 | `src/chilenismos/baselines.py` | Archivo del equipo, con la variable `ESCENARIO`, lectura del formato de `lote1.csv` y `--resumen`. |
 | `resultados/comparacion_baselines.csv` | BLEU y chrF de cada sistema (ver más abajo). |
 | `idea_flo/` | El plan de datos original de Flo, aparte del código del equipo (ver `idea_flo/README.md`). |
 
-### 3. Columnas de `diccionario_flo_parte1.csv`
-`termino`, `grupo` (si venía unido con su forma en -se), `tipo` (verbo / adjetivo_participio / especie / otro), `definicion`, **`reemplazo`**, **`ambiguo`**, **`reemplazo_validado`**, `keep` (siempre 1), `variantes` (formas escritas alternativas, solo para no-verbos), `n_tuits_muestra`, `notas`.
+### 3. Columnas de `diccionario_flo.csv`
+`termino`, `grupo` (si venía unido con su forma en -se), `tipo` (verbo / adjetivo_participio / especie / otro), `definicion`, **`reemplazo`**, `reemplazo_por` (quién escribió el reemplazo: Flo, un integrante, Claude, o «corregido/normalizado por Claude» si se ajustó uno de un integrante), **`ambiguo`**, **`reemplazo_validado`**, `keep` (siempre 1), `variantes` (formas escritas alternativas, solo para no-verbos), `n_tuits_muestra`, `frecuencia` (alta/media/baja; vacía en el libro 1), **`reviso`** (Flo, integrante 2, 3 o 4, o Claude validado por Flo) y `notas`.
 
 - **`reemplazo`:** la palabra o frase neutra que sustituye al término, para el sentido más frecuente. Vacío si no hay equivalente estable (especies, platos típicos, siglas, interjecciones).
 - **Varios sentidos:** admite alternativas separadas por `|` (por ejemplo `arruinar | engañar` en *cagar*). El baseline de reglas usa solo la primera; un LLM con el diccionario como contexto las recibe todas.
 - **`ambiguo = 1`:** la palabra también se usa mucho con su sentido estándar (*andar*, *pesado*, *mina*, *once*). El baseline de reglas **no la sustituye** salvo que se pida `--incluir-ambiguos`.
-- **`reemplazo_validado`:** 1 si Flo validó el reemplazo (hoy son todos).
+- **`reemplazo_validado`:** 1 si Flo validó el reemplazo (0 si es propuesta de Claude que Flo aún no valida; los reemplazos que escribió un integrante y Flo dejó como estaban cuentan como validados).
 
 ## Cómo elegir con qué diccionario se corre
 
@@ -51,7 +51,7 @@ ESCENARIO = "equipo"   # "equipo" | "flo" | "ambos"
 ```
 
 - `equipo`: el diccionario automático de `diccionario.py` (`data/processed/diccionario.csv`).
-- `flo`: el diccionario revisado (`data/curado/diccionario_flo_parte1.csv`).
+- `flo`: el diccionario revisado (`data/curado/diccionario_flo.csv`).
 - `ambos`: corre los dos con los mismos pares y los compara en la misma tabla.
 
 También por línea de comandos:
@@ -82,12 +82,7 @@ BLEU / chrF en los tres conjuntos de pares, medidos sobre texto sin `@usuario` n
 
 ## Pendiente de revisar
 
-**Flo todavía no revisa los libros 2 a 5.** Hoy el diccionario revisado cubre solo el libro 1 (las ~650 filas más frecuentes de 3.403 términos). Eso significa:
-
-- Las ~2.600 filas restantes están en `archivos_fuera_del_repo/data/diccionario/procesado/revision/revision_2_de_5.xlsx` … `revision_5_de_5.xlsx` **sin decisión** (sí / no), sin definiciones corregidas y sin reemplazos.
-- `diccionario_flo_parte1.csv` **no incluye ninguno de esos términos**: los sistemas B y C no los conocen.
-- Todavía hay que decidir si vale la pena revisarlos; son los menos frecuentes (retorno decreciente). La comparación de `resultados/comparacion_baselines.csv` ayuda a decidirlo.
-- Lo que falta revisar por cada libro es lo mismo que se hizo con el libro 1: ¿el término entra?, ¿la definición es correcta?, y luego el reemplazo por sentido.
+**Libros 2 a 5 (repartos).** Las ~2.600 filas restantes se revisaron entre el equipo (integrantes 2, 3 y 4), Flo y Claude: 1.542 quedan en el diccionario y 1.106 se descartan o se unifican. Los reemplazos que aún no valida Flo llevan `reemplazo_validado = 0`. La columna `reviso` de `data/curado/diccionario_flo.csv` dice quién decidió cada término. Los sistemas B y C todavía no se volvieron a medir con este diccionario ampliado.
 
 También sigue pendiente aplicar las decisiones del libro 1 a las planillas `archivos_fuera_del_repo/data/diccionario/procesado/variantes_parte*.xlsx` (pintar de gris los «no» y copiar las definiciones finales). Por ahora esas decisiones viven solo en `revisado_1_de_5.xlsx` y en `data/curado/`.
 
