@@ -53,3 +53,25 @@ python idea_flo/borrador.py --entrada data/interim/candidatas_tuits.csv    --sal
 ```
 
 Son los 100 términos más frecuentes del diccionario revisado (sin especies) y hasta 2 oraciones por término. Las noticias traen poca jerga: de los 100 términos, solo 51 aparecen en ellas.
+
+## Concordancia entre revisores
+
+Para saber cuánto coinciden las personas, 237 pares de `lote_1_tuits.csv` y `lote_1_noticias.csv` (180 de tuits y 57 de noticias, muestra al azar con semilla fija) los revisan además cuatro integrantes del equipo, **a ciegas**: cada par lo ve Flo (su decisión ya existente) y 2 de los 4 integrantes. Las 6 parejas posibles (2-3, 2-4, 2-5, 3-4, 3-5 y 4-5) ven unos 40 pares cada una, y cada integrante revisa unos 120. El diseño tolera que un integrante no entregue: sus pares quedan con 2 votos en lugar de 3 y el análisis sigue con los demás.
+
+- Los Excel `revision_concordancia_integrante{2,3,4,5}.xlsx` y la clave `clave_concordancia.csv` **no se suben**: traen texto de tuits y las decisiones de Flo. Están en `PLN/Proyecto/archivos_fuera_del_repo/annotation/`.
+- El script `concordancia.py` (no está en el repo: Flo lo guarda junto a los Excel, en `archivos_fuera_del_repo/annotation/`) calcula el **alfa de Krippendorff** (global, admite que cada par lo vean distintas personas), el **kappa de Cohen** entre cada pareja con intervalo bootstrap, el % de acuerdo, la matriz de confusión y el acuerdo en el texto corregido (igual exacto y chrF). `python concordancia.py --autoprueba` valida las fórmulas con datos simulados (alfa 1 con acuerdo perfecto y cerca de 0 con azar, también con huecos).
+- Limitaciones para el informe: pocas revisiones por pareja (~40), por lo que los intervalos son amplios; la muestra es proporcional (hay pocos «corregir» y «descartar»); la decisión de Flo se tomó antes y con el contexto completo del proyecto.
+- Flo revisa aparte `lote1.csv` (213 pares sin revisor) en `revision_lote1_flo.xlsx`, para ampliar el conjunto de prueba. Esos pares no entran al cálculo de concordancia porque los ve una sola persona.
+
+## Qué modelo se usó (registro)
+
+Hay que citar el modelo en el informe. Todo lo que Flo hizo con un LLM se hizo con **`claude-sonnet-5-5`** (Claude, vía Claude Code); así lo confirma Flo, que siempre usa ese modelo, y las sesiones de trabajo registran el mismo ID.
+
+| Uso | Modelo | Cómo se llamó |
+|---|---|---|
+| Borrador neutro de `lote_1_noticias.csv` y `lote_1_tuits.csv` (`borrador.py`, 8-nov-2026) | `claude-sonnet-5-5` | CLI de Claude Code (`--backend claude-code`); el código no fija `--modelo`, usa el de la cuenta de Flo |
+| Borrador de entrenamiento (`data/interim/borrador_entrenamiento.csv`) y baselines C (`baselines_llm.py`) | `claude-sonnet-5-5` | Igual |
+| Propuestas de Claude sobre el diccionario (decisiones, definiciones, reemplazos), 23-24 nov 2026 | `claude-sonnet-5-5` | Claude Code |
+| `lote1.csv` | Desconocido (no se sabe quién ni cómo lo escribió) | – |
+
+El ID no quedó guardado en ningún archivo de salida, solo en esta nota: para las próximas corridas conviene pasar `--modelo claude-sonnet-5-5` y anotar aquí la fecha. Si se usa a Claude como anotador de los pares, hay que registrar su ID y la fecha, y que no vio las decisiones de las personas.

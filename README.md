@@ -43,7 +43,7 @@ En el paso 4, `caffeinate -i` (solo Mac) evita que el equipo entre en reposo y c
 | `annotation/lote1.csv` | 213 pares del equipo (`termino;oracion;neutro`). |
 | `annotation/lote_1_noticias.csv`, `annotation/lote_1_tuits.csv` | 72 y 165 pares usados, de noticias y tuits, revisados por Flo (columna `revisor1`). Solo cuentan los pares revisados y no descartados. Formato en [`annotation/README.md`](annotation/README.md). |
 | `data/processed/diccionario.csv` | Diccionario automático del equipo (3.609 términos de Wikcionario; 809 con reemplazo). Lo usa `reglas_equipo`. Se guarda en git porque si se regenera, el Wikcionario puede haber cambiado y `reglas_equipo` daría otros números. |
-| `data/curado/diccionario_flo_parte1.csv` | Diccionario revisado a mano (443 términos). Lo usa `reglas_flo`. Columnas en [`data/README.md`](data/README.md). |
+| `data/curado/diccionario_flo.csv` | Diccionario revisado a mano (1.985 términos: libro 1 y repartos 2 a 5). Lo usa `reglas_flo`. Columnas en [`data/README.md`](data/README.md). |
 | `data/interim/borrador_entrenamiento.csv` | 1.500 pares chileno → neutro escritos por un LLM y **sin revisión humana**. Solo se usan para entrenar los mT5. |
 | `data/diccionario/glosario_es_en_test.csv` | Glosario de los 180 términos ancla: `termino;reemplazo_es;acepta_en` (traducciones al inglés aceptadas, separadas por `\|`). Revisado a mano. |
 
@@ -98,7 +98,7 @@ Estos scripts generaron los datos fijos. Quedan en el repo para documentar de d�
 | [`idea_flo/borrador.py`](idea_flo/borrador.py) y [`idea_flo/llm.py`](idea_flo/llm.py) | La versión neutra propuesta por un LLM para esas oraciones: los lotes de Flo (después revisados) y `borrador_entrenamiento.csv`. Usaron el CLI de Claude Code, sin clave de API. |
 | [`src/generate_glosario_es_en.py`](src/generate_glosario_es_en.py) | La primera versión del glosario, a partir de `data/diccionario/procesado/en_acepciones_chile.csv` y del diccionario de Flo. Después se revisó a mano; el respaldo de esa revisión es `glosario_es_en_test_revisado.csv`. |
 
-`data/curado/diccionario_flo_parte1.csv` salió de la revisión manual de Flo sobre Wikcionario, Wiktionary y el diccionario de Román. `data/diccionario/` guarda parte de ese trabajo previo; las planillas completas las tiene Flo fuera del repo. El origen de `annotation/lote1.csv` no está documentado.
+`data/curado/diccionario_flo.csv` salió de la revisión manual de Flo sobre Wikcionario, Wiktionary y el diccionario de Román. `data/diccionario/` guarda parte de ese trabajo previo; las planillas completas las tiene Flo fuera del repo. El origen de `annotation/lote1.csv` no está documentado.
 
 ## `archivo/`
 

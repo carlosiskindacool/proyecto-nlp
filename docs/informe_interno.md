@@ -65,7 +65,7 @@ El equipo dejó armada la base del repo (carpeta `src/chilenismos/`):
 - Se corrigieron las definiciones (Claude propuso, Flo aprobó, editó o rechazó) y se unificaron variantes (el verbo con su forma en *-se*, variantes de escritura).
 - Se propuso y se **validó un reemplazo por cada sentido** (por ejemplo, *cagar* → «arruinar» y «engañar»), y se marcó como **ambiguo** el término que también es una palabra estándar muy común (*andar*, *pesado*, *once*): esos no se sustituyen salvo que se pida.
 
-El resultado es **`data/curado/diccionario_flo_parte1.csv`** (443 filas, 328 con reemplazo). Es lo que leen los sistemas B y C. Las notas que Flo dejó al revisar los lotes ya se aplicaron al diccionario: *asado* → «parrillada»; *cortar* solo con el sentido de terminar una relación; *fonda* ahora es «feria costumbrista»; *no más* se quitó; *andar* queda con una nota de duda y *pelar el chancho* se anotó como dicho. El trabajo previo (planillas, libros de revisión y descargas) **no se subió al repositorio: lo tiene solo Flo**. De todo eso se subió únicamente `terminos.csv` (los 3.403 términos), las acepciones y `roman_entradas.jsonl`, en `data/diccionario/`.
+El resultado es **`data/curado/diccionario_flo.csv`** (1.985 filas, 1.859 con reemplazo; las 443 primeras son del libro 1 y el resto de los repartos 2 a 5, ver `data/README.md`). Es lo que leen los sistemas B y C. Las notas que Flo dejó al revisar los lotes ya se aplicaron al diccionario: *asado* → «parrillada»; *cortar* solo con el sentido de terminar una relación; *fonda* ahora es «feria costumbrista»; *no más* se quitó; *andar* queda con una nota de duda y *pelar el chancho* se anotó como dicho. El trabajo previo (planillas, libros de revisión y descargas) **no se subió al repositorio: lo tiene solo Flo**. De todo eso se subió únicamente `terminos.csv` (los 3.403 términos), las acepciones y `roman_entradas.jsonl`, en `data/diccionario/`.
 
 **b) El corpus.** Usamos el *Chilean Spanish Corpus* (`jorgeortizfuentes/chilean-spanish-corpus`, licencia CC-BY-SA-4.0): 63 archivos, con mc4 (8,7 M de textos), tuits (27,3 M), noticias (1,08 M) y reclamos (31 mil). No se redistribuye ni se sube al repo.
 
@@ -356,7 +356,7 @@ proyecto-nlp/
 ├── idea_flo/             familia C y plan de datos: llm.py, baselines_llm.py,
 │                         oraciones.py, borrador.py, entrenar_mt5.py
 ├── annotation/           los conjuntos de pares (lote1, noticias, tuits) y su README
-├── data/curado/          el diccionario revisado (diccionario_flo_parte1.csv)
+├── data/curado/          el diccionario revisado (diccionario_flo.csv)
 ├── data/diccionario/     solo los archivos que sí se suben (terminos.csv, acepciones, Román);
 │                         planillas y libros viven fuera del repo (ver arriba)
 ├── resultados/           comparacion_baselines.csv y tabla_por_conjunto.md/.csv

@@ -6,13 +6,13 @@ Datos del proyecto. Visión general: [`../README.md`](../README.md).
 
 | Carpeta | Contenido | ¿Se sube a git? |
 |---|---|---|
-| [`curado/`](curado/) | **El diccionario revisado a mano** (libro 1): `diccionario_flo_parte1.csv` (443 filas con definición, reemplazo, marca de ambiguo y variantes) y `terminos_descartados_parte1.csv` (los 220 que no entran). Es lo que leen los sistemas B y C. | Sí |
+| [`curado/`](curado/) | **El diccionario revisado a mano** (libro 1 y repartos 2 a 5): `diccionario_flo.csv` (1.985 filas con definición, reemplazo, marca de ambiguo, variantes y quién lo revisó) y `terminos_descartados.csv` (1.327 que se quitan o se unifican). Es lo que leen los sistemas B y C. | Sí |
 | [`diccionario/`](diccionario/) | El trabajo previo de revisión: términos unidos, acepciones del Wikcionario, entradas de Román y el resumen de las reglas de ortografía. Ningún sistema lo lee; es respaldo y documentación. | Solo en parte (ver abajo) |
 | `raw/` | Descargas que hace `src/chilenismos/diccionario.py` (la caché del Wikcionario). | No |
 | `interim/` | Intermedios: candidatas de oraciones (`candidatas_*.csv`) y `borrador_entrenamiento.csv`, los pares con que se entrena mT5. Pueden traer texto de tuits. | Solo `borrador_entrenamiento.csv` y `candidatas_entrenamiento.csv` |
 | `processed/` | Salidas de los scripts: `diccionario.csv` del equipo, `predicciones_*.csv` y `eval_extrinseca.csv`. | Sí, esos archivos (con `git add -f`); el resto no |
 
-## `curado/diccionario_flo_parte1.csv`
+## `curado/diccionario_flo.csv`
 
 | Columna | Qué es |
 |---|---|
@@ -22,10 +22,13 @@ Datos del proyecto. Visión general: [`../README.md`](../README.md).
 | `definicion` | La definición final, ya corregida |
 | `reemplazo` | Palabra neutra que lo sustituye; admite alternativas por sentido separadas por `\|`. Vacío si no hay equivalente estable |
 | `ambiguo` | 1 si la palabra también se usa mucho con su sentido estándar: el baseline de reglas no la sustituye |
+| `reemplazo_por` | Quién escribió el reemplazo: `Flo`, `integrante 2/4`, `Claude`, o `integrante N, corregido/normalizado por Claude` |
 | `reemplazo_validado` | 1 si Flo validó el reemplazo |
 | `keep` | Siempre 1 |
 | `variantes` | Formas escritas alternativas (solo para no-verbos) |
 | `n_tuits_muestra` | En cuántos tuits de la muestra aparece |
+| `frecuencia` | alta / media / baja (solo repartos 2 a 5) |
+| `reviso` | Quién decidió: `Flo`, `integrante 2/3/4` o `Claude (validado por Flo)` |
 | `notas` | Notas de la revisión |
 
 Más detalle en [`../archivo/README_flo.md`](../archivo/README_flo.md).
@@ -50,3 +53,12 @@ Los Excel no se suben porque incluyen ejemplos tomados de tuits, y **Flo los gua
 
 El Wikcionario y Wiktionary son CC BY-SA, así que el diccionario derivado se publica con la misma licencia. Román (1901–1918) es dominio público.
 El *Chilean Spanish Corpus* (CC-BY-SA-4.0) no se redistribuye: no hay corpus ni texto de tuits en el repo.
+
+## Cómo se revisó cada parte de `curado/`
+
+- **Libro 1** (443 filas en el diccionario, 220 descartados): lo revisó Flo palabra por palabra (`reviso = Flo`).
+- **Repartos 2 a 5** (1.542 filas en el diccionario, 1.106 descartados): cada integrante del equipo revisó un reparto (`reviso = integrante 2, 3 o 4`); las que nadie revisó las propuso Claude y Flo las validó (`reviso = Claude (validado por Flo)`); las de más frecuencia las decidió Flo (`reviso = Flo`).
+- `reemplazo_validado` = 1 si Flo validó el reemplazo; 0 si es propuesta de Claude que Flo aún no valida (los reemplazos escritos por integrantes cuentan como revisados por Flo; `reemplazo_por` dice quién los escribió); vacío si no hay reemplazo (especies, comidas típicas y términos sin equivalente). Los reemplazos de los repartos 2 a 5 son en su mayoría propuestas de Claude.
+- Los pares «verbo / verbo-se» se separan en dos filas con el mismo `grupo` y el mismo reemplazo (que reúne los sentidos de ambas formas; conviene revisarlo por forma).
+- `variantes` solo se llena para no-verbos. `frecuencia` (alta/media/baja) solo existe para los repartos 2 a 5.
+- En `terminos_descartados.csv`, `decision` es `quitar` o `unificar` (5 casos: se juntan con otra entrada, indicada en `nota`); en el libro 1 es el texto original de Flo («no», «no, es un pueblo»…).
