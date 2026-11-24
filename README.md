@@ -69,7 +69,7 @@ Después de los notebooks, hay que descargar las predicciones de Drive, copiarla
 | Sistema | lote1 | noticias | tuits |
 |---|---:|---:|---:|
 | identidad | 0,0 | 0,0 | 0,0 |
-| **reglas_flo** | **23,4** | **13,0** | **21,0** |
+| **reglas_flo** | **30,0** | **10,9** | **19,5** |
 | reglas_equipo | -7,6 | -54,3 | -3,8 |
 | mt5 | -21,8 | -106,5 | -23,7 |
 | mt5_moe | -16,2 | -80,4 | -11,8 |
@@ -79,7 +79,7 @@ Después de los notebooks, hay que descargar las predicciones de Drive, copiarla
 | Sistema | Opus-MT | NLLB |
 |---|---:|---:|
 | identidad | 7,0 | 5,6 |
-| **reglas_flo** | **21,1** | **18,8** |
+| **reglas_flo** | **23,3** | **21,3** |
 | reglas_equipo | 11,0 | 10,1 |
 | mt5 | 9,4 | 9,4 |
 | mt5_moe | 10,3 | 10,5 |
