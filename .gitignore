@@ -35,3 +35,6 @@ annotation/*.xlsx
 # models: configuración, tokenizer y registros de entrenamiento descargados de Drive (no se suben)
 models/mt5/*.json
 models/mt5_moe/*.json
+
+# registros y copias de trabajo de las corridas locales (logs/cadena*.log, copia del deck base)
+logs/

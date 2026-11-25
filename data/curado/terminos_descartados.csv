@@ -289,7 +289,7 @@ aniñada,quitar,Claude (validado por Flo),alertas: DUPLICADO | es forma de/inclu
 animalada,quitar,Claude (validado por Flo),alertas: RUIDO
 huinchada,quitar,Claude (validado por Flo),alertas: parecido a huincha
 litreado,quitar,Claude (validado por Flo),
-friquiado,unificar,Claude (validado por Flo),unificar con «friqueado»; alertas: es forma de/incluye a friquiada; misma definicion que friqueado; parecido a friqueado; parecido a friquiada
+friquiado,unificado,Claude (validado por Flo),unificar con «friqueado»; alertas: es forma de/incluye a friquiada; misma definicion que friqueado; parecido a friqueado; parecido a friquiada; unificado el 24-nov-2026: queda como variante de «friqueado»
 apercancado,quitar,Claude (validado por Flo),alertas: DUPLICADO
 tagua,quitar,Flo,alertas: TECNICO?
 calafate,quitar,Flo,alertas: TECNICO
@@ -804,7 +804,7 @@ bogar,quitar,integrante 3,alertas: TECNICO
 destemplar,quitar,integrante 3,alertas: es forma de/incluye a destemplar; parecido a destemplar; parecido a destemplarse
 destemplarse,quitar,integrante 3,alertas: es forma de/incluye a destemplar; parecido a destemplar; parecido a destemplarse
 finir,quitar,integrante 3,alertas: SIN_DEF
-encacharse,unificar,integrante 3,unificar con «encachado»; alertas: SIN_DEF | es forma de/incluye a encachado
+encacharse,unificado,integrante 3,unificar con «encachado»; alertas: SIN_DEF | es forma de/incluye a encachado; unificado el 24-nov-2026: queda como variante de «encachado»
 fletar,quitar,integrante 3,alertas: es forma de/incluye a fleta; parecido a flectar; parecido a fleta
 futbolizar,quitar,integrante 3,alertas: SIN_DEF
 hociconear,quitar,integrante 3,alertas: SIN_DEF
@@ -851,7 +851,7 @@ reculiado,quitar,integrante 3,
 aclarada,quitar,integrante 3,alertas: RUIDO
 culeado,quitar,integrante 3,
 atajada,quitar,integrante 3,alertas: DUPLICADO
-choreada,unificar,integrante 3,unificar con «choreado»; alertas: es forma de/incluye a choreado; parecido a choreado
+choreada,unificado,integrante 3,unificar con «choreado»; alertas: es forma de/incluye a choreado; parecido a choreado; unificado el 24-nov-2026: queda como variante de «choreado»
 alentado,quitar,integrante 3,alertas: DUPLICADO | parecido a aleonado
 dentrada,quitar,integrante 3,
 ponceado,quitar,integrante 3,
@@ -1306,13 +1306,13 @@ yupe,quitar,Claude (validado por Flo),
 convictorio,quitar,Claude (validado por Flo),
 decolaje,quitar,Claude (validado por Flo),
 picaflor azul,quitar,Claude (validado por Flo),
-bachiche,unificar,Claude (validado por Flo),unificar con «bachicha»; alertas: DUPLICADO | parecido a bachicha
+bachiche,unificado,Claude (validado por Flo),"unificar con «bachicha»; alertas: DUPLICADO | parecido a bachicha; unificado el 24-nov-2026 con «bachicha», que se quitó: ninguna de las dos queda en el diccionario"
 bichicuma,quitar,Claude (validado por Flo),
 catinga,quitar,Claude (validado por Flo),
 chañadura,quitar,Claude (validado por Flo),alertas: misma definicion que chaña
 chulpi,quitar,Claude (validado por Flo),
 contrarrayo,quitar,Claude (validado por Flo),
-echar cortado,unificar,Claude (validado por Flo),unificar con «mandar cortado»
+echar cortado,unificado,Claude (validado por Flo),unificar con «mandar cortado»; unificado el 24-nov-2026: queda como variante de «mandar cortado»
 guachacai,quitar,Claude (validado por Flo),alertas: misma definicion que guachucho; misma definicion que huachucho; parecido a guachaca
 guaroso,quitar,Claude (validado por Flo),
 huachucho,quitar,Claude (validado por Flo),alertas: misma definicion que guachacai; misma definicion que guachucho; parecido a huachuchero

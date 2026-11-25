@@ -6,7 +6,7 @@ todos,mt,mt5,446,42,9.4
 todos,mt,mt5_moe,446,46,10.3
 todos,nllb,identidad,446,25,5.6
 todos,nllb,reglas_equipo,446,45,10.1
-todos,nllb,reglas_flo,446,95,21.3
+todos,nllb,reglas_flo,446,93,20.9
 todos,nllb,mt5,446,42,9.4
 todos,nllb,mt5_moe,446,47,10.5
 lote1.csv,mt,identidad,213,16,7.5
@@ -16,7 +16,7 @@ lote1.csv,mt,mt5,213,19,8.9
 lote1.csv,mt,mt5_moe,213,23,10.8
 lote1.csv,nllb,identidad,213,15,7.0
 lote1.csv,nllb,reglas_equipo,213,19,8.9
-lote1.csv,nllb,reglas_flo,213,65,30.5
+lote1.csv,nllb,reglas_flo,213,63,29.6
 lote1.csv,nllb,mt5,213,25,11.7
 lote1.csv,nllb,mt5_moe,213,29,13.6
 lote_1_noticias.csv,mt,identidad,68,8,11.8

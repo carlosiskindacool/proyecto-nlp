@@ -5,7 +5,7 @@ Exact-Match Accuracy (%) del término ancla al traducir al inglés la salida de 
 | Sistema | Opus-MT | NLLB |
 |---|---:|---:|
 | identidad | 7,0 | 5,6 |
-| reglas_flo | 23,3 | 21,3 |
+| reglas_flo | 23,3 | 20,9 |
 | reglas_equipo | 11,0 | 10,1 |
 | mt5 | 9,4 | 9,4 |
 | mt5_moe | 10,3 | 10,5 |
@@ -15,7 +15,7 @@ Exact-Match Accuracy (%) del término ancla al traducir al inglés la salida de 
 | Sistema | Opus-MT | NLLB |
 |---|---:|---:|
 | identidad | 7,5 | 7,0 |
-| reglas_flo | 30,5 | 30,5 |
+| reglas_flo | 30,5 | 29,6 |
 | reglas_equipo | 5,6 | 8,9 |
 | mt5 | 8,9 | 11,7 |
 | mt5_moe | 10,8 | 13,6 |

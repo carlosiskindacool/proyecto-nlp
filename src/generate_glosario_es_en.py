@@ -23,7 +23,7 @@ import pandas as pd
 
 LOTES = "annotation/lote*.csv"
 GLOSAS_EN = "data/diccionario/procesado/en_acepciones_chile.csv"
-DICCIONARIO = "data/curado/diccionario_flo_parte1.csv"
+DICCIONARIO = "data/curado/diccionario_flo.csv"
 COLUMNAS = ["termino", "reemplazo_es", "acepta_en"]
 
 

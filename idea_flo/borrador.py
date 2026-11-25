@@ -4,7 +4,7 @@ Una persona revisa y corrige el borrador después (columna `neutro`) y anota su 
 (un solo revisor por ahora).
 
 python idea_flo/borrador.py [--entrada data/interim/candidatas.csv] [--escenario flo]
-    [--backend claude-code|anthropic] [--salida annotation/borrador.csv] [--limite 0] [--semilla 1] [--seco]
+    [--backend claude-code|anthropic|gemini|openai|ollama] [--salida annotation/borrador.csv] [--limite 0] [--semilla 1] [--seco]
 
 --limite N toma N oraciones al azar (misma semilla = mismas oraciones), repartidas entre los términos.
 Guarda cada 100 oraciones y, si la salida ya existe, retoma sin repetir las que ya tiene.
@@ -25,12 +25,13 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--entrada", default="data/interim/candidatas.csv")
     ap.add_argument("--escenario", default="flo", choices=["equipo", "flo"])
-    ap.add_argument("--backend", default="claude-code", choices=["claude-code", "anthropic"])
+    ap.add_argument("--backend", default="claude-code", choices=["claude-code", "anthropic", "gemini", "openai", "ollama"])
     ap.add_argument("--modelo")
     ap.add_argument("--salida", default="annotation/borrador.csv")
     ap.add_argument("--limite", type=int, default=0, help="solo N oraciones, elegidas al azar")
     ap.add_argument("--semilla", type=int, default=1)
     ap.add_argument("--guardar-cada", type=int, default=100)
+    ap.add_argument("--hilos", type=int, default=1, help="lotes en paralelo (claude-code y APIs; con ollama no acelera)")
     ap.add_argument("--seco", action="store_true")
     args = ap.parse_args()
 
@@ -60,7 +61,7 @@ def main():
             w.writeheader()
         for i in range(0, len(pendientes), args.guardar_cada):
             trozo = pendientes[i:i + args.guardar_cada]
-            neutros = traducir([it for _, it in trozo], args.backend, args.modelo)
+            neutros = traducir([it for _, it in trozo], args.backend, args.modelo, hilos=args.hilos)
             w.writerows({"termino": r["termino"], "oracion": r["oracion"], "neutro": n, "revisor1": ""}
                         for (r, _), n in zip(trozo, neutros))
             f.flush()

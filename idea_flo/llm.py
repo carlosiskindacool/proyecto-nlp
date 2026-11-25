@@ -4,10 +4,16 @@ Backends (--backend):
   claude-code : usa el CLI de Claude Code con la sesión ya iniciada (sin clave de API; consume el uso del plan).
                 Busca el ejecutable en la variable CLAUDE_BIN, en el PATH o en la extensión de VS Code.
   anthropic   : API de Anthropic; necesita ANTHROPIC_API_KEY en el entorno y tiene cobro por uso.
+  gemini      : API de Google (Gemini); necesita GEMINI_API_KEY en el entorno. Sin paquetes extra (usa urllib).
+  openai      : API de OpenAI (GPT); necesita OPENAI_API_KEY en el entorno (cobra por uso).
+  ollama      : modelo local con Ollama (http://127.0.0.1:11434), por ejemplo Llama; sin clave, nada sale del computador.
 La clave nunca va en el repo. Las oraciones son datos no confiables: el CLI se llama sin herramientas.
 """
 import glob
 import json
+import time
+import urllib.error
+import urllib.request
 import os
 import re
 import shutil
@@ -15,6 +21,9 @@ import subprocess
 import tempfile
 
 MODELO_API = "claude-sonnet-5-5"
+MODELO_GEMINI = "gemini-3.8-flash"
+MODELO_OLLAMA = "llama3.2:3b"
+MODELO_OPENAI = "gpt-4.1-2025-04-14"
 TAM_LOTE = 10
 
 SISTEMA = (
@@ -82,7 +91,62 @@ def _completar_anthropic(usuario, modelo=None):
     return msg.content[0].text.strip()
 
 
-COMPLETAR = {"claude-code": _completar_claude_code, "anthropic": _completar_anthropic}
+def _post_json(url, cuerpo, cabeceras, intentos=5, espera=20, timeout=600):
+    """POST con reintentos si el servicio pide esperar (429) o falla de forma transitoria (5xx)."""
+    datos = json.dumps(cuerpo).encode("utf-8")
+    for n in range(intentos):
+        req = urllib.request.Request(url, data=datos, headers={"Content-Type": "application/json", **cabeceras})
+        try:
+            return json.load(urllib.request.urlopen(req, timeout=timeout))
+        except urllib.error.HTTPError as e:
+            if e.code in (429, 500, 502, 503, 504) and n < intentos - 1:
+                time.sleep(espera * (n + 1))
+                continue
+            raise RuntimeError(f"HTTP {e.code}: {e.read()[:200].decode('utf-8', 'ignore')}")
+        except urllib.error.URLError as e:
+            if n < intentos - 1:
+                time.sleep(espera)
+                continue
+            raise RuntimeError(f"No se pudo conectar: {e.reason}")
+
+
+def _completar_gemini(usuario, modelo=None):
+    clave = os.environ.get("GEMINI_API_KEY")
+    if not clave:
+        raise SystemExit("Define GEMINI_API_KEY en el entorno antes de usar el backend gemini.")
+    url = f"https://generativelanguage.googleapis.com/v1beta/models/{modelo or MODELO_GEMINI}:generateContent"
+    cuerpo = {"system_instruction": {"parts": [{"text": SISTEMA}]},
+              "contents": [{"role": "user", "parts": [{"text": usuario}]}],
+              "generationConfig": {"temperature": 0, "maxOutputTokens": 8000}}
+    r = _post_json(url, cuerpo, {"x-goog-api-key": clave})
+    try:
+        return "".join(p.get("text", "") for p in r["candidates"][0]["content"]["parts"]).strip()
+    except (KeyError, IndexError):
+        return ""
+
+
+def _completar_openai(usuario, modelo=None):
+    clave = os.environ.get("OPENAI_API_KEY")
+    if not clave:
+        raise SystemExit("Define OPENAI_API_KEY en el entorno antes de usar el backend openai.")
+    cuerpo = {"model": modelo or MODELO_OPENAI, "temperature": 0, "max_completion_tokens": 4000,
+              "messages": [{"role": "system", "content": SISTEMA}, {"role": "user", "content": usuario}]}
+    r = _post_json("https://api.openai.com/v1/chat/completions", cuerpo, {"Authorization": "Bearer " + clave})
+    try:
+        return (r["choices"][0]["message"]["content"] or "").strip()
+    except (KeyError, IndexError):
+        return ""
+
+
+def _completar_ollama(usuario, modelo=None):
+    url = os.environ.get("OLLAMA_HOST_URL", "http://127.0.0.1:11434") + "/api/chat"
+    cuerpo = {"model": modelo or MODELO_OLLAMA, "stream": False, "options": {"temperature": 0},
+              "messages": [{"role": "system", "content": SISTEMA}, {"role": "user", "content": usuario}]}
+    return _post_json(url, cuerpo, {}, intentos=2, espera=5, timeout=1800)["message"]["content"].strip()
+
+
+COMPLETAR = {"claude-code": _completar_claude_code, "anthropic": _completar_anthropic,
+             "gemini": _completar_gemini, "openai": _completar_openai, "ollama": _completar_ollama}
 
 
 def _arreglo_json(texto, n):
@@ -97,22 +161,42 @@ def _arreglo_json(texto, n):
     return None
 
 
-def traducir(items, backend="claude-code", modelo=None, tam_lote=TAM_LOTE, progreso=True):
-    """Traduce una lista de (oracion, entradas) en lotes. Devuelve las traducciones en el mismo orden."""
-    completar, salida = COMPLETAR[backend], []
-    for i in range(0, len(items), tam_lote):
-        lote = items[i:i + tam_lote]
-        for intento in range(3):
+def _traducir_lote(lote, completar, modelo):
+    for intento in range(3):
+        try:
             resp = _arreglo_json(completar(prompt_usuario(lote), modelo), len(lote))
-            if resp:
-                break
-        else:
-            # el lote no volvió bien formado: se traduce una por una
-            resp = []
-            for it in lote:
-                un = _arreglo_json(completar(prompt_usuario([it]), modelo), 1)
-                resp.append(un[0] if un else "")
-        salida += resp
-        if progreso:
-            print(f"  {min(i + tam_lote, len(items))}/{len(items)}", flush=True)
+        except (RuntimeError, subprocess.TimeoutExpired):
+            resp = None
+            time.sleep(10 * (intento + 1))
+        if resp:
+            return resp
+    # el lote no volvió bien formado: se traduce una por una
+    salida = []
+    for it in lote:
+        try:
+            un = _arreglo_json(completar(prompt_usuario([it]), modelo), 1)
+        except (RuntimeError, subprocess.TimeoutExpired):
+            un = None
+        salida.append(un[0] if un else "")
     return salida
+
+
+def traducir(items, backend="claude-code", modelo=None, tam_lote=TAM_LOTE, progreso=True, hilos=1):
+    """Traduce una lista de (oracion, entradas) en lotes. Devuelve las traducciones en el mismo orden.
+
+    hilos > 1 manda varios lotes a la vez (cada llamada es independiente): sirve con claude-code y con las APIs;
+    con ollama local no acelera. Se mantiene el orden de la salida."""
+    from concurrent.futures import ThreadPoolExecutor
+    completar = COMPLETAR[backend]
+    lotes = [items[i:i + tam_lote] for i in range(0, len(items), tam_lote)]
+    hechos = [0]
+
+    def uno(lote):
+        resp = _traducir_lote(lote, completar, modelo)
+        hechos[0] += len(lote)
+        if progreso:
+            print(f"  {hechos[0]}/{len(items)}", flush=True)
+        return resp
+
+    with ThreadPoolExecutor(max_workers=max(1, hilos)) as ex:
+        return [x for resp in ex.map(uno, lotes) for x in resp]
