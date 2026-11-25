@@ -2,7 +2,7 @@
 
 **Para qué sirve este documento.** Es un resumen para todo el grupo. Explica qué queremos hacer, qué se ha hecho (por Nicolás, por Florencia y por el compañero que armó el pipeline final con los mT5, ver 2.4), qué resultados hay y qué falta. **No es el documento de la entrega**: sigue la estructura que piden (graphical abstract, recolección de datos, diseño experimental, resultados experimentales y próximos pasos) para que de aquí se pueda armar la entrega.
 
-Los números del estudio de 8 sistemas salen de `resultados/anterior/` y de `archivo/resultados/comparacion_baselines.csv`; los del pipeline final, de `resultados/metricas_normalizador.md`, `resultados/eval_extrinseca.md` y de la sección 4.0. Cada carpeta tiene su propio README con más detalle (`README.md`, `README_flo.md`, `idea_flo/README.md`, `annotation/README.md`, `data/README.md`).
+Los números del estudio de 8 sistemas salen de `archivo/resultados/comparacion_baselines.csv`; los del pipeline final, de `resultados/metricas_normalizador.md`, `resultados/eval_extrinseca.md` y de la sección 4.0. Cada carpeta tiene su propio README con más detalle (`README.md`, `README_flo.md`, `idea_flo/README.md`, `annotation/README.md`, `data/README.md`).
 
 ---
 

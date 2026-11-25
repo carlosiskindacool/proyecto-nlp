@@ -71,7 +71,7 @@ Después de los notebooks, hay que descargar las predicciones de Drive, copiarla
 
 ## Resultados
 
-**Estado (25-nov-2026).** Los números de abajo son los de la corrida de Carlos: reglas con el diccionario de 1.985 entradas y mT5 y MoE entrenados con 1.500 pares (Colab, T4, fp32, lote 8). Los dos mT5 se están reentrenando con 10.490 pares en la GPU local (lote 4); al terminar, la cadena actualiza `resultados/` y `data/processed/` y estas tablas se rehacen. La versión anterior de los resultados está en `resultados/anterior/`.
+**Estado (25-nov-2026).** Los números de abajo son los de la corrida de Carlos: reglas con el diccionario de 1.985 entradas y mT5 y MoE entrenados con 1.500 pares (Colab, T4, fp32, lote 8). Los dos mT5 se están reentrenando con 10.490 pares en la GPU local (lote 4); al terminar, la cadena actualiza `resultados/` y `data/processed/` y estas tablas se rehacen. La versión anterior de los resultados queda en el historial de git (commit `04797ce`).
 
 **Intrínseca** ([`resultados/metricas_normalizador.md`](resultados/metricas_normalizador.md)). ERR por lote; 0 es no cambiar nada y un valor negativo significa que el sistema estropea más palabras de las que corrige.
 
