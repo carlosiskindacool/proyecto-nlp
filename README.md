@@ -78,8 +78,8 @@ Después de los notebooks, hay que descargar las predicciones de Drive, copiarla
 | Sistema | lote1 | noticias | tuits |
 |---|---:|---:|---:|
 | identidad | 0,0 | 0,0 | 0,0 |
-| **reglas_flo** | **29,0** | **13,0** | **19,9** |
-| reglas_equipo | -7,6 | -54,4 | -3,8 |
+| **reglas_flo** | **29,0** | **13,0** | **19,8** |
+| reglas_equipo | -7,6 | -54,3 | -3,8 |
 | mt5 | -21,8 | -106,5 | -23,7 |
 | mt5_moe | -16,2 | -80,4 | -11,8 |
 
@@ -107,7 +107,6 @@ Estos scripts generaron los datos fijos. Quedan en el repo para documentar de d�
 | [`idea_flo/oraciones.py`](idea_flo/oraciones.py) | Oraciones del *Chilean Spanish Corpus* que contienen términos del diccionario: las de los lotes de Flo, `data/interim/candidatas_entrenamiento.csv` y, para todos los términos del diccionario, `candidatas_lote2.csv` (hasta 6 por término, tuits y noticias). |
 | [`idea_flo/seleccionar_lote.py`](idea_flo/seleccionar_lote.py) y [`idea_flo/revision_excel.py`](idea_flo/revision_excel.py) | Eligen las oraciones de un lote nuevo por frecuencia del término (alta, media, media-baja) sin repetir lotes anteriores, arman el Excel de revisión y lo pasan al CSV que leen los sistemas. Se usaron para los 150 pares nuevos; comandos en [`annotation/README.md`](annotation/README.md). |
 | [`idea_flo/borrador.py`](idea_flo/borrador.py) y [`idea_flo/llm.py`](idea_flo/llm.py) | La versión neutra propuesta por un LLM para esas oraciones: los lotes de Flo (después revisados) y `borrador_entrenamiento.csv`. Usaron el CLI de Claude Code, sin clave de API; el modelo es `claude-sonnet-5-5`. `borrador.py --hilos N` manda N lotes de 10 oraciones en paralelo (se usó N = 6 para los pares de entrenamiento nuevos). |
-| [`src/armar_diapositivas_resultados.py`](src/armar_diapositivas_resultados.py) | Arma las diapositivas de datos, resultados, procedencia y lo que se espera de las corridas nuevas, con los números de `resultados/`. No forma parte del pipeline de medición. |
 | [`src/generate_glosario_es_en.py`](src/generate_glosario_es_en.py) | La primera versión del glosario, a partir de `data/diccionario/procesado/en_acepciones_chile.csv` y del diccionario de Flo. Después se revisó a mano; el respaldo de esa revisión es `glosario_es_en_test_revisado.csv`. |
 
 `data/curado/diccionario_flo.csv` salió de la revisión manual de Flo sobre Wikcionario, Wiktionary y el diccionario de Román. `data/diccionario/` guarda parte de ese trabajo previo; las planillas completas las tiene Flo fuera del repo. El origen de `annotation/lote1.csv` no está documentado.
