@@ -6,7 +6,7 @@
 
 **Las figuras** de las secciones 2 y 4 se generan con `notebooks/graficos_informe.ipynb` (corre en Colab; guarda los PNG en `docs/figuras/`).
 
-**De dónde salen los números.** Fase 1: `archivo/resultados/comparacion_baselines.csv` y `tabla_por_conjunto.md`. Fases 2 y 3: `resultados/metricas_normalizador.md`, `resultados/eval_extrinseca.md` y sus variantes. Cada carpeta tiene un README con más detalle (`README.md`, `annotation/README.md`, `data/README.md`).
+**De dónde salen los números.** Fase 1: `archivo/resultados/comparacion_baselines.csv` y `tabla_por_conjunto.md`. Fase 2: los resultados de esa corrida se reemplazaron en la fase 3, así que sus cifras salen del historial de git (commits `0d7eb83` y `1aeef4a`). Fases 3 y 4: `resultados/metricas_normalizador.md`, `resultados/eval_extrinseca.md` y sus variantes. Cada carpeta tiene un README con más detalle (`README.md`, `annotation/README.md`, `data/README.md`).
 
 ---
 
@@ -14,8 +14,8 @@
 
 - **Objetivo:** un sistema que reciba una oración con jerga chilena (*«el carrete estuvo fome»*) y devuelva la misma oración en español neutro (*«la fiesta estuvo aburrida»*), cambiando solo la jerga.
 - **Cómo medimos:** comparamos la salida de cada sistema con una versión neutra revisada por una persona. Dos evaluaciones: **intrínseca** (¿se parece a la referencia? ERR, precisión, recall y F1 por palabra, y BLEU y chrF) y **extrínseca** (¿normalizar ayuda a traducir al inglés? Exact-Match Accuracy con Opus-MT y NLLB).
-- **Tres fases.** (1) **Estudio previo:** 8 sistemas, con el diccionario del libro 1. (2) **Pipeline final:** diccionario unificado, 150 pares nuevos, 10.490 pares de entrenamiento y 5 sistemas (`identidad`, `reglas_equipo`, `reglas_curado`, `mt5` y `mt5_moe`) sobre 5 conjuntos de pares. (3) **Validación:** acuerdo entre revisores, otros LLM como generadores y un glosario es→en completo para la evaluación extrínseca.
-- **Resultado principal:** solo las **reglas con el diccionario revisado a mano** mejoran el texto en la métrica intrínseca (ERR de 30,0, 10,9 y 19,5 en el lote base, noticias y tuits); las reglas con el diccionario automático lo empeoran. Los dos mT5, reentrenados con 10.490 pares, mejoraron mucho respecto de los 1.500 pares anteriores (ERR del denso en el lote base de −21,8 a −9,6; del MoE de −16,2 a −5,9), pero **siguen con ERR negativo**; el MoE queda sobre el denso con diferencias pequeñas y una sola semilla. Al traducir, normalizar ayuda: se traducen bien 23,9 % de los términos ancla con `reglas_curado`, 18,5 % con el mT5 denso y 19,5 % con el MoE, contra 6,7 % sin normalizar (Opus-MT, 594 oraciones). En el estudio previo el mejor había sido el LLM con el diccionario.
+- **Cuatro fases.** (1) **Estudio previo:** 8 sistemas, con el diccionario del libro 1. (2) **Primera corrida del pipeline final** (integrante 5): 5 sistemas (`identidad`, `reglas_equipo`, `reglas_curado`, `mt5` y `mt5_moe`) sobre 3 conjuntos, con el diccionario del libro 1 (443 entradas) y mT5 entrenados con 1.500 pares. (3) **Ampliación y reentrenamiento:** diccionario unificado (1.985 entradas), 150 pares nuevos, 10.490 pares de entrenamiento y 5 conjuntos. (4) **Validación:** acuerdo entre revisores, otros LLM como generadores y un glosario es→en completo para la evaluación extrínseca.
+- **Resultado principal:** solo las **reglas con el diccionario revisado a mano** mejoran el texto en la métrica intrínseca (ERR de 30,0, 10,9 y 19,5 en el lote base, noticias y tuits); las reglas con el diccionario automático lo empeoran. Ampliar el diccionario de 443 a 1.985 entradas sube el recall pero baja la precisión: el ERR de `reglas_curado` sube en el lote base (de 23,4 a 30,0) y baja en noticias (de 13,0 a 10,9) y tuits (de 21,0 a 19,5). Los dos mT5, reentrenados con 10.490 pares, mejoraron mucho respecto de los 1.500 pares anteriores (ERR del denso en el lote base de −21,8 a −9,6; del MoE de −16,2 a −5,9), pero **siguen con ERR negativo**; el MoE queda sobre el denso con diferencias pequeñas y una sola semilla. Al traducir, normalizar ayuda: se traducen bien 23,9 % de los términos ancla con `reglas_curado`, 18,5 % con el mT5 denso y 19,5 % con el MoE, contra 6,7 % sin normalizar (Opus-MT, 594 oraciones). En el estudio previo el mejor había sido el LLM con el diccionario.
 - **Lo que falta:** la evaluación humana; y, opcionalmente, sumar más familias a los votos del glosario. El segundo revisor no se completó: solo entregó el integrante 2 (kappa 0,04).
 
 ---
@@ -32,39 +32,31 @@
 | **4** | Revisó el libro 4 del diccionario (300 filas). No entregó el Excel de revisión de pares. |
 | **5** | Armó el pipeline final: mT5 denso, mT5 con mezcla de expertos (MoE), métricas del normalizador, evaluación extrínseca y la reorganización del repo. No entregó el Excel de revisión. |
 
-### 1.2 Las tres fases
+### 1.2 Las cuatro fases
 
 | Fase | Cuándo | Qué se hizo | Sistemas |
 |---|---|---|---|
 | **1. Estudio previo** | hasta el 8-nov-2026 | Diccionario automático y diccionario revisado del libro 1; lote base y dos lotes propios (noticias y tuits); 1.500 pares de entrenamiento. | 8 sistemas: reglas, LLM y mT5 |
-| **2. Pipeline final** | 23 a 25-nov-2026 | Diccionario unificado (1.985 términos); lote 2; 10.490 pares de entrenamiento; mT5 denso y MoE; métricas ERR y evaluación extrínseca. | 5 sistemas, 5 conjuntos |
-| **3. Validación** | 24 a 25-nov-2026 | Acuerdo entre revisores; otros LLM como generadores de borradores; glosario es→en completo con votos entre familias de modelos. | – |
+| **2. Primera corrida del pipeline final** | 21 a 24-nov-2026 | El integrante 5 construye y corre el pipeline completo: mT5 denso y MoE entrenados con 1.500 pares, métricas ERR y evaluación extrínseca con un glosario de 180 términos. Diccionario del libro 1 (443 entradas). | 5 sistemas, 3 conjuntos |
+| **3. Ampliación y reentrenamiento** | 24 a 25-nov-2026 | Diccionario unificado (1.985 entradas); lote 2; 10.490 pares de entrenamiento; mT5 reentrenados en una GPU local; 5 conjuntos de pares. | 5 sistemas, 5 conjuntos |
+| **4. Validación** | 23 a 25-nov-2026 | Acuerdo entre revisores; otros LLM como generadores de borradores; glosario es→en completo con votos entre familias de modelos y evaluación extrínseca final con controles. | – |
 
 ### 1.3 Graphical abstract
 
-La idea completa del proyecto, de punta a punta:
+**El de la propuesta.** Es el que se presentó al inicio del proyecto: un mT5 extendido con *Mixture of Experts*, en cuatro bloques (datos, corpus paralelo, modelo y resultado).
 
-1. **Diccionario de chilenismos** (qué palabras y qué significan).
-2. **Oraciones reales** del corpus que contienen esas palabras.
-3. **Pares** *oración chilena → oración neutra* (primero un borrador que propone un LLM; después una persona lo corrige).
-4. **Sistemas que traducen**: reglas de sustitución, LLM, y un modelo propio (mT5, con una variante de *Mixture of Experts*).
-5. **Evaluación**: BLEU y chrF, ERR, y traducción al inglés (y, más adelante, evaluación humana).
+![Graphical abstract de la propuesta: datos, corpus paralelo, modelo (encoder, Mixture of Experts y decoder) y resultado](figuras/graphical_abstract_propuesta.png)
 
-Los diagramas muestran el **estudio previo** (fase 1, 8 sistemas). El pipeline final conserva tres de esos sistemas y agrega los dos mT5.
+**El actualizado: lo que se hizo.** Mantiene la estructura y los colores de la propuesta, y cambia lo que el proyecto terminó siendo:
 
-**Diagrama 1: los 8 sistemas.** Cada sistema va en una línea, con su diccionario, los pares, quién traduce y su resultado en los tres conjuntos (BLEU y chrF):
+- Los sistemas que se comparan son **cinco**: tres sin modelo (`identidad` y las reglas con dos diccionarios) y los dos mT5 (denso y con MoE). La propuesta solo tenía el mT5 con MoE.
+- El **set de prueba** son 594 oraciones revisadas por una sola persona. La propuesta pedía 200 a 300 pares revisados por dos personas (el segundo revisor no se completó; 4.4).
+- Los **pares de entrenamiento** (10.490) son borradores del LLM sin revisión humana.
+- Se mide con **dos evaluaciones**: intrínseca (ERR, F1, BLEU y chrF) y extrínseca (traducción al inglés). La propuesta decía BLEU y un *checklist*.
 
-![Diagrama 1: los 8 sistemas, uno por línea](pipelines_1.png)
+![Graphical abstract actualizado: datos, corpus paralelo, sistemas y evaluación, con el resultado principal](figuras/fig0_graphical_abstract.png)
 
-**Diagrama 2: qué archivos entran y salen de cada paso.**
-
-![Diagrama 2: archivos que entran y salen de cada paso](pipelines_3.png)
-
-**Diagrama 3: cómo se hizo el diccionario revisado.**
-
-![Diagrama 3: cómo se hizo el diccionario revisado](pipelines_2.png)
-
-Los diagramas se editan con [draw.io](https://app.diagrams.net) abriendo `docs/pipelines.drawio`.
+Los diagramas con más detalle están en la sección que les corresponde: cómo se hizo el diccionario revisado (2.1), los 8 sistemas de la fase 1 (3.1) y los archivos que entran y salen de cada paso (sección 8). Se editan con [draw.io](https://app.diagrams.net) abriendo `docs/pipelines.drawio`.
 
 ---
 
@@ -84,6 +76,11 @@ Los diagramas se editan con [draw.io](https://app.diagrams.net) abriendo `docs/p
 
 En la fase 1 el diccionario revisado tenía **443 entradas** (libro 1). Las planillas y los libros de revisión **no se subieron al repositorio**: los guarda el integrante 1 fuera del repo. Del trabajo se subió únicamente `terminos.csv` (los 3.403 términos), las acepciones y `roman_entradas.jsonl`, en `data/diccionario/`.
 
+**Cómo se hizo el diccionario revisado:**
+
+![Diagrama: cómo se hizo el diccionario revisado](pipelines_2.png)
+
+
 **d) El corpus.** *Chilean Spanish Corpus* (`jorgeortizfuentes/chilean-spanish-corpus`, licencia CC-BY-SA-4.0): 63 archivos, con mc4 (8,7 M de textos), tuits (27,3 M), noticias (1,08 M) y reclamos (31 mil). No se redistribuye ni se sube al repo.
 
 **e) Dos lotes de pares propios.** Para no depender solo del lote base, se construyeron dos conjuntos con las **100 palabras más frecuentes** del diccionario revisado (sin nombres de especies), 2 oraciones por palabra, escogidas al azar entre 25 y 240 caracteres (sin retuits ni links; las menciones de usuarios se cambian por `@usuario`):
@@ -97,7 +94,17 @@ Cada par se hizo así: un LLM (`claude-sonnet-5-5`) propuso la versión neutra (
 
 **f) Datos de entrenamiento (datos plata).** Para entrenar el mT5 hacen falta muchos más pares. Se buscaron **3.382 oraciones** (sobre todo de tuits) para los términos del libro 1, y el LLM escribió la versión neutra de **1.500** de ellas, elegidas al azar. Quedan **1.491 pares** tras quitar duplicados y las oraciones de los conjuntos de prueba: **1.416 para entrenar y 75 para validar**. **No los revisa una persona.** Se usan solo para entrenar; la prueba usa únicamente pares revisados.
 
-### 2.2 Fase 2: pipeline final
+### 2.2 Fase 2: primera corrida del pipeline final (integrante 5)
+
+Con lo que había hasta entonces, el integrante 5 corrió por primera vez el pipeline completo (21 a 24-nov-2026). **Los datos de esa corrida:**
+
+- **Diccionario de `reglas_curado`:** el del libro 1 (`data/curado/diccionario_flo_parte1.csv`): **443 entradas**, todas con reemplazo validado, 231 de ellas marcadas como ambiguas. El diccionario completo (1.985 entradas) llegó después (2.3).
+- **Diccionario de `reglas_equipo`:** el automático del Wikcionario (2.1a).
+- **Conjuntos de prueba:** los tres de la fase 1: lote base, lote primera fase noticias y lote primera fase tuits (213 + 72 + 165 pares).
+- **Entrenamiento de los mT5:** los 1.500 pares de la fase 1 (1.416 para entrenar, 75 para validar; 2.1f).
+- **Glosario es→en de la extrínseca:** 180 términos ancla (los de los tres conjuntos), de los cuales 93 quedaron revisados a mano y los otros con glosas automáticas del Wikcionario. Con él, 446 oraciones eran evaluables.
+
+### 2.3 Fase 3: ampliación y reentrenamiento
 
 **a) Diccionario unificado.** Se juntó en un solo archivo la revisión de las 5 secciones del diccionario: **`data/curado/diccionario_flo.csv`, 1.985 filas, 1.929 con reemplazo validado por el integrante 1** (las 443 primeras son del libro 1). Se aplicaron las notas que dejó al revisar los lotes (*asado* → «parrillada»; *cortar* solo con el sentido de terminar una relación; *fonda* ahora es «feria costumbrista»; *no más* se quitó; *andar* queda con una nota de duda y *pelar el chancho* se anotó como dicho) y se unificaron 5 términos que estaban marcados «unificar». Es lo que leen `reglas_curado` y el LLM con diccionario. **Quién decidió cada fila** (columna `reviso`): el integrante 1, 633 filas (el libro 1 y otras); el integrante 2, 452; el integrante 3, 387; el integrante 4, 300; y 213 filas que nadie había revisado las propuso Claude y las validó el integrante 1.
 
@@ -122,21 +129,21 @@ Los revisores **no vieron los mismos términos ni con los mismos criterios**: el
 | **lote base** | `lote1.csv` | Primer conjunto del equipo. 96 términos. Versiones neutras de origen desconocido. No comparte ninguna oración con los otros. | 213 (213) | integrante 3 | no se sabe | 1 |
 | **lote primera fase noticias** | `lote_1_noticias.csv` | 100 palabras más frecuentes, 2 oraciones por palabra. Borrador de LLM revisado por el integrante 1. | 93 (72) | integrante 1 | noticias | 1 |
 | **lote primera fase tuits** | `lote_1_tuits.csv` | Igual que el anterior, con tuits. | 194 (165) | integrante 1 | tuits | 1 |
-| **palabras nuevas (lote 2)** | `lote_2_tuits.csv` y `lote_2_noticias.csv` | 150 pares de términos que no estaban en la primera fase, repartidos por frecuencia. | 145 + 5 (143 + 5) | integrante 1 | tuits y noticias | 2 |
-| **lote segunda fase noticias** | `lote_1_2_noticias.csv` | Primera fase noticias **más** los 5 pares de palabras nuevas. | 98 (77) | integrante 1 | noticias | 2 |
-| **lote segunda fase tuits** | `lote_1_2_tuits.csv` | Primera fase tuits **más** los 145 pares de palabras nuevas (243 términos). | 339 (308) | integrante 1 | tuits | 2 |
+| **palabras nuevas (lote 2)** | `lote_2_tuits.csv` y `lote_2_noticias.csv` | 150 pares de términos que no estaban en la primera fase, repartidos por frecuencia. | 145 + 5 (143 + 5) | integrante 1 | tuits y noticias | 3 |
+| **lote ampliado noticias** | `lote_1_2_noticias.csv` | Primera fase noticias **más** los 5 pares de palabras nuevas. | 98 (77) | integrante 1 | noticias | 3 |
+| **lote ampliado tuits** | `lote_1_2_tuits.csv` | Primera fase tuits **más** los 145 pares de palabras nuevas (243 términos). | 339 (308) | integrante 1 | tuits | 3 |
 
-Cómo se relacionan: el **lote base** es independiente de los demás (0 oraciones en común). Los lotes de **primera fase** están contenidos en los de **segunda fase** (segunda fase = primera fase + palabras nuevas). Por eso, en las tablas, las filas de primera y segunda fase se solapan y **no se suman**; las 594 oraciones únicas de la evaluación son el lote base (213) más los dos lotes de segunda fase (93 + 339 oraciones únicas, de las 98 + 339 filas). `lote1.csv` no se mezcla con los otros porque se desconoce quién escribió su versión neutra.
+«Primera fase» en el nombre del lote indica que se armó en la fase 1 del proyecto; «ampliado», que suma las palabras nuevas que se agregaron en la fase 3. Cómo se relacionan: el **lote base** es independiente de los demás (0 oraciones en común). Los lotes de **primera fase** están contenidos en los **ampliados** (ampliado = primera fase + palabras nuevas). Por eso, en las tablas, las filas de primera fase y ampliado se solapan y **no se suman**; las 594 oraciones únicas de la evaluación son el lote base (213) más los dos lotes ampliados (93 + 339 oraciones únicas, de las 98 + 339 filas). `lote1.csv` no se mezcla con los otros porque se desconoce quién escribió su versión neutra.
 
 **d) Datos de entrenamiento nuevos.** Con el diccionario unificado se buscaron oraciones para **1.695 términos** (hasta 6 por término, casi todas de tuits). `claude-sonnet-5-5` escribió la versión neutra de **9.028** de ellas, con el diccionario como contexto y 6 lotes de 10 oraciones en paralelo (`borrador.py --hilos 6`; unas 2 horas). Se sumaron a los 1.500 pares anteriores: `data/interim/borrador_entrenamiento.csv` queda con **10.521 filas** (la versión anterior se guarda como `borrador_entrenamiento_v1.csv`). Al entrenar se quitan los duplicados y las 594 oraciones de los conjuntos de prueba: quedan **10.490 pares, 9.966 para entrenar y 524 para validar**. Siguen siendo borradores sin revisión humana.
 
-### 2.3 Fase 3: validación
+### 2.4 Fase 4: validación
 
 **a) Pares para el estudio de acuerdo entre revisores.** De los pares que el integrante 1 ya revisó, se escogieron 237 al azar (180 de tuits y 57 de noticias) para que los vean otros cuatro integrantes, a ciegas. Detalles en `annotation/README.md`.
 
 **b) Borradores de otros LLM.** Tres modelos más tradujeron los 200 pares válidos de ese estudio, y el integrante 1 los revisó a ciegas y mezclados (24-nov-2026).
 
-**c) Glosario es→en.** La evaluación extrínseca necesita, para cada término ancla (el término por el que se eligió cada oración), las traducciones al inglés que se aceptan. Hay **330 términos ancla** en los 5 conjuntos. El integrante 5 dejó 93 revisados a mano (más glosas automáticas del Wikcionario para los demás, 59 con traducción y ninguna revisada). Para completarlo, 7 familias de modelos y diccionarios propusieron glosas, se aceptaron las que coinciden, y el integrante 1 revisó lo dudoso (3.3 y 4.3). Las respuestas crudas de cada modelo se guardan en `data/interim/respuestas_crudas/`.
+**c) Glosario es→en.** La evaluación extrínseca necesita, para cada término ancla (el término por el que se eligió cada oración), las traducciones al inglés que se aceptan. Hay **330 términos ancla** en los 5 conjuntos. El integrante 5 dejó 93 revisados a mano (más glosas automáticas del Wikcionario para los demás, 59 con traducción y ninguna revisada). Para completarlo, 7 familias de modelos y diccionarios propusieron glosas, se aceptaron las que coinciden, y el integrante 1 revisó lo dudoso (3.4 y 4.4). Las respuestas crudas de cada modelo se guardan en `data/interim/respuestas_crudas/`.
 
 ---
 
@@ -157,29 +164,37 @@ Cómo se relacionan: el **lote base** es independiente de los demás (0 oracione
 
 Como referencias también se miden `mt5_sin_ajustar` (el mismo modelo sin entrenar, para ver cuánto aporta el ajuste) y **dos traductores automáticos genéricos, gratuitos y abiertos**: `mt_ida_vuelta` (Opus-MT de Helsinki-NLP) y `nllb_ida_vuelta` (NLLB-200 de Meta). Un traductor no pasa «chileno» a «neutro» (el idioma de entrada y el de salida son el mismo), así que se usa el pivote por inglés: español → inglés → español, esperando que la jerga salga normalizada en la vuelta. Google Translate no se usó porque su versión gratuita bloquea las consultas automáticas y la API oficial exige facturación; Argos Translate se probó pero dio salidas rotas y se descartó.
 
+**Los 8 sistemas, uno por línea:**
+
+![Diagrama: los 8 sistemas del estudio previo, uno por línea, con su diccionario, los pares, quién traduce y su resultado (BLEU y chrF)](pipelines_1.png)
+
 **Qué se compara con qué:** **2 vs. 4** (y **3 vs. 5**): mismo código, mismo conjunto, solo cambia el diccionario (mide cuánto vale la revisión a mano). **6 vs. 7**: mismo LLM, solo cambia si recibe el diccionario. **4 vs. 7**: reglas contra LLM, con el mismo diccionario. **7 vs. 8**: LLM de uso general contra un modelo propio entrenado con pocos pares. **Con ambiguos vs. sin ambiguos:** mide si conviene sustituir palabras que también son estándar.
 
 El LLM no usó clave de API: corre con la sesión de Claude Code del integrante 1 (gasta el uso del plan, no se cobra por token). Se le pasan las oraciones en lotes de 10 y devuelve una lista en JSON. El texto de las oraciones se trata como datos, nunca como instrucciones (prompts completos en el Anexo A).
 
 **Métricas de la fase 1.** **BLEU** y **chrF** (`sacrebleu`), sobre todo el conjunto. En todos los sistemas se quitaron los `@usuario` y los emojis de las oraciones y de las referencias antes de medir (son ruido sin jerga y confundían al modelo propio); los resultados con el texto original están en `resultados/comparacion_baselines_texto_original.csv`. Como casi toda la oración no cambia, la identidad ya parte alta (84 a 94 de BLEU): importa la **diferencia con la identidad**, no el valor absoluto.
 
-### 3.2 Fase 2: pipeline final de 5 sistemas
+### 3.2 Fase 2: primera corrida del pipeline final (5 sistemas)
 
-**Sistemas.** `identidad`; `reglas_equipo` (diccionario automático); `reglas_curado` (diccionario unificado, 1.985 entradas, ambiguos sin sustituir; en el código `reglas_flo`); `mt5` y `mt5_moe`. Las reglas priorizan las locuciones más largas y antes quitan las menciones `@usuario` y los emojis. Los cinco se miden en los 5 conjuntos de 2.2.
+**Sistemas.** `identidad`; `reglas_equipo` (diccionario automático); `reglas_curado` (con el diccionario del libro 1, 443 entradas, ambiguos sin sustituir; en el código `reglas_flo`); `mt5` y `mt5_moe` (entrenados con los 1.500 pares). Las reglas priorizan las locuciones más largas y antes quitan las menciones `@usuario` y los emojis. Los cinco se miden en los tres conjuntos de la fase 1 (2.2).
 
 **mT5 denso (`models/mt5/mt5.ipynb`, integrante 5).** Notebook de Colab (GPU T4) que ajusta `google/mt5-small` con `data/interim/borrador_entrenamiento.csv`: 8 épocas, Adafactor, tasa de aprendizaje 5e-4, lote de 8, semilla 1 y **precisión fp32** (la T4 no tiene bf16). Guarda el mejor modelo según la pérdida de validación y escribe las predicciones sobre los conjuntos.
 
 **mT5 con mezcla de expertos (`models/mt5_moe/mt5_moe.ipynb`, integrante 5).** Convierte ese mismo mT5 en MoE por *upcycling*: una capa de cada dos (bloques 1, 3, 5 y 7) pasa a ser dispersa, con **4 expertos** que parten como copias de la red densa y un router que manda cada token a los **2 mejores**. El router trabaja en fp32 con un poco de ruido (0,01) y el entrenamiento suma una pérdida de balance de carga y una pérdida z (0,001 cada una). Verifica que, antes de entrenar, el MoE reproduce al denso. Se entrena con los mismos datos y parámetros que el denso, para que la comparación sea justa.
 
+**Métricas** (`src/chilenismos/metricas_normalizador.py`, integrante 5). Se alinea palabra por palabra la oración chilena con la referencia y con la salida del sistema, y se cuentan los aciertos (TP), las palabras con jerga que no se corrigen (FN) y las palabras sin jerga que se estropean (FP). **ERR** (tasa de reducción de errores; van der Goot 2019, MultiLexNorm) = (exactitud − LAI) / (1 − LAI), con LAI la proporción de palabras que no cambian en la referencia. **ERR 0 = no cambiar nada; negativo = el sistema daña más de lo que arregla.** También precisión, recall y F1 de los cambios, y BLEU y chrF.
+
+**Evaluación extrínseca** (`src/eval_extrinseca.py` y `eval_extrinseca_resumen.py`, integrante 5). ¿Normalizar ayuda a traducir? Se traduce al inglés la salida de cada sistema con **Opus-MT** y **NLLB**, y se mide la **Exact-Match Accuracy (EMA)**: acierto si la traducción contiene, como frase completa, alguna de las traducciones aceptadas del término ancla (glosario es→en; en los verbos también se acepta la forma sin «to»). Las oraciones cuyo término no tiene glosas quedan fuera. **Un error de este script se corrigió en la fase 4 (4.4).**
+
+### 3.3 Fase 3: ampliación y reentrenamiento (integrante 1)
+
+**Qué cambia respecto de la fase 2:** el diccionario de `reglas_curado` pasa de 443 a **1.985 entradas**; los conjuntos pasan de 3 a **5** (594 oraciones únicas); los mT5 se entrenan con **10.490 pares** en vez de 1.500; el código de las métricas y de la extrínseca es el mismo (con la corrección que se cuenta en 4.4). Las reglas se recalcularon con el diccionario unificado y los dos mT5 se reentrenaron.
+
 **Entrenamiento local (integrante 1).** Se reentrenaron los dos con los 10.490 pares, con los mismos notebooks y parámetros, pero con lote 4 en vez de 8, porque la RTX 3050 de 4 GB no aguanta lote 8 en fp32. `src/ejecutar_notebook_local.py` ejecuta las celdas de los notebooks de Colab sin cambiar el código (con una carpeta local en lugar de Google Drive) y `src/correr_pipeline_local.py` encadena los pasos. Una sola semilla.
 
-**Métricas de la fase 2** (`src/chilenismos/metricas_normalizador.py`, integrante 5). Se alinea palabra por palabra la oración chilena con la referencia y con la salida del sistema, y se cuentan los aciertos (TP), las palabras con jerga que no se corrigen (FN) y las palabras sin jerga que se estropean (FP). **ERR** (tasa de reducción de errores; van der Goot 2019, MultiLexNorm) = (exactitud − LAI) / (1 − LAI), con LAI la proporción de palabras que no cambian en la referencia. **ERR 0 = no cambiar nada; negativo = el sistema daña más de lo que arregla.** También precisión, recall y F1 de los cambios, y BLEU y chrF.
+### 3.4 Fase 4: validación
 
-**Evaluación extrínseca** (`src/eval_extrinseca.py` y `eval_extrinseca_resumen.py`, integrante 5). ¿Normalizar ayuda a traducir? Se traduce al inglés la salida de cada sistema con **Opus-MT** y **NLLB**, y se mide la **Exact-Match Accuracy (EMA)**: acierto si la traducción contiene, como frase completa, alguna de las traducciones aceptadas del término ancla (glosario es→en; en los verbos también se acepta la forma sin «to»). Las oraciones cuyo término no tiene glosas quedan fuera. **Un error de este script se corrigió en la fase 3 (4.3).**
-
-### 3.3 Fase 3: validación
-
-**Acuerdo entre revisores.** Los 237 pares de 2.3 los revisan cuatro integrantes **a ciegas** (sin ver la decisión del integrante 1): cada par lo ve el integrante 1 y 2 de los 4, en 6 parejas de unos 40 pares y unos 120 pares por persona. Cada revisor elige `ok`, `corregir` (con su versión) o `descartar`. Se mide con el **alfa de Krippendorff** (global; admite que cada par lo vean distintas personas), el **kappa de Cohen** de cada pareja con intervalo bootstrap, el % de acuerdo, la matriz de confusión y el acuerdo en los textos corregidos (igual exacto y chrF). El diseño tolera que un integrante no entregue.
+**Acuerdo entre revisores.** Los 237 pares de 2.4 los revisan cuatro integrantes **a ciegas** (sin ver la decisión del integrante 1): cada par lo ve el integrante 1 y 2 de los 4, en 6 parejas de unos 40 pares y unos 120 pares por persona. Cada revisor elige `ok`, `corregir` (con su versión) o `descartar`. Se mide con el **alfa de Krippendorff** (global; admite que cada par lo vean distintas personas), el **kappa de Cohen** de cada pareja con intervalo bootstrap, el % de acuerdo, la matriz de confusión y el acuerdo en los textos corregidos (igual exacto y chrF). El diseño tolera que un integrante no entregue.
 
 **Otros LLM como generadores de borradores.** Tres modelos tradujeron los 200 pares válidos con el mismo prompt, el mismo diccionario como contexto y temperatura 0; el integrante 1 revisó los borradores a ciegas y mezclados. Un borrador idéntico a la versión final ya aceptada cuenta como `ok`. Se compara la tasa de `ok` (IC 95 % de Wilson) y se usa McNemar entre pares de modelos.
 
@@ -207,7 +222,7 @@ El plan gratuito de Cloudflare da 10.000 neuronas por día y se agotó con Llama
 
 *La regla.* Una glosa se acepta si al menos *k* familias distintas proponen una glosa equivalente. Dos glosas son equivalentes si, ya normalizadas, son la misma frase (también sin espacios: «lightbulb» = «light bulb») o una está contenida en la otra como palabras completas. La normalización ignora mayúsculas, guiones («behind-scenes» = «behind scenes»), artículos, «to» y «someone», paréntesis y las terminaciones más simples (plural, -ing, -ed, «e» final); una sigla devuelta tal cual no cuenta. Las raíces son simples y a veces igualan palabras distintas, por eso la última palabra la tiene la revisión humana.
 
-*Cómo se eligió k.* Se calibró con los 93 términos revisados a mano (resultados en 4.3) y se fijó **k = 5 de 7 familias antes de ver qué términos quedaban a cada lado.**
+*Cómo se eligió k.* Se calibró con los 93 términos revisados a mano (resultados en 4.4) y se fijó **k = 5 de 7 familias antes de ver qué términos quedaban a cada lado.**
 
 *Revisión humana.* El integrante 1 revisó en un Excel (fuera del repo) **67 términos** (49 sin acuerdo suficiente y 18 aceptados por votos pero con definición propia, es decir, que no vienen del Wikcionario) y **dos muestras al azar de términos aceptados por votos** (20 con semilla 0 y 40 con semilla 1) para comprobar la regla. Los 93 términos ya revisados no se vuelven a revisar.
 
@@ -260,19 +275,71 @@ BLEU / chrF (`archivo/resultados/tabla_por_conjunto.md`):
 
 En la primera versión copiaba la oración casi sin cambios o, cuando intentaba cambiar algo, a veces rompía el texto. Con 1.416 pares de entrenamiento (borradores del LLM sin revisar) y un modelo chico no alcanza; se esperaba que ayudaran más pares y la variante con *Mixture of Experts* (fase 2).
 
-### 4.2 Fase 2: pipeline final
+### 4.2 Fase 2: primera corrida del pipeline final (integrante 5)
 
-**Lo que dejó la primera corrida del pipeline final (integrante 5; mT5 con 1.500 pares).** `reglas_curado` es el único sistema que mejora el español (ERR 29,0 en el lote base, 13,0 en noticias y 19,8 en tuits); `reglas_equipo` lo empeora (−7,6, −54,3 y −3,8); los dos mT5 no superan a la identidad, y el MoE queda por encima del denso (−16,2 contra −21,8 en el lote base). En la evaluación extrínseca, `reglas_curado` traduce bien cerca de 3 veces más chilenismos que sin normalizar (23,3 % contra 7,0 % con Opus-MT, 20,9 % contra 5,6 % con NLLB; 446 oraciones).
+Resultados de la corrida del integrante 5: diccionario del libro 1 (443 entradas), mT5 y MoE con 1.500 pares, tres conjuntos (`resultados/metricas_normalizador.md` y `eval_extrinseca.md` de esa fecha; hoy solo están en el historial de git, commits `0d7eb83` y `1aeef4a`). Métrica por palabra (0 a 100; ERR 0 = no cambiar nada):
+
+| Conjunto | Sistema | ERR | Precisión | Recall | F1 | BLEU | chrF |
+|---|---|---:|---:|---:|---:|---:|---:|
+| lote base (213) | identidad | 0,0 | – | 0,0 | – | 84,7 | 88,8 |
+| | reglas_equipo | −7,6 | 11,4 | 4,0 | 5,9 | 82,9 | 87,8 |
+| | **reglas_curado** | **23,4** | 58,7 | 24,4 | 34,5 | 88,8 | 91,9 |
+| | mT5 denso | −21,8 | 8,8 | 4,6 | 6,1 | 82,1 | 87,7 |
+| | mT5 con MoE | −16,2 | 11,6 | 5,6 | 7,6 | 82,7 | 87,7 |
+| primera fase noticias (72) | identidad | 0,0 | – | 0,0 | – | 93,5 | 95,1 |
+| | reglas_equipo | −54,3 | 5,6 | 4,3 | 4,9 | 90,6 | 93,7 |
+| | **reglas_curado** | **13,0** | 55,0 | 23,9 | 33,3 | 94,6 | 96,4 |
+| | mT5 denso | −106,5 | 0,0 | 0,0 | 0,0 | 88,2 | 92,2 |
+| | mT5 con MoE | −80,4 | 0,0 | 0,0 | 0,0 | 90,4 | 93,5 |
+| primera fase tuits (165) | identidad | 0,0 | – | 0,0 | – | 80,3 | 85,4 |
+| | reglas_equipo | −3,8 | 18,8 | 6,1 | 9,2 | 78,7 | 85,2 |
+| | **reglas_curado** | **21,0** | 62,9 | 23,3 | 34,0 | 84,4 | 89,4 |
+| | mT5 denso | −23,7 | 10,6 | 5,7 | 7,4 | 77,2 | 83,9 |
+| | mT5 con MoE | −11,8 | 20,0 | 9,9 | 13,3 | 79,4 | 85,1 |
+
+**Evaluación extrínseca** (Exact-Match Accuracy, %, 446 oraciones evaluables; glosario de 180 términos), Opus-MT / NLLB:
+
+| Sistema | Opus-MT | NLLB |
+|---|---:|---:|
+| identidad | 7,0 | 5,6 |
+| reglas_equipo | 11,0 | 10,1 |
+| **reglas_curado** | **21,1** | **18,8** |
+| mT5 denso | 9,4 | 9,4 |
+| mT5 con MoE | 10,3 | 10,5 |
+
+**Qué se concluye de la fase 2**
+
+1. **Con el diccionario del libro 1, `reglas_curado` ya es el único sistema con ERR positivo** en los tres conjuntos (13,0 a 23,4), con precisión de 55 a 63 % y recall de 23 a 24 %.
+2. **Con 1.500 pares, los mT5 no aprenden a normalizar:** ERR muy negativo (−11,8 a −106,5) y precisión baja (0 a 20 %). El MoE queda por encima del denso en los tres conjuntos (−16,2 contra −21,8, −80,4 contra −106,5 y −11,8 contra −23,7).
+3. **En noticias los mT5 no hacen ningún cambio correcto** (precisión y recall en 0): casi todo lo que cambian es una palabra que no debían.
+4. **Al traducir, normalizar con `reglas_curado` triplica los aciertos** (21,1 % contra 7,0 % con Opus-MT); los mT5 apenas pasan a la identidad (9,4 y 10,3 %).
+5. **Lo que quedó por probar**, y es la fase 3: si más pares de entrenamiento (7 veces más) acercan los mT5 a las reglas, y qué pasa con las reglas al ampliar el diccionario.
+
+### 4.3 Fase 3: ampliación y reentrenamiento (integrante 1)
+
+Las reglas se recalcularon con el diccionario unificado y los mT5 se reentrenaron con 10.490 pares, en los 5 conjuntos.
+
+**Efecto de ampliar el diccionario sobre `reglas_curado`** (ERR / precisión / recall, %), en los tres conjuntos de las dos fases:
+
+| Conjunto | Fase 2: libro 1 (443 entradas) | Fase 3: unificado (1.985 entradas) |
+|---|---|---|
+| lote base | 23,4 / 58,7 / 24,4 | **30,0** / 50,7 / **34,3** |
+| primera fase noticias | **13,0** / 55,0 / 23,9 | 10,9 / 45,8 / 23,9 |
+| primera fase tuits | **21,0** / 62,9 / 23,3 | 19,5 / 56,2 / 24,0 |
+
+**Ampliar el diccionario sube el recall pero baja la precisión.** En el lote base, que tiene términos que el libro 1 no cubría, el recall sube casi 10 puntos y el ERR mejora de 23,4 a 30,0. En noticias y tuits, que se armaron con las 100 palabras más frecuentes (ya cubiertas por el libro 1), el recall casi no cambia y la precisión baja de 7 a 9 puntos (las entradas nuevas agregan reemplazos que no coinciden con la referencia), así que el ERR empeora de 13,0 a 10,9 y de 21,0 a 19,5.
+
+![Evolución del ERR entre la fase 2 y la fase 3](figuras/fig12_evolucion_fases.png)
 
 **Reglas con el diccionario unificado, BLEU / chrF** en los cinco conjuntos (`data/processed/predicciones_lote*.csv`):
 
-| Sistema | lote base (213) | primera fase noticias (72) | primera fase tuits (165) | segunda fase noticias (77) | segunda fase tuits (308) |
+| Sistema | lote base (213) | primera fase noticias (72) | primera fase tuits (165) | lote ampliado noticias (77) | lote ampliado tuits (308) |
 |---|---|---|---|---|---|
 | identidad | 85,7 / 88,9 | 94,0 / 95,2 | 82,7 / 85,8 | 94,0 / 95,3 | 84,3 / 87,3 |
 | reglas_equipo | 84,1 / 87,9 | 91,2 / 93,7 | 81,3 / 85,6 | 91,3 / 93,9 | 82,4 / 86,6 |
 | **reglas_curado** | **90,6 / 93,2** | **94,6 / 96,3** | **85,7 / 89,0** | **94,2 / 96,1** | **86,9 / 90,1** |
 
-**Qué cambió el diccionario unificado.** En los tres conjuntos originales casi nada: `reglas_curado` pasó de 89,6 / 94,8 / 86,1 (BLEU, diccionario del libro 1) a 90,6 / 94,6 / 85,7. Es esperable, porque esos conjuntos se armaron con los 100 términos más frecuentes, que ya estaban en el libro 1. El aporte aparece en las palabras nuevas, o sea en el lote 2. Medido solo en `lote_2_tuits` (143 pares, BLEU): identidad **86,2**, reglas con el diccionario del libro 1 (443 entradas, 647 formas) **86,5** y reglas con el diccionario completo (1.985 entradas, 6.055 formas) **88,2**. Ampliar el diccionario sube 1,7 puntos de BLEU en términos que antes no existían, y el libro 1 solo apenas se separa de la identidad.
+**Qué aporta el diccionario unificado en BLEU y en las palabras nuevas.** En BLEU casi no cambia en los conjuntos originales: `reglas_curado` pasó de 89,6 / 94,8 / 86,1 (diccionario del libro 1, estudio previo) a 90,6 / 94,6 / 85,7. El aporte aparece en las palabras nuevas, o sea en el lote 2. Medido solo en `lote_2_tuits` (143 pares, BLEU): identidad **86,2**, reglas con el diccionario del libro 1 (443 entradas, 647 formas) **86,5** y reglas con el diccionario completo (1.985 entradas, 6.055 formas) **88,2**. Ampliar el diccionario sube 1,7 puntos de BLEU en términos que antes no existían, y el libro 1 solo apenas se separa de la identidad.
 
 **mT5 reentrenados con 10.490 pares (25-nov-2026).** El denso tardó 5 h 16 min y el MoE unas 15 h (con una suspensión del equipo de casi 4 h en medio, que no afectó el resultado).
 
@@ -287,8 +354,8 @@ En la primera versión copiaba la oración casi sin cambios o, cuando intentaba 
 | lote base (213) | −7,6 / 5,9 | **30,0 / 40,9** | −9,6 / 27,5 | −5,9 / 26,1 |
 | primera fase noticias (72) | −54,3 / 4,9 | **10,9 / 31,4** | −91,3 / 21,8 | −73,9 / 22,2 |
 | primera fase tuits (165) | −3,8 / 9,2 | **19,5 / 33,7** | −6,9 / 27,3 | −5,0 / 27,2 |
-| segunda fase noticias (77) | −56,0 / 4,5 | **2,0 / 28,2** | −100,0 / 21,1 | −86,0 / 21,1 |
-| segunda fase tuits (308) | −6,2 / 8,0 | **18,5 / 37,4** | −5,7 / 28,4 | −1,3 / 29,1 |
+| lote ampliado noticias (77) | −56,0 / 4,5 | **2,0 / 28,2** | −100,0 / 21,1 | −86,0 / 21,1 |
+| lote ampliado tuits (308) | −6,2 / 8,0 | **18,5 / 37,4** | −5,7 / 28,4 | −1,3 / 29,1 |
 
 ![ERR por sistema y conjunto](figuras/fig2_err.png)
 
@@ -296,7 +363,7 @@ En la primera versión copiaba la oración casi sin cambios o, cuando intentaba 
 
 **Contra la hipótesis** (formulada antes de correr: con 7 veces más pares, los dos mT5 quedan menos negativos, probablemente todavía bajo 0, y el MoE sobre el denso).
 
-(a) «Menos negativo»: **se cumple.** El ERR del denso con 1.500 pares era −21,8 / −106,5 / −23,7 en el lote base / noticias / tuits y ahora −9,6 / −91,3 / −6,9; el del MoE pasó de −16,2 / −80,4 / −11,8 a −5,9 / −73,9 / −5,0. (b) «Todavía bajo 0»: **se cumple** en los cinco conjuntos; el mejor caso es el MoE en segunda fase tuits (−1,3). (c) «El MoE sobre el denso»: **se cumple en ERR** en los cinco conjuntos, pero el F1 casi no se mueve (0 a 1 punto): con una semilla no se puede afirmar que el MoE sea mejor. (d) `reglas_curado` sigue siendo el único sistema con ERR positivo. Los mT5 siguen mal en noticias (cambian palabras que no debían: ERR de −74 a −100 con un recall parecido al de tuits).
+(a) «Menos negativo»: **se cumple.** El ERR del denso con 1.500 pares (fase 2) era −21,8 / −106,5 / −23,7 en el lote base / noticias / tuits y ahora −9,6 / −91,3 / −6,9; el del MoE pasó de −16,2 / −80,4 / −11,8 a −5,9 / −73,9 / −5,0. (b) «Todavía bajo 0»: **se cumple** en los cinco conjuntos; el mejor caso es el MoE en lote ampliado tuits (−1,3). (c) «El MoE sobre el denso»: **se cumple en ERR** en los cinco conjuntos, pero el F1 casi no se mueve (0 a 1 punto): con una semilla no se puede afirmar que el MoE sea mejor. (d) `reglas_curado` sigue siendo el único sistema con ERR positivo. Los mT5 siguen mal en noticias (cambian palabras que no debían: ERR de −74 a −100 con un recall parecido al de tuits).
 
 **Precisión / recall** (%, por palabra; `resultados/metricas_normalizador.md`, tabla completa con BLEU y chrF en el Anexo C):
 
@@ -305,8 +372,8 @@ En la primera versión copiaba la oración casi sin cambios o, cuando intentaba 
 | lote base (213) | 11,4 / 4,0 | 50,7 / 34,3 | 28,0 / 27,1 | 27,1 / 25,1 |
 | primera fase noticias (72) | 5,6 / 4,3 | 45,8 / 23,9 | 17,8 / 28,3 | 19,4 / 26,1 |
 | primera fase tuits (165) | 18,8 / 6,1 | 56,2 / 24,1 | 29,3 / 25,6 | 29,6 / 25,2 |
-| segunda fase noticias (77) | 5,1 / 4,0 | 39,3 / 22,0 | 16,9 / 28,0 | 17,8 / 26,0 |
-| segunda fase tuits (308) | 16,4 / 5,3 | 49,6 / 30,0 | 30,8 / 26,4 | 32,1 / 26,6 |
+| lote ampliado noticias (77) | 5,1 / 4,0 | 39,3 / 22,0 | 16,9 / 28,0 | 17,8 / 26,0 |
+| lote ampliado tuits (308) | 16,4 / 5,3 | 49,6 / 30,0 | 30,8 / 26,4 | 32,1 / 26,6 |
 
 ![Precisión y recall de cada sistema](figuras/fig4_precision_recall.png)
 
@@ -326,7 +393,7 @@ En la primera versión copiaba la oración casi sin cambios o, cuando intentaba 
 | | reglas_curado | 51 % | 22 % | 26 % |
 | | mT5 denso | 25 % | 10 % | 65 % |
 | | mT5 con MoE | 32 % | 12 % | 56 % |
-| segunda fase tuits (308) | reglas_equipo | 18 % | 47 % | 35 % |
+| lote ampliado tuits (308) | reglas_equipo | 18 % | 47 % | 35 % |
 | | reglas_curado | 35 % | 20 % | 45 % |
 | | mT5 denso | 28 % | 15 % | 56 % |
 | | mT5 con MoE | 29 % | 15 % | 56 % |
@@ -335,17 +402,17 @@ En lote base todas las oraciones tienen jerga; en tuits y noticias entre 22 % y 
 
 ![Qué hace cada sistema con cada oración: acierta, no cambia aunque debía, o cambia sin acertar](figuras/fig5_oraciones.png)
 
-**Qué se concluye de la fase 2**
+**Qué se concluye de la fase 3**
 
 1. **El diccionario revisado a mano es lo que más aporta.** `reglas_curado` es el único sistema con ERR positivo en los cinco conjuntos, con precisión de 46 a 56 % y recall de 22 a 34 %; con el diccionario automático el mismo programa daña más de lo que arregla (ERR de −4 a −56, precisión de 5 a 19 %).
 2. **El recall bajo de las reglas es estructural.** No conjugan, no cubren variantes de escritura y no distinguen el sentido; por eso aciertan la oración completa solo en 35 % de los casos, aun con el mejor diccionario.
-3. **Ampliar el diccionario ayuda justo donde se esperaba:** en las palabras nuevas (+1,7 puntos de BLEU en el lote 2), no en las 100 más frecuentes, que ya estaban en el libro 1.
+3. **Ampliar el diccionario sube el recall pero baja la precisión.** De 443 a 1.985 entradas, el recall sube en el lote base (24,4 a 34,3) y la precisión baja en los tres conjuntos originales (de 6,7 a 9,2 puntos): el ERR mejora en el lote base (23,4 a 30,0) y empeora en noticias (13,0 a 10,9) y tuits (21,0 a 19,5). Donde más ayuda es en las palabras nuevas (+1,7 de BLEU en el lote 2).
 4. **Los mT5 aprenden la tarea, pero cambian demasiado.** Con 10.490 pares mejoraron mucho (ERR del denso en el lote base de −21,8 a −9,6) y llegan a F1 de 26 a 29, pero en 56 a 65 % de las oraciones cambian algo sin acertar, y solo 20 a 29 % quedan iguales a la referencia, contra 34 a 36 % de `reglas_curado` (51 % en noticias). La pérdida de validación toca su mínimo en la época 6 y después sube: más épocas no ayudarían sin más datos.
 5. **Las noticias son el caso difícil para los mT5** (ERR de −74 a −100): casi no hay jerga, y el modelo cambia palabras que no debía. Los datos de entrenamiento son sobre todo de tuits.
 6. **El MoE es mejor o igual que el denso, pero por poco.** Mejora el ERR en los cinco conjuntos y el F1 en 0 a 1 punto: con una sola semilla no se puede afirmar que sea mejor.
-7. **La hipótesis se cumplió:** más pares dejan a los mT5 menos negativos, siguen bajo 0, y el MoE queda sobre el denso en ERR.
+7. **La hipótesis de la fase 2 se cumplió:** más pares dejan a los mT5 menos negativos, siguen bajo 0, y el MoE queda sobre el denso en ERR.
 
-### 4.3 Fase 3: validación
+### 4.4 Fase 4: validación
 
 **Acuerdo entre revisores (solo llegó el integrante 2).** El integrante 2 (120 pares) coincide poco con el integrante 1: **kappa de Cohen 0,04** (IC 95 % de −0,06 a 0,16), **alfa de Krippendorff 0,01** y **72 % de acuerdo**. El integrante 2 marcó `ok` en 111 de 120 pares y el integrante 1 en unos 90; el desacuerdo está sobre todo en `descartar`: de los 17 pares que el integrante 1 descartó, 15 los dejó `ok`, casi todos con la palabra en uso estándar (*feriado*, *ocupar*, *ubicar*, *faena*). Parece que el integrante 2 juzgó si el borrador estaba bien, y el integrante 1 juzgó si la oración usa un sentido chileno. **No llegarán los otros tres Excel**, así que el estudio queda con una sola pareja de revisores y el resultado es preliminar. Si se repite, hay que **dejar más clara en las instrucciones la regla del `descartar`**. El script es `concordancia.py` (fuera del repo, junto a los Excel) y los resultados quedan en `concordancia.csv`.
 
@@ -399,7 +466,7 @@ En general la definición cambia poco la glosa (92 a 97 % de coincidencia en los
 
 **Evaluación extrínseca final** (Exact-Match Accuracy, %, Opus-MT / NLLB; `resultados/eval_extrinseca.md`). Con el glosario final, que cubre los 330 términos y por lo tanto las 594 oraciones:
 
-| Sistema | todos (594) | lote base (213) | segunda fase tuits (308) | segunda fase noticias (73) |
+| Sistema | todos (594) | lote base (213) | lote ampliado tuits (308) | lote ampliado noticias (73) |
 |---|---|---|---|---|
 | identidad | 6,7 / 6,6 | 4,7 / 7,5 | 7,5 / 6,5 | 9,6 / 4,1 |
 | reglas_equipo | 12,0 / 10,4 | 4,7 / 8,0 | 14,6 / 11,7 | **21,9** / 12,3 |
@@ -423,7 +490,7 @@ Los dos mT5 mejoran mucho la traducción respecto de no normalizar (de 6,7 a 18 
 
 El orden (`reglas_curado` > mT5 y MoE > `reglas_equipo` > identidad) se mantiene con los tres glosarios, así que la conclusión no depende de que Sonnet haya votado en el glosario ni de las glosas de los LLM. Con el glosario de solo diccionarios la identidad sube a 12,2 %: las glosas del Wikcionario son más genéricas y aceptan más traducciones, y ahí denso y MoE quedan al revés (20,3 contra 19,9), otra señal de que esa diferencia no se puede afirmar.
 
-**Un error del script de la extrínseca, ya corregido.** Una oración puede estar en dos conjuntos (lote primera fase tuits dentro de lote segunda fase tuits) y el script dejaba una fila por oración y sistema con el conjunto del primer archivo donde aparecía. Así lote primera fase tuits y lote primera fase noticias mostraban solo a los mT5, y en lote segunda fase tuits el mT5 se medía sobre 143 oraciones mientras las reglas se medían sobre 308. La fila «todos» estaba bien. Ahora cada oración se evalúa en todos sus conjuntos y «todos» la cuenta una vez. Las tablas por conjunto de antes de este arreglo no valen.
+**Un error del script de la extrínseca, ya corregido.** Una oración puede estar en dos conjuntos (lote primera fase tuits dentro de lote ampliado tuits) y el script dejaba una fila por oración y sistema con el conjunto del primer archivo donde aparecía. Así lote primera fase tuits y lote primera fase noticias mostraban solo a los mT5, y en lote ampliado tuits el mT5 se medía sobre 143 oraciones mientras las reglas se medían sobre 308. La fila «todos» estaba bien. Ahora cada oración se evalúa en todos sus conjuntos y «todos» la cuenta una vez. Las tablas por conjunto de antes de este arreglo no valen.
 
 
 **Sesgos: ¿importa quién revisó el término?** Para ver si el resultado favorece a lo que revisó el integrante 1 (que además revisó las referencias de lote primera fase noticias, lote primera fase tuits y el lote 2), se agruparon las oraciones de la evaluación extrínseca según quién decidió el término ancla en el diccionario (Exact Match con Opus-MT / NLLB, glosario final):
@@ -439,7 +506,7 @@ El orden (`reglas_curado` > mT5 y MoE > `reglas_equipo` > identidad) se mantiene
 
 Cómo se lee: (1) `reglas_curado` rinde más en los términos que decidió el integrante 1 (26,3 contra 20,1), pero **también los mT5**, que no usan el diccionario al traducir, y más todavía (22,3 contra 9,7). Esa brecha no puede venir de la revisión del diccionario. Lo más probable (es una hipótesis, no se comprobó) es que se deba a que sus términos son los más frecuentes: más oraciones de entrenamiento y contextos más claros. (2) La **ventaja de las reglas sobre los mT5 es mayor en los términos de los otros revisores** (2,1 veces: 20,1 contra 9,7) que en los del integrante 1 (1,2 veces: 26,3 contra 22,3); si hubiera favoritismo hacia el diccionario del integrante 1, sería al revés. (3) Las dos cosas están mezcladas con la frecuencia del término, así que **no se puede separar el efecto del revisor del de la frecuencia**: no hay evidencia de favoritismo, pero tampoco se descarta, y el test limpio sigue siendo que otra persona revise esos pares. (4) Los grupos de Claude (12 oraciones) y de «sin dato» (22) son demasiado chicos para interpretarlos.
 
-**Qué se concluye de la fase 3**
+**Qué se concluye de la fase 4**
 
 1. **La regla de votos es una buena forma de completar el glosario, con límites.** 57 de 60 términos de las muestras (95 %) quedaron con glosas aceptadas válidas; 46 (77 %) no necesitaron ningún cambio y 11 estaban incompletas. Los 3 errores fueron de sentido o de forma, que es el riesgo conocido del voto: acuerdo no es lo mismo que sentido correcto.
 2. **La calidad del glosario no sube sumando familias, pero la estabilidad sí.** Con más de 3 familias la coincidencia con la referencia se estanca en 70 a 77 %; lo que cambia es cuánto depende el resultado de una familia en particular. Por eso la revisión humana no se reemplaza con más modelos.
@@ -454,13 +521,13 @@ Cómo se lee: (1) `reglas_curado` rinde más en los términos que decidió el in
 
 ## 5. Conclusiones generales
 
-**Qué funciona y cuánto.** Solo las **reglas con el diccionario revisado a mano** mejoran el español en la métrica intrínseca (ERR de 30,0, 10,9 y 19,5 en el lote base, noticias y tuits; 18,5 en los 308 tuits del segunda fase). En el estudio previo el mejor había sido el LLM con el diccionario (BLEU de 91,1 en el lote base contra 89,6 de las reglas), pero ese sistema quedó fuera del pipeline final.
+**Qué funciona y cuánto.** Solo las **reglas con el diccionario revisado a mano** mejoran el español en la métrica intrínseca (ERR de 30,0, 10,9 y 19,5 en el lote base, noticias y tuits; 18,5 en los 308 tuits del lote ampliado). En el estudio previo el mejor había sido el LLM con el diccionario (BLEU de 91,1 en el lote base contra 89,6 de las reglas), pero ese sistema quedó fuera del pipeline final.
 
-1. **La calidad del diccionario pesa más que la complejidad del modelo.** El mismo código de reglas pasa de empeorar el texto (diccionario automático: ERR de −4 a −56) a mejorarlo (diccionario revisado: ERR de 11 a 30), y ampliar el diccionario ayuda en las palabras nuevas (+1,7 de BLEU). Las reglas, en cambio, tienen un recall bajo (22 a 34 %) porque no entienden el contexto ni las variantes.
+1. **La calidad del diccionario pesa más que la complejidad del modelo.** El mismo código de reglas pasa de empeorar el texto (diccionario automático: ERR de −4 a −56) a mejorarlo (diccionario revisado: ERR de 11 a 30). Ampliar el diccionario de 443 a 1.985 entradas sube el recall pero baja la precisión: ayuda en las palabras nuevas (+1,7 de BLEU en el lote 2 y ERR de 23,4 a 30,0 en el lote base) y no en las 100 más frecuentes (ERR de 13,0 a 10,9 y de 21,0 a 19,5). Las reglas, en cambio, tienen un recall bajo (22 a 34 %) porque no entienden el contexto ni las variantes.
 2. **El modelo propio todavía no alcanza.** Los mT5 aprenden la tarea (F1 de 26 a 29, sin ajustar casi 0) y con 7 veces más pares el ERR mejoró mucho, pero sigue negativo en todos los conjuntos: cambian palabras que no debían, sobre todo en noticias. El MoE queda levemente sobre el denso, con una sola semilla.
 3. **Normalizar ayuda a traducir.** Con `reglas_curado` se traducen bien 23,9 % de los términos ancla, contra 6,7 % sin normalizar; los mT5 llegan a 18,5 y 19,5 %. El orden se mantiene con tres glosarios distintos, así que no depende de cómo se armó el glosario. Los traductores genéricos con pivote por inglés destruyen el texto (BLEU de 25 a 50 frente a 83 a 94 de la identidad).
 4. **El diccionario no se puede sustituir ciegamente:** los términos ambiguos (palabras estándar muy frecuentes) empeoran el resultado en los tres conjuntos de la fase 1 (por ejemplo, en noticias de 94,8 a 90,6 de BLEU).
-5. **La evaluación es solo tan confiable como sus referencias.** Un solo revisor revisó los pares (el acuerdo con el integrante 2 fue de kappa 0,04 por un criterio distinto del `descartar`), el diccionario lo revisaron cuatro personas con criterios distintos (4.3) y no se halló evidencia de favoritismo hacia lo que revisó el integrante 1, aunque tampoco se puede descartar y el glosario es→en de la extrínseca se completó en parte con votos de modelos (57 de 60 términos muestreados válidos). Los resultados son consistentes entre conjuntos, pero con muestras chicas las diferencias de un punto no son concluyentes.
+5. **La evaluación es solo tan confiable como sus referencias.** Un solo revisor revisó los pares (el acuerdo con el integrante 2 fue de kappa 0,04 por un criterio distinto del `descartar`), el diccionario lo revisaron cuatro personas con criterios distintos (4.4) y no se halló evidencia de favoritismo hacia lo que revisó el integrante 1, aunque tampoco se puede descartar y el glosario es→en de la extrínseca se completó en parte con votos de modelos (57 de 60 términos muestreados válidos). Los resultados son consistentes entre conjuntos, pero con muestras chicas las diferencias de un punto no son concluyentes.
 6. **Un LLM puede escribir los borradores,** pero no se debe evaluar con ellos solos: el borrador de Sonnet fue aceptado sin cambios en 80,8 % de los pares, y Haiku y Gemini rinden parecido. Los pares de entrenamiento de los mT5 son borradores sin revisión.
 
 **Qué haríamos distinto.** Aclarar la regla del `descartar` antes de pedir revisiones a otras personas; fijar desde el inicio el glosario es→en y las definiciones que ve el modelo; guardar las respuestas crudas de cada llamada a un modelo; y entrenar los mT5 con noticias y con más de una semilla.
@@ -471,11 +538,11 @@ Cómo se lee: (1) `reglas_curado` rinde más en los términos que decidió el in
 
 **Sobre los pares y los revisores**
 - **Un solo revisor.** Los pares los revisó una sola persona (integrante 1). El estudio de acuerdo quedó con una sola pareja (integrantes 1 y 2, kappa 0,04) porque no llegaron las demás revisiones.
-- **Posible favoritismo hacia las reglas con el diccionario revisado, el LLM con diccionario y los mT5.** El integrante 1 revisó las referencias de lote primera fase noticias, lote primera fase tuits y el lote 2 y, con ese mismo diccionario, validó los reemplazos; por eso `reglas_curado`, `llm_dicc_curado` y los mT5 (cuyos pares de entrenamiento se escribieron con ese diccionario) podrían salir algo favorecidos. Los números de 4.3 no muestran favoritismo (la ventaja de las reglas es mayor en los términos de otros revisores) pero no lo descartan, porque la frecuencia del término se mezcla con quién lo revisó. Se solucionaría con otro revisor que revise esos pares sin ver las decisiones del integrante 1. En lote base, que no lo escribió el integrante 1, `reglas_curado` también gana.
-- **El diccionario lo revisaron personas distintas, con criterios distintos y sobre términos distintos** (2.2): el 37 % de lo que dejó el integrante 1 es ambiguo contra 2 a 8 % en los demás, y el porcentaje de términos quitados va de 21 a 41 %. No hay doble revisión, así que ese desacuerdo no se midió. Las 213 filas que propuso Claude (casi todas de frecuencia baja) solo las validó el integrante 1.
+- **Posible favoritismo hacia las reglas con el diccionario revisado, el LLM con diccionario y los mT5.** El integrante 1 revisó las referencias de lote primera fase noticias, lote primera fase tuits y el lote 2 y, con ese mismo diccionario, validó los reemplazos; por eso `reglas_curado`, `llm_dicc_curado` y los mT5 (cuyos pares de entrenamiento se escribieron con ese diccionario) podrían salir algo favorecidos. Los números de 4.4 no muestran favoritismo (la ventaja de las reglas es mayor en los términos de otros revisores) pero no lo descartan, porque la frecuencia del término se mezcla con quién lo revisó. Se solucionaría con otro revisor que revise esos pares sin ver las decisiones del integrante 1. En lote base, que no lo escribió el integrante 1, `reglas_curado` también gana.
+- **El diccionario lo revisaron personas distintas, con criterios distintos y sobre términos distintos** (2.3): el 37 % de lo que dejó el integrante 1 es ambiguo contra 2 a 8 % en los demás, y el porcentaje de términos quitados va de 21 a 41 %. No hay doble revisión, así que ese desacuerdo no se midió. Las 213 filas que propuso Claude (casi todas de frecuencia baja) solo las validó el integrante 1.
 - **Las referencias del lote base podrían estar escritas por un LLM,** lo que favorecería a los sistemas con LLM. Hay que averiguar cómo se hicieron.
 - **Muestras chicas** (72 y 165 pares; 73 y 77 en noticias): diferencias de décimas no son concluyentes. **El lote 2 trae casi solo tuits** (145 de 150 pares): las noticias casi no tienen jerga.
-- **Los resultados de la fase 1** se midieron con el diccionario del libro 1 (443 filas). Las reglas se volvieron a correr con el diccionario unificado; los sistemas con LLM de la fase 1 no se repitieron.
+- **Los resultados de las fases 1 y 2** se midieron con el diccionario del libro 1 (443 filas). Las reglas se volvieron a correr con el diccionario unificado (fase 3); los sistemas con LLM de la fase 1 no se repitieron. Los CSV de la fase 2 se reemplazaron: sus cifras solo están en el historial de git.
 
 **Sobre los modelos**
 - **Una sola semilla** en los mT5 y lote 4 en vez de 8 (por la memoria de la GPU local): las diferencias entre denso y MoE de 1 punto no son concluyentes.
@@ -528,7 +595,11 @@ proyecto-nlp/
 └── docs/                 diagramas (pipelines.drawio y PNG) y este informe
 ```
 
-**Qué es de cada fase.** Fase 1: `archivo/` (baselines con LLM, `entrenar_mt5.py`, resultados). Fase 2: `src/` (incluida `src/pares/`), `models/` y `resultados/`. Fase 3: `src/glosario_*.py` y los glosarios de `data/diccionario/`.
+**Qué archivos entran y salen de cada paso** (estudio previo):
+
+![Diagrama: archivos que entran y salen de cada paso del estudio previo](pipelines_3.png)
+
+**Qué es de cada fase.** Fase 1: `archivo/` (baselines con LLM, `entrenar_mt5.py`, resultados). Fase 2: `models/` (notebooks de los mT5), `src/chilenismos/` (baselines y métricas) y `src/eval_extrinseca*.py`. Fase 3: `src/pares/`, `src/ejecutar_notebook_local.py`, `src/correr_pipeline_local.py` y `resultados/`. Fase 4: `src/glosario_*.py` y los glosarios de `data/diccionario/`.
 
 Los archivos con texto de tuits sin filtrar (Excel de revisión, libros del diccionario, respuestas de revisores) **no están en el repo**: los guarda el integrante 1 en `PLN/Proyecto/archivos_fuera_del_repo/`. Los pasos exactos para correr el pipeline están en el `README.md`.
 
@@ -540,8 +611,9 @@ Los archivos con texto de tuits sin filtrar (Excel de revisión, libros del dicc
 - **Par:** una oración con jerga chilena y su versión en español neutro.
 - **Referencia:** la versión neutra «correcta» (revisada por una persona) con la que se compara la salida de un sistema.
 - **Borrador:** la versión neutra que propone un LLM y que una persona revisa (`ok`, `corregir` o `descartar`).
+- **Fase:** cada etapa del proyecto: 1 estudio previo, 2 primera corrida del pipeline final, 3 ampliación y reentrenamiento, 4 validación (sección 1.2). No es lo mismo que «primera fase» en el nombre de los lotes, que indica que se armaron en la fase 1.
 - **Datos plata:** pares cuya versión neutra escribió un LLM sin revisión humana. Sirven para entrenar, no para evaluar.
-- **Lote:** un conjunto de pares. En este informe: *lote base* (`lote1.csv`, el primer conjunto del integrante 3), *lote primera fase* (noticias y tuits; las 100 palabras más frecuentes), *palabras nuevas* o *lote 2* (150 pares de términos que no estaban en la primera fase) y *lote segunda fase* (noticias y tuits: la primera fase más las palabras nuevas). Los nombres y archivos están en la tabla de 2.2c.
+- **Lote:** un conjunto de pares. En este informe: *lote base* (`lote1.csv`, el primer conjunto del integrante 3), *lote primera fase* (noticias y tuits; las 100 palabras más frecuentes), *palabras nuevas* o *lote 2* (150 pares de términos que no estaban en la primera fase) y *lote ampliado* (noticias y tuits: la primera fase más las palabras nuevas). Los nombres y archivos están en la tabla de 2.3c.
 - **Término ancla:** el término chileno por el que se escogió cada oración. La evaluación extrínseca mide si ese término se traduce bien.
 
 **Diccionario**
@@ -605,7 +677,7 @@ Las tres variantes con LLM del estudio previo (zero-shot, con diccionario autom�
 
 ### A.2 Glosas es → en de los términos ancla (glosario de la evaluación extrínseca)
 
-Código: `src/glosario_modelos.py`. Lo reciben, con el mismo texto, todos los modelos que escriben glosas: Claude Sonnet y Haiku, Gemini, Cohere, OpenRouter y los modelos de Cloudflare Workers AI. Los IDs exactos y los resultados están en la sección 3.6. Cada respuesta cruda se guarda en `data/interim/respuestas_crudas/`. Temperatura 0 donde la API lo permite; lotes de 8 términos.
+Código: `src/glosario_modelos.py`. Lo reciben, con el mismo texto, todos los modelos que escriben glosas: Claude Sonnet y Haiku, Gemini, Cohere, OpenRouter y los modelos de Cloudflare Workers AI. Los IDs exactos y los resultados están en la sección 3.4. Cada respuesta cruda se guarda en `data/interim/respuestas_crudas/`. Temperatura 0 donde la API lo permite; lotes de 8 términos.
 
 **Instrucción de sistema:**
 
@@ -725,19 +797,19 @@ Para que se vea qué hace cada sistema, estas son 9 oraciones (4 del lote base y
 
 **Ejemplo 6** (tuits)
 
-> **Original:** Les duró más el polvo que el whisky #JuegosDeSeducción Csm la serie buena x la chacha!!!!!
+> **Original:** Les duró más el polvo que el whisky \#JuegosDeSeducción Csm la serie buena x la chacha!!!!!
 
 | Sistema | Salida |
 |---|---|
-| `referencia` | Les duró más el sexo que el whisky #JuegosDeSeducción Vaya la serie buena x el amor de Dios!!!!! |
-| `identidad` | Les duró más el polvo que el whisky #JuegosDeSeducción Csm la serie buena x la chacha!!!!! |
-| `reglas_equipo` | Les duró más el polvo que el whisky #JuegosDeSeducción Csm la serie expresión de saludo x la chacha!!!!! |
-| `reglas_curado` | Les duró más el polvo que el whisky #JuegosDeSeducción Csm la serie buena x la chacha!!!!! |
-| `llm_zero_shot` | Les duró más el polvo que el whisky #JuegosDeSeducción Csm la serie buena por la empleada doméstica!!!!! |
-| `llm_dicc_curado` | Les duró más el sexo que el whisky #JuegosDeSeducción Carajo la serie buenísima!!!!! |
-| `mt5_curado` | Les duró más el polvo que el whisky #JuegosDeSeducción Csm la serie buena x la chacha!!!!! |
-| `mt_ida_vuelta` | Duraron más tiempo el polvo que el whisky #GamesFromSeduction Csm la serie buena x la chacha!!!!! |
-| `nllb_ida_vuelta` | El polvo duró más que el whisky #GamesDeSeducción Csm la buena serie x la chacha!!!!! |
+| `referencia` | Les duró más el sexo que el whisky \#JuegosDeSeducción Vaya la serie buena x el amor de Dios!!!!! |
+| `identidad` | Les duró más el polvo que el whisky \#JuegosDeSeducción Csm la serie buena x la chacha!!!!! |
+| `reglas_equipo` | Les duró más el polvo que el whisky \#JuegosDeSeducción Csm la serie expresión de saludo x la chacha!!!!! |
+| `reglas_curado` | Les duró más el polvo que el whisky \#JuegosDeSeducción Csm la serie buena x la chacha!!!!! |
+| `llm_zero_shot` | Les duró más el polvo que el whisky \#JuegosDeSeducción Csm la serie buena por la empleada doméstica!!!!! |
+| `llm_dicc_curado` | Les duró más el sexo que el whisky \#JuegosDeSeducción Carajo la serie buenísima!!!!! |
+| `mt5_curado` | Les duró más el polvo que el whisky \#JuegosDeSeducción Csm la serie buena x la chacha!!!!! |
+| `mt_ida_vuelta` | Duraron más tiempo el polvo que el whisky \#GamesFromSeduction Csm la serie buena x la chacha!!!!! |
+| `nllb_ida_vuelta` | El polvo duró más que el whisky \#GamesDeSeducción Csm la buena serie x la chacha!!!!! |
 
 **Ejemplo 7** (tuits)
 
@@ -796,9 +868,9 @@ Para que se vea qué hace cada sistema, estas son 9 oraciones (4 del lote base y
 
 ---
 
-## Anexo C. Métricas intrínsecas completas (fase 2)
+## Anexo C. Métricas intrínsecas completas (fase 3)
 
-Copia de `resultados/metricas_normalizador.md` Nombres de los conjuntos en estas tablas: *lote base* = `lote1`; *primera fase noticias/tuits* = `lote_1_noticias`, `lote_1_tuits`; *segunda fase noticias/tuits* = `lote_1_2_noticias`, `lote_1_2_tuits` (tabla de nombres en 2.2c).
+Copia de `resultados/metricas_normalizador.md` Nombres de los conjuntos en estas tablas: *lote base* = `lote1`; *primera fase noticias/tuits* = `lote_1_noticias`, `lote_1_tuits`; *lote ampliado noticias/tuits* = `lote_1_2_noticias`, `lote_1_2_tuits` (tabla de nombres en 2.3c).
 
  (en el código y el CSV, `reglas_curado` se llama `reglas_flo`, `mt5` es `mt5_flo_fp32` y `mt5_moe` es `mt5_moe_fp32`). ERR, precisión, recall, F1, BLEU y chrF por palabra, de 0 a 100, en cada uno de los cinco conjuntos.
 
@@ -856,9 +928,9 @@ Métricas por palabra sobre texto normalizado (NFKC, minúsculas, sin puntuació
 
 ---
 
-## Anexo D. Evaluación extrínseca completa (fase 3)
+## Anexo D. Evaluación extrínseca completa (fase 4)
 
-Copia de `resultados/eval_extrinseca.md` Nombres de los conjuntos en estas tablas: *lote base* = `lote1`; *primera fase noticias/tuits* = `lote_1_noticias`, `lote_1_tuits`; *segunda fase noticias/tuits* = `lote_1_2_noticias`, `lote_1_2_tuits` (tabla de nombres en 2.2c).
+Copia de `resultados/eval_extrinseca.md` Nombres de los conjuntos en estas tablas: *lote base* = `lote1`; *primera fase noticias/tuits* = `lote_1_noticias`, `lote_1_tuits`; *lote ampliado noticias/tuits* = `lote_1_2_noticias`, `lote_1_2_tuits` (tabla de nombres en 2.3c).
 
 , con el glosario final (`data/diccionario/glosario_es_en_final.csv`). Exact-Match Accuracy (%) con Opus-MT y NLLB, por conjunto. Los controles están en `resultados/eval_extrinseca_sin_claude.md` y `resultados/eval_extrinseca_solo_diccionarios.md`.
 
