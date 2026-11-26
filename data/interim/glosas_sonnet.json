@@ -1,0 +1,1913 @@
+{
+ "CSM": [
+  "damn it",
+  "son of a bitch",
+  "fuck"
+ ],
+ "EMOL": [
+  "El Mercurio Online",
+  "EMOL"
+ ],
+ "afuerino": [
+  "outsider",
+  "stranger",
+  "non-local",
+  "newcomer"
+ ],
+ "al tiro": [
+  "right away",
+  "immediately",
+  "straight away",
+  "right now"
+ ],
+ "ampolleta": [
+  "light bulb",
+  "bulb",
+  "incandescent bulb"
+ ],
+ "bacán": [
+  "awesome",
+  "cool",
+  "great",
+  "excellent"
+ ],
+ "bajón": [
+  "downer",
+  "letdown",
+  "bummer",
+  "the munchies"
+ ],
+ "bencina": [
+  "gasoline",
+  "gas",
+  "petrol"
+ ],
+ "bencinera": [
+  "gas station",
+  "petrol station",
+  "filling station",
+  "fuel station"
+ ],
+ "brígido": [
+  "intense",
+  "heavy",
+  "dangerous",
+  "sketchy",
+  "badass"
+ ],
+ "buzo": [
+  "tracksuit",
+  "sweatsuit",
+  "sweatpants",
+  "jogging suit"
+ ],
+ "cabro": [
+  "kid",
+  "young guy",
+  "lad",
+  "boy"
+ ],
+ "cachar": [
+  "to catch (someone) red-handed",
+  "to get",
+  "to notice",
+  "to understand",
+  "to have sex with"
+ ],
+ "cachureo": [
+  "old junk",
+  "knickknack",
+  "keepsake clutter",
+  "bric-a-brac"
+ ],
+ "cafiche": [
+  "pimp",
+  "freeloader",
+  "sponger",
+  "gigolo"
+ ],
+ "cagado": [
+  "stingy",
+  "tightfisted",
+  "screwed",
+  "in a bad way"
+ ],
+ "cagar": [
+  "to screw up",
+  "to mess up",
+  "to defecate",
+  "to ruin"
+ ],
+ "cahuín": [
+  "mess",
+  "muddle",
+  "gossip",
+  "malicious rumor"
+ ],
+ "cancelar": [
+  "to pay",
+  "to settle",
+  "to cancel",
+  "to pay off"
+ ],
+ "carrete": [
+  "party",
+  "bash",
+  "partying",
+  "night out"
+ ],
+ "carretear": [
+  "to party",
+  "to go out partying",
+  "to have a night out",
+  "to crawl along"
+ ],
+ "chamullo": [
+  "fib",
+  "bluff",
+  "con",
+  "tall tale",
+  "deceit"
+ ],
+ "chanta": [
+  "unreliable person",
+  "flake",
+  "slacker",
+  "shoddy",
+  "phony"
+ ],
+ "chela": [
+  "beer",
+  "brew",
+  "cold one"
+ ],
+ "chorear": [
+  "to annoy",
+  "to irritate",
+  "to piss off",
+  "to get on someone's nerves"
+ ],
+ "choro": [
+  "thief",
+  "mussel",
+  "cool",
+  "awesome"
+ ],
+ "chupar": [
+  "to drink alcohol",
+  "to booze",
+  "to steal",
+  "to swipe"
+ ],
+ "copete": [
+  "alcoholic drink",
+  "booze",
+  "drink"
+ ],
+ "copucha": [
+  "lie",
+  "gossip",
+  "rumor",
+  "bladder"
+ ],
+ "correr": [
+  "to dodge",
+  "to evade",
+  "to shirk",
+  "to avoid responsibility"
+ ],
+ "cortar": [
+  "to break up",
+  "to split up",
+  "to end a relationship"
+ ],
+ "culiao": [
+  "despicable",
+  "damn",
+  "jerk",
+  "guy"
+ ],
+ "culiar": [
+  "to fuck",
+  "to screw",
+  "to have sex with",
+  "to shag"
+ ],
+ "cuático": [
+  "over the top",
+  "eccentric",
+  "quirky",
+  "snobbish",
+  "pretentious"
+ ],
+ "enterrar": [
+  "to bury",
+  "to inter",
+  "to entomb"
+ ],
+ "entrete": [
+  "entertaining",
+  "fun",
+  "amusing"
+ ],
+ "erís": [
+  "you are",
+  "you're"
+ ],
+ "feriado": [
+  "public holiday",
+  "holiday",
+  "bank holiday"
+ ],
+ "flaite": [
+  "lowlife",
+  "ghetto",
+  "chav",
+  "trashy",
+  "thuggish"
+ ],
+ "fome": [
+  "boring",
+  "dull",
+  "lame",
+  "unfunny",
+  "easy"
+ ],
+ "fono": [
+  "phone",
+  "telephone"
+ ],
+ "ganar": [
+  "to position oneself",
+  "to get to a place",
+  "to take a place"
+ ],
+ "guachaca": [
+  "tacky",
+  "vulgar",
+  "tasteless",
+  "uncouth",
+  "heavy drinker"
+ ],
+ "guagua": [
+  "baby",
+  "infant"
+ ],
+ "guata": [
+  "belly",
+  "tummy",
+  "paunch",
+  "bulge",
+  "stomach"
+ ],
+ "guatón": [
+  "potbellied",
+  "paunchy",
+  "pot-bellied",
+  "one million pesos",
+  "million pesos"
+ ],
+ "hallulla": [
+  "flat round bread",
+  "Chilean flat bread",
+  "round flatbread"
+ ],
+ "huear": [
+  "to mess around",
+  "to goof around",
+  "to fool around",
+  "to joke around"
+ ],
+ "huevada": [
+  "nonsense",
+  "stupid thing",
+  "stuff",
+  "trifle",
+  "bullshit"
+ ],
+ "huevado": [
+  "dumb",
+  "stupid",
+  "idiotic"
+ ],
+ "huevear": [
+  "to bother",
+  "to mess around",
+  "to goof off",
+  "to slack off",
+  "to annoy"
+ ],
+ "lesear": [
+  "to waste time",
+  "to mess around",
+  "to tease",
+  "to pull someone's leg",
+  "to fool around"
+ ],
+ "lesera": [
+  "silly thing",
+  "trifle",
+  "nonsense",
+  "triviality",
+  "foolishness"
+ ],
+ "leso": [
+  "dim-witted",
+  "naive",
+  "silly",
+  "foolish",
+  "reckless"
+ ],
+ "micro": [
+  "bus",
+  "city bus",
+  "urban bus"
+ ],
+ "noviar": [
+  "to date",
+  "to go steady",
+  "to be in a relationship",
+  "to court"
+ ],
+ "pajarón": [
+  "absent-minded",
+  "scatterbrained",
+  "spacey",
+  "daydreamer"
+ ],
+ "palta": [
+  "avocado"
+ ],
+ "pana": [
+  "breakdown",
+  "vehicle breakdown",
+  "car trouble",
+  "liver meat"
+ ],
+ "parar": [
+  "to stop",
+  "to halt",
+  "to stand up",
+  "to put upright"
+ ],
+ "patear": [
+  "to dump",
+  "to break up with",
+  "to ditch",
+  "to kick"
+ ],
+ "patiperro": [
+  "wanderer",
+  "globetrotter",
+  "travel lover",
+  "person with wanderlust"
+ ],
+ "pega": [
+  "job",
+  "work",
+  "employment",
+  "paid work"
+ ],
+ "pichanga": [
+  "pickup soccer game",
+  "informal soccer match",
+  "casual football game",
+  "kickabout"
+ ],
+ "pifiar": [
+  "to boo",
+  "to jeer",
+  "to heckle"
+ ],
+ "pilsen": [
+  "beer",
+  "pilsner",
+  "lager"
+ ],
+ "piscola": [
+  "pisco and Coke",
+  "pisco cola cocktail",
+  "pisco with cola"
+ ],
+ "pituco": [
+  "snobbish",
+  "posh",
+  "snooty",
+  "stuck-up"
+ ],
+ "pituto": [
+  "spout",
+  "connection",
+  "odd job",
+  "string-pulling"
+ ],
+ "polera": [
+  "T-shirt",
+  "tee",
+  "short-sleeved shirt"
+ ],
+ "polerón": [
+  "hoodie",
+  "sweatshirt",
+  "pullover"
+ ],
+ "polola": [
+  "girlfriend",
+  "female partner",
+  "sweetheart"
+ ],
+ "pololear": [
+  "to date",
+  "to go steady",
+  "to be in a relationship with",
+  "to butter up",
+  "to suck up to"
+ ],
+ "pololo": [
+  "boyfriend",
+  "girlfriend",
+  "partner",
+  "Chilean pololo beetle",
+  "Chilean hairy flower beetle"
+ ],
+ "pucha": [
+  "darn",
+  "gosh",
+  "shoot",
+  "dang",
+  "oh man"
+ ],
+ "pucho": [
+  "cigarette butt",
+  "cigarette",
+  "small leftover amount",
+  "youngest child",
+  "late-born child"
+ ],
+ "pulento": [
+  "awesome",
+  "excellent",
+  "great",
+  "top-quality",
+  "low-quality"
+ ],
+ "quiltro": [
+  "mutt",
+  "mongrel",
+  "stray dog",
+  "mixed-breed dog"
+ ],
+ "rasca": [
+  "tacky",
+  "low-quality",
+  "cheap",
+  "trashy",
+  "chavvy"
+ ],
+ "regalonear": [
+  "to pamper",
+  "to cuddle",
+  "to spoil",
+  "to coddle",
+  "to indulge"
+ ],
+ "sapear": [
+  "to snitch",
+  "to rat out",
+  "to spy on",
+  "to peek"
+ ],
+ "sapo": [
+  "snitch",
+  "informer",
+  "toad",
+  "coin purse"
+ ],
+ "siútico": [
+  "pretentious",
+  "social climber",
+  "wannabe posh",
+  "snobbish"
+ ],
+ "tarro": [
+  "can",
+  "tin",
+  "drum",
+  "computer hardware"
+ ],
+ "tenida": [
+  "outfit",
+  "attire",
+  "clothes",
+  "suit"
+ ],
+ "tinca": [
+  "hunch",
+  "feeling",
+  "inkling",
+  "drive"
+ ],
+ "tincar": [
+  "to flick a marble",
+  "to have a hunch",
+  "to feel like",
+  "to suggest"
+ ],
+ "toma": [
+  "squatter settlement",
+  "land occupation",
+  "land seizure",
+  "shantytown"
+ ],
+ "trutro": [
+  "chicken drumstick",
+  "chicken leg",
+  "thigh",
+  "drumstick"
+ ],
+ "tuto": [
+  "chicken leg",
+  "drumstick",
+  "woman's legs",
+  "drowsiness",
+  "security blanket"
+ ],
+ "webear": [
+  "to goof around",
+  "to mess around",
+  "to fool around",
+  "to bug"
+ ],
+ "weón": [
+  "dude",
+  "asshole",
+  "idiot",
+  "fool",
+  "buddy"
+ ],
+ "wn": [
+  "dude",
+  "asshole",
+  "idiot",
+  "buddy"
+ ],
+ "abrir el tarro": [
+  "to spill the beans",
+  "to let the cat out of the bag",
+  "to blab",
+  "to reveal a secret"
+ ],
+ "achuntar": [
+  "to hit the mark",
+  "to hit the target",
+  "to get it right",
+  "to guess right"
+ ],
+ "acogotar": [
+  "to throttle",
+  "to strangle",
+  "to choke",
+  "to grab by the neck"
+ ],
+ "afilador": [
+  "pencil sharpener",
+  "sharpener"
+ ],
+ "agarrar": [
+  "to fight",
+  "to brawl",
+  "to make out",
+  "to kiss",
+  "to snog"
+ ],
+ "agripado": [
+  "with the flu",
+  "sick with a cold",
+  "down with the flu",
+  "under the weather"
+ ],
+ "aguaite": [
+  "peek",
+  "look",
+  "glance",
+  "lookout"
+ ],
+ "agüita": [
+  "herbal tea",
+  "herbal infusion",
+  "tisane"
+ ],
+ "al seco": [
+  "bottoms up",
+  "in one gulp",
+  "downing in one go",
+  "in a single swig"
+ ],
+ "al toque": [
+  "right away",
+  "immediately",
+  "at once",
+  "straight away"
+ ],
+ "alegar": [
+  "to complain",
+  "to grumble",
+  "to gripe",
+  "to moan"
+ ],
+ "alfajor": [
+  "alfajor",
+  "sandwich cookie with dulce de leche",
+  "filled cookie sandwich"
+ ],
+ "amarillo": [
+  "yellow",
+  "centrist",
+  "moderate"
+ ],
+ "amarrar": [
+  "to tie",
+  "to bind",
+  "to commit",
+  "to seal (a deal)",
+  "to cast a love spell on"
+ ],
+ "amurrarse": [
+  "to sulk",
+  "to clam up",
+  "to pout",
+  "to go silent in a huff"
+ ],
+ "andante": [
+  "fling",
+  "casual partner",
+  "casual lover"
+ ],
+ "andar": [
+  "to date casually",
+  "to be seeing someone",
+  "to go out (with someone)",
+  "to have a fling"
+ ],
+ "apañar": [
+  "to accompany",
+  "to support",
+  "to back up",
+  "to help out"
+ ],
+ "apellinado": [
+  "sturdy as an oak",
+  "oak-like",
+  "robust as a pellín"
+ ],
+ "arrugar": [
+  "to chicken out",
+  "to cower",
+  "to back down",
+  "to get cold feet"
+ ],
+ "asado": [
+  "barbecue",
+  "barbecued meat",
+  "grilled meat",
+  "cookout"
+ ],
+ "aseador": [
+  "cleaner",
+  "janitor",
+  "custodian"
+ ],
+ "atajar": [
+  "to save",
+  "to stop",
+  "to block"
+ ],
+ "atochamiento": [
+  "traffic jam",
+  "congestion",
+  "gridlock"
+ ],
+ "banderillero": [
+  "flagger",
+  "flagman",
+  "traffic marshal"
+ ],
+ "berlín": [
+  "filled doughnut",
+  "Berliner",
+  "cream-filled doughnut",
+  "jelly doughnut"
+ ],
+ "betún": [
+  "icing",
+  "frosting",
+  "meringue glaze",
+  "sugar glaze"
+ ],
+ "blufear": [
+  "to bluff",
+  "to deceive",
+  "to fool"
+ ],
+ "buena onda": [
+  "nice",
+  "friendly",
+  "easygoing",
+  "likable"
+ ],
+ "cabro chico": [
+  "kid",
+  "child",
+  "little kid"
+ ],
+ "cacha": [
+  "to the brim",
+  "handle",
+  "grip",
+  "screw"
+ ],
+ "cachada": [
+  "understanding",
+  "hit with a horn",
+  "portion",
+  "gore"
+ ],
+ "cacharse": [
+  "to catch",
+  "to realize",
+  "to understand",
+  "to have sex",
+  "to imagine"
+ ],
+ "cachaña": [
+  "dribbling skill",
+  "dodge",
+  "feint",
+  "austral parakeet"
+ ],
+ "cachiporra": [
+  "conceited",
+  "vain",
+  "full of oneself",
+  "self-admiring"
+ ],
+ "cachiporrearse": [
+  "to show off",
+  "to brag",
+  "to boast",
+  "to swagger"
+ ],
+ "cachurear": [
+  "to scavenge junk",
+  "to rummage for junk",
+  "to hunt for secondhand goods",
+  "to trade in junk"
+ ],
+ "cachurero": [
+  "hoarder",
+  "packrat",
+  "junk collector",
+  "pack rat"
+ ],
+ "cafichear": [
+  "to pimp",
+  "to pimp out women",
+  "to exploit women sexually",
+  "to live off women's earnings"
+ ],
+ "calendarizar": [
+  "to schedule",
+  "to set a timetable for",
+  "to draw up a calendar for",
+  "to set dates for"
+ ],
+ "caleta": [
+  "a lot",
+  "tons",
+  "cove",
+  "small fishing cove",
+  "hideout",
+  "stash place"
+ ],
+ "calzonudo": [
+  "spineless",
+  "timid",
+  "pusillanimous",
+  "henpecked"
+ ],
+ "canuto": [
+  "gun",
+  "pistol",
+  "evangelical",
+  "Protestant churchgoer"
+ ],
+ "caramayola": [
+  "canteen",
+  "water bottle",
+  "flask"
+ ],
+ "carne de perro": [
+  "tough",
+  "very durable",
+  "hardy",
+  "sturdy"
+ ],
+ "cascar": [
+  "to leave quickly",
+  "to take off",
+  "to dash off",
+  "to scram"
+ ],
+ "cazuela": [
+  "Chilean stew",
+  "meat and vegetable soup",
+  "casserole soup",
+  "hearty soup"
+ ],
+ "cerrear": [
+  "to go hill walking",
+  "to hike in the hills",
+  "to wander the hills",
+  "to climb hills"
+ ],
+ "cesante": [
+  "unemployed",
+  "jobless",
+  "out of work",
+  "laid-off"
+ ],
+ "chamuyo": [
+  "smooth talk",
+  "sweet talk",
+  "bluster",
+  "BS"
+ ],
+ "chana": [
+  "lower-class woman unsuitable for a serious relationship",
+  "fling",
+  "low-class girl for casual flings"
+ ],
+ "chascón": [
+  "shaggy-haired",
+  "disheveled",
+  "unkempt",
+  "Christian Democrat faction member",
+  "metalhead (Chilean subculture)"
+ ],
+ "chata": [
+  "fed up",
+  "bored",
+  "sick and tired",
+  "flat-nosed",
+  "flat"
+ ],
+ "chau": [
+  "bye",
+  "see you",
+  "ciao",
+  "later"
+ ],
+ "chichero": [
+  "heavy drinker",
+  "boozer",
+  "drunkard",
+  "indiscriminate drinker"
+ ],
+ "chicotear los caracoles": [
+  "to hurry up",
+  "to get a move on",
+  "to speed things up",
+  "to step on it"
+ ],
+ "chipear": [
+  "to ship (two people)",
+  "to play matchmaker",
+  "to hint two people should be a couple"
+ ],
+ "chiripiorca": [
+  "fit of rage",
+  "sudden fit",
+  "fainting spell",
+  "tantrum"
+ ],
+ "chora": [
+  "awesome woman",
+  "cool",
+  "daring woman",
+  "brazen woman",
+  "mussel"
+ ],
+ "choreo": [
+  "theft",
+  "stealing",
+  "robbery",
+  "swiping"
+ ],
+ "chuchoca": [
+  "mess",
+  "commotion",
+  "chaos",
+  "uproar"
+ ],
+ "cobrar": [
+  "to demand payment",
+  "to collect",
+  "to charge",
+  "to call (a foul)",
+  "to dun"
+ ],
+ "coche": [
+  "baby stroller",
+  "stroller",
+  "pram",
+  "baby carriage"
+ ],
+ "cojones": [
+  "balls",
+  "testicles",
+  "guts",
+  "damn it",
+  "bloody hell"
+ ],
+ "coleado": [
+  "student who failed",
+  "held back student",
+  "failed student"
+ ],
+ "colgarse": [
+  "to leap (for a ball)",
+  "to jump up",
+  "to take advantage of someone",
+  "to sponge off someone",
+  "to freeload"
+ ],
+ "copuchar": [
+  "to gossip",
+  "to spread rumors",
+  "to dish the dirt",
+  "to chatter"
+ ],
+ "copuchear": [
+  "to gossip",
+  "to dish the dirt",
+  "to tittle-tattle"
+ ],
+ "corchete": [
+  "bracket",
+  "square bracket",
+  "staple"
+ ],
+ "correrse": [
+  "to dodge",
+  "to evade",
+  "to shirk",
+  "to wriggle out"
+ ],
+ "cortachurro": [
+  "churro cutter",
+  "churro maker"
+ ],
+ "cortadora de pasto": [
+  "lawn mower",
+  "lawnmower",
+  "mower"
+ ],
+ "corto": [
+  "shot",
+  "short drink",
+  "short"
+ ],
+ "cranear": [
+  "to figure out",
+  "to think through",
+  "to work out",
+  "to mull over"
+ ],
+ "creerse el cuento": [
+  "to get a big head",
+  "to get full of oneself",
+  "to believe one's own hype",
+  "to get above oneself"
+ ],
+ "cruzado": [
+  "Universidad Católica fan",
+  "angry",
+  "grumpy",
+  "crossed"
+ ],
+ "cuete": [
+  "joint",
+  "fart"
+ ],
+ "curado": [
+  "drunk",
+  "plastered",
+  "wasted",
+  "cured"
+ ],
+ "curar": [
+  "to get drunk",
+  "to intoxicate",
+  "to cure",
+  "to heal"
+ ],
+ "curarse": [
+  "to get drunk",
+  "to get plastered",
+  "to get wasted"
+ ],
+ "cálifont": [
+  "gas water heater",
+  "geyser",
+  "instant water heater"
+ ],
+ "de tomo y lomo": [
+  "of epic proportions",
+  "major",
+  "huge",
+  "out-and-out"
+ ],
+ "dedo sin uña": [
+  "finger without a nail",
+  "nailless finger"
+ ],
+ "dejar la embarrada": [
+  "to screw up",
+  "to mess up",
+  "to make a mess of things",
+  "to blow it"
+ ],
+ "desarmar": [
+  "to unpack",
+  "to empty out a bag"
+ ],
+ "descueve": [
+  "awesome thing",
+  "amazing thing",
+  "great thing",
+  "cool thing"
+ ],
+ "despacito por las piedras": [
+  "slowly and carefully",
+  "carefully, step by step",
+  "with great caution",
+  "taking it slow"
+ ],
+ "desubicado": [
+  "out of line",
+  "inappropriate",
+  "clueless",
+  "out of touch"
+ ],
+ "detonado": [
+  "wrecked",
+  "destroyed",
+  "wasted",
+  "trashed"
+ ],
+ "diuca": [
+  "penis",
+  "dick",
+  "cock"
+ ],
+ "doméstica": [
+  "maid",
+  "domestic worker",
+  "housekeeper",
+  "domestic"
+ ],
+ "embarrarla": [
+  "to screw up",
+  "to mess up",
+  "to blow it",
+  "to make a blunder"
+ ],
+ "empilucharse": [
+  "to strip",
+  "to get undressed",
+  "to take one's clothes off"
+ ],
+ "encarador": [
+  "confrontational",
+  "blunt",
+  "outspoken"
+ ],
+ "enchuecarse": [
+  "to get twisted",
+  "to bend",
+  "to become crooked",
+  "to warp"
+ ],
+ "enchularse": [
+  "to doll oneself up",
+  "to dress up",
+  "to spruce oneself up",
+  "to get gussied up"
+ ],
+ "enfermo del chape": [
+  "crazy",
+  "nuts",
+  "out of one's mind",
+  "mentally unhinged"
+ ],
+ "engrupido": [
+  "conceited",
+  "stuck-up",
+  "full of oneself",
+  "deluded",
+  "duped"
+ ],
+ "engrupidor": [
+  "deceiver",
+  "fibber",
+  "bullshitter",
+  "smooth talker"
+ ],
+ "enojón": [
+  "touchy",
+  "easily offended",
+  "quick-tempered",
+  "short-tempered",
+  "prone to anger"
+ ],
+ "ensillar": [
+  "to replace the used yerba in a mate",
+  "to refill mate with fresh yerba",
+  "to refresh the mate's yerba"
+ ],
+ "entrador": [
+  "meddlesome",
+  "nosy",
+  "intrusive",
+  "busybody"
+ ],
+ "entretelón": [
+  "behind-the-scenes facts",
+  "hidden truths",
+  "cover-up",
+  "inside story"
+ ],
+ "escobillón": [
+  "broom",
+  "long-handled broom",
+  "push broom"
+ ],
+ "facho pobre": [
+  "poor fascist",
+  "working-class right-winger",
+  "right-winger voting against own interests",
+  "poor person with far-right views"
+ ],
+ "faena": [
+  "slaughterhouse",
+  "abattoir",
+  "slaughtering site",
+  "meatpacking plant"
+ ],
+ "farrear": [
+  "to party",
+  "to go out partying",
+  "to go on a spree",
+  "to squander",
+  "to waste"
+ ],
+ "fiaca": [
+  "laziness",
+  "listlessness",
+  "sloth"
+ ],
+ "fiestoca": [
+  "big party",
+  "bash",
+  "celebration",
+  "shindig"
+ ],
+ "filete": [
+  "fillet",
+  "tenderloin",
+  "great",
+  "excellent",
+  "very well"
+ ],
+ "finde": [
+  "weekend",
+  "wknd"
+ ],
+ "flojera": [
+  "laziness",
+  "sloth",
+  "idleness",
+  "listlessness"
+ ],
+ "flojo": [
+  "lazy",
+  "idle",
+  "weak",
+  "poor",
+  "cowardly"
+ ],
+ "fonda": [
+  "fair food stall",
+  "traditional festival eatery",
+  "temporary food and drink stand",
+  "folk fair"
+ ],
+ "frenillo": [
+  "frenulum",
+  "tongue-tie",
+  "braces"
+ ],
+ "friqueado": [
+  "freaked out",
+  "upset",
+  "stressed out",
+  "annoyed"
+ ],
+ "funar": [
+  "to publicly shame",
+  "to denounce publicly",
+  "to call out",
+  "to stage a funa"
+ ],
+ "funero": [
+  "of funa organizers",
+  "relating to funa activists",
+  "funa-related"
+ ],
+ "gallada": [
+  "common people",
+  "ordinary folks",
+  "everyone else",
+  "the rest"
+ ],
+ "gallo": [
+  "guy",
+  "dude",
+  "fellow",
+  "salt-mine substitute worker"
+ ],
+ "gamba": [
+  "one hundred pesos",
+  "hundred-unit amount",
+  "hundred (currency units)"
+ ],
+ "ganarse": [
+  "to position oneself",
+  "to take a spot",
+  "to settle in",
+  "to place oneself"
+ ],
+ "garpar": [
+  "to pay",
+  "to foot the bill",
+  "to pay up"
+ ],
+ "golilla": [
+  "washer",
+  "flat washer"
+ ],
+ "gorreo": [
+  "cheating",
+  "infidelity",
+  "cuckolding"
+ ],
+ "gritonear": [
+  "to yell",
+  "to shout",
+  "to scold loudly",
+  "to bawl out"
+ ],
+ "guagüita": [
+  "baby",
+  "little baby",
+  "marshmallow baby candy",
+  "baby-shaped marshmallow"
+ ],
+ "guaraca": [
+  "spinning-top string",
+  "top cord",
+  "whip",
+  "horse whip"
+ ],
+ "guatitas": [
+  "tripe",
+  "offal",
+  "tripe stew",
+  "tripe dish"
+ ],
+ "hay café": [
+  "time to shave!",
+  "go shave!",
+  "shave already!"
+ ],
+ "huasquear": [
+  "to whip",
+  "to hit",
+  "to beat",
+  "to lash"
+ ],
+ "huila": [
+  "rag",
+  "tattered garment",
+  "torn piece of clothing"
+ ],
+ "inflar": [
+  "to pay attention to",
+  "to heed",
+  "to take notice of"
+ ],
+ "irse al chancho": [
+  "to go overboard",
+  "to act recklessly",
+  "to act without restraint"
+ ],
+ "julepe": [
+  "fright",
+  "scare",
+  "sudden fear"
+ ],
+ "kínder": [
+  "kindergarten",
+  "pre-first-grade year",
+  "pre-primary school"
+ ],
+ "lana": [
+  "money",
+  "dough",
+  "wool",
+  "woolen yarn"
+ ],
+ "las pelotas": [
+  "no way",
+  "like hell",
+  "forget it"
+ ],
+ "lata": [
+  "drag",
+  "bore",
+  "nuisance",
+  "tin can",
+  "can"
+ ],
+ "latero": [
+  "boring",
+  "tedious",
+  "tiresome",
+  "dull"
+ ],
+ "lavaseco": [
+  "dry cleaner's",
+  "dry cleaners",
+  "dry-cleaning shop"
+ ],
+ "lucrecia": [
+  "one thousand pesos",
+  "thousand-unit denomination",
+  "grand"
+ ],
+ "macabeo": [
+  "henpecked man",
+  "hen-pecked husband",
+  "submissive partner",
+  "pushover"
+ ],
+ "macuco": [
+  "cunning",
+  "sly",
+  "crafty",
+  "huge"
+ ],
+ "malicia": [
+  "spiked shot",
+  "liquor added to a drink",
+  "splash of liquor",
+  "shot of alcohol"
+ ],
+ "mamadera": [
+  "baby bottle",
+  "feeding bottle",
+  "nursing bottle"
+ ],
+ "mamar": [
+  "to finish off",
+  "to put an end to",
+  "to put up with",
+  "to endure"
+ ],
+ "mamarse": [
+  "to put up with",
+  "to endure",
+  "to bear",
+  "to shoulder"
+ ],
+ "mangazo": [
+  "punch",
+  "blow",
+  "thump"
+ ],
+ "manta": [
+  "manta (Chilean huaso short poncho)",
+  "short poncho",
+  "blanket",
+  "shawl"
+ ],
+ "marraqueta": [
+  "marraqueta (Chilean bread)",
+  "Chilean four-roll bread loaf",
+  "pussy",
+  "vulva"
+ ],
+ "meca": [
+  "poop",
+  "crap",
+  "shit",
+  "holy crap"
+ ],
+ "merequetengue": [
+  "commotion",
+  "fuss",
+  "mess"
+ ],
+ "metido": [
+  "meddlesome",
+  "nosy",
+  "meddling",
+  "interfering"
+ ],
+ "michi": [
+  "cat",
+  "kitty",
+  "kitty-cat",
+  "pussycat"
+ ],
+ "minoca": [
+  "chick",
+  "girl",
+  "young woman"
+ ],
+ "mochilear": [
+  "to backpack",
+  "to go backpacking",
+  "to hitchhike with a backpack"
+ ],
+ "murra": [
+  "blackberry",
+  "bramble"
+ ],
+ "más que la cresta": [
+  "like crazy",
+  "a ton",
+  "more than usual",
+  "to the max"
+ ],
+ "más rato": [
+  "in a bit",
+  "later",
+  "in a while"
+ ],
+ "negro": [
+  "dark-skinned person",
+  "Black person",
+  "darkie"
+ ],
+ "no más": [
+  "only",
+  "just",
+  "anyway"
+ ],
+ "no pescar": [
+  "to ignore",
+  "to pay no attention",
+  "to play dumb",
+  "to brush off"
+ ],
+ "notebook": [
+  "laptop",
+  "notebook computer",
+  "notebook"
+ ],
+ "novillo": [
+  "steer",
+  "young bullock",
+  "beef",
+  "bullock"
+ ],
+ "ocupar": [
+  "to use",
+  "to employ",
+  "to need"
+ ],
+ "olorosar": [
+  "to make fragrant",
+  "to perfume"
+ ],
+ "oncena": [
+  "eleven",
+  "starting eleven",
+  "team"
+ ],
+ "paila": [
+  "frying pan",
+  "skillet",
+  "pan",
+  "pinna",
+  "auricle"
+ ],
+ "para más recacha": [
+  "to top it off",
+  "to make matters worse",
+  "what's more",
+  "on top of that"
+ ],
+ "parado": [
+  "stuck-up",
+  "snobbish",
+  "show-off",
+  "pretentious"
+ ],
+ "paragua": [
+  "umbrella",
+  "Paraguayan",
+  "of or relating to Paraguay",
+  "low-quality Paraguayan weed",
+  "cheap marijuana joint"
+ ],
+ "parrillar": [
+  "to grill",
+  "to barbecue",
+  "to cook on the grill"
+ ],
+ "pasada": [
+  "sopaipilla in chancaca syrup",
+  "something amazing",
+  "something over the top",
+  "in passing",
+  "by the way"
+ ],
+ "pasapelotas": [
+  "ball boy",
+  "ball girl",
+  "ball kid",
+  "ballperson"
+ ],
+ "peinarse": [
+  "to have mastered",
+  "to be skilled at",
+  "to be an expert at",
+  "to nail it"
+ ],
+ "pelambre": [
+  "gossip",
+  "malicious talk",
+  "backbiting",
+  "smear"
+ ],
+ "pelar": [
+  "to badmouth",
+  "to gossip about",
+  "to trash-talk",
+  "to speak ill of"
+ ],
+ "pelarse": [
+  "to swipe",
+  "to steal",
+  "to make out with",
+  "to snog",
+  "to pinch"
+ ],
+ "pelotear": [
+  "to give the runaround",
+  "to send from pillar to post",
+  "to bounce around"
+ ],
+ "peo": [
+  "fart",
+  "gas"
+ ],
+ "perra": [
+  "female dog",
+  "bitch",
+  "slut",
+  "intense",
+  "raging"
+ ],
+ "pesado": [
+  "annoying",
+  "obnoxious",
+  "tiresome",
+  "unpleasant"
+ ],
+ "pescar": [
+  "to pay attention to",
+  "to notice",
+  "to acknowledge",
+  "to heed"
+ ],
+ "pichar": [
+  "to pee",
+  "to urinate",
+  "to piss"
+ ],
+ "picle": [
+  "pickle",
+  "pickled vegetable",
+  "pickled food"
+ ],
+ "pifiarse": [
+  "to boo",
+  "to jeer",
+  "to hiss"
+ ],
+ "pilgua": [
+  "net bag",
+  "string bag",
+  "bag woven from plant fiber"
+ ],
+ "pilucho": [
+  "naked",
+  "stark naked",
+  "in the buff",
+  "baby romper",
+  "onesie"
+ ],
+ "pinche": [
+  "hair clip",
+  "hairpin",
+  "bobby pin",
+  "fling",
+  "casual partner"
+ ],
+ "pistolear": [
+  "to clock",
+  "to catch with a speed gun",
+  "to mooch",
+  "to scrounge",
+  "to swindle"
+ ],
+ "piticiego": [
+  "nearsighted",
+  "short-sighted",
+  "myopic",
+  "blind as a bat"
+ ],
+ "piñiñento": [
+  "filthy",
+  "grubby",
+  "grimy",
+  "squalid"
+ ],
+ "pololearse": [
+  "to go steady with",
+  "to date",
+  "to court",
+  "to butter up",
+  "to suck up to"
+ ],
+ "pololeo": [
+  "dating",
+  "courtship",
+  "relationship",
+  "going steady"
+ ],
+ "pompi": [
+  "butt",
+  "bum",
+  "behind",
+  "rear end"
+ ],
+ "poncho": [
+  "poncho",
+  "cloak",
+  "blanket-style cape"
+ ],
+ "por detroit": [
+  "by a long shot",
+  "far and away",
+  "by far"
+ ],
+ "porfiado": [
+  "stubborn",
+  "obstinate",
+  "pigheaded",
+  "roly-poly toy"
+ ],
+ "postón": [
+  "buckshot pellet",
+  "lead slug",
+  "slug",
+  "airgun pellet"
+ ],
+ "pulpería": [
+  "corner store",
+  "small grocery store",
+  "general store"
+ ],
+ "pájaro verde": [
+  "prison moonshine",
+  "jailhouse methanol liquor",
+  "homemade prison liquor"
+ ],
+ "rayarse": [
+  "to freak out",
+  "to lose it",
+  "to go crazy",
+  "to get paranoid"
+ ],
+ "recauchaje": [
+  "tire retreading",
+  "tire recapping",
+  "facelift",
+  "cosmetic surgery"
+ ],
+ "redbanc": [
+  "ATM",
+  "cash machine",
+  "cash dispenser"
+ ],
+ "reducir": [
+  "to fence stolen goods",
+  "to deal in stolen goods",
+  "to traffic in stolen goods"
+ ],
+ "riles": [
+  "industrial liquid waste",
+  "liquid industrial waste",
+  "industrial effluents"
+ ],
+ "rocha": [
+  "suspicion",
+  "wariness",
+  "caution",
+  "attention"
+ ],
+ "rotisería": [
+  "takeout food shop",
+  "delicatessen",
+  "rotisserie",
+  "takeaway restaurant"
+ ],
+ "runrún": [
+  "buzzer toy",
+  "button spinner",
+  "whirligig",
+  "buzz disc",
+  "thorn-tailed rayadito"
+ ],
+ "salado": [
+  "expensive",
+  "pricey",
+  "steep",
+  "salty"
+ ],
+ "schop": [
+  "draft beer",
+  "mug of draft beer",
+  "beer on tap",
+  "pint of draft beer"
+ ],
+ "sepa Moya": [
+  "who knows",
+  "God only knows",
+  "no idea",
+  "who can say"
+ ],
+ "shop": [
+  "draft beer",
+  "mug of draft beer",
+  "beer on tap",
+  "pint of draft beer"
+ ],
+ "soi": [
+  "you are",
+  "you're"
+ ],
+ "sonar": [
+  "to fail",
+  "to come to grief",
+  "to end up badly",
+  "to be done for",
+  "to go down in flames"
+ ],
+ "sorprender": [
+  "to take advantage of",
+  "to swindle",
+  "to dupe",
+  "to con",
+  "to deceive"
+ ],
+ "subir al columpio": [
+  "to make fun of",
+  "to poke fun at",
+  "to tease",
+  "to mock"
+ ],
+ "suche": [
+  "lackey",
+  "underling",
+  "flunky",
+  "dogsbody",
+  "minion"
+ ],
+ "taimarse": [
+  "to dig in one's heels",
+  "to become stubborn",
+  "to get obstinate",
+  "to turn sly"
+ ],
+ "tapado": [
+  "long coat",
+  "overcoat",
+  "greatcoat"
+ ],
+ "tarado": [
+  "foolish",
+  "clumsy",
+  "dim-witted",
+  "idiotic"
+ ],
+ "tarar": [
+  "to damage mentally",
+  "to make dim-witted",
+  "to impair one's reasoning",
+  "to become dim-witted"
+ ],
+ "tejer": [
+  "to scheme",
+  "to maneuver",
+  "to wheel and deal",
+  "to pull strings"
+ ],
+ "testear": [
+  "to test",
+  "to check",
+  "to examine",
+  "to verify"
+ ],
+ "tirar": [
+  "to haul",
+  "to pull a load",
+  "to have sex",
+  "to screw"
+ ],
+ "tirarse las huevas": [
+  "to slack off",
+  "to laze around",
+  "to loaf",
+  "to do nothing"
+ ],
+ "tortilla": [
+  "flatbread",
+  "tortilla",
+  "unleavened flatbread"
+ ],
+ "trabuco": [
+  "shotgun",
+  "blunderbuss",
+  "scattergun"
+ ],
+ "trucho": [
+  "fake",
+  "bogus",
+  "counterfeit",
+  "phony"
+ ],
+ "tusa": [
+  "horse's mane",
+  "mane"
+ ],
+ "ubicar": [
+  "to find",
+  "to locate",
+  "to place",
+  "to know of"
+ ],
+ "vacunar": [
+  "to swindle",
+  "to con",
+  "to defraud",
+  "to scam"
+ ],
+ "validador": [
+  "fare card reader",
+  "card validator",
+  "bus card reader",
+  "fare validator"
+ ],
+ "vitrinear": [
+  "to window-shop",
+  "to go window-shopping",
+  "to browse the shop windows"
+ ],
+ "volado": [
+  "high",
+  "stoned",
+  "spaced out",
+  "under the influence"
+ ],
+ "yapa": [
+  "freebie",
+  "extra",
+  "bonus",
+  "something extra thrown in"
+ ]
+}

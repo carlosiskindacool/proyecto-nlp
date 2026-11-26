@@ -1,9 +1,9 @@
 """
 Pasa un lote de borradores a un Excel de revisión y, ya revisado, del Excel al CSV que usan los sistemas.
 
-python idea_flo/revision_excel.py crear --borrador annotation/borrador_lote2.csv --seleccion data/interim/seleccion_lote2.csv \
+python src/pares/revision_excel.py crear --borrador annotation/borrador_lote2.csv --seleccion data/interim/seleccion_lote2.csv \
     --salida revision_lote_2.xlsx
-python idea_flo/revision_excel.py a-csv --excel revision_lote_2.xlsx --salida annotation/lote_2.csv --revisor Flo
+python src/pares/revision_excel.py a-csv --excel revision_lote_2.xlsx --salida annotation/lote_2.csv --revisor Flo
 
 En la columna `decision`: ok (el borrador queda), corregir (se usa `neutro_corregido`) o descartar (el neutro queda
 como DESCARTAR). `a-csv` escribe `termino;oracion;neutro;revisor1`, igual que los lotes 1; las filas sin decisión
@@ -18,7 +18,7 @@ import openpyxl
 from openpyxl.styles import Alignment, Font, PatternFill
 from openpyxl.worksheet.datavalidation import DataValidation
 
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "src", "chilenismos"))
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "chilenismos"))
 from dicc import RUTAS, cargar_entradas  # noqa: E402
 
 COLS = ["termino", "oracion", "borrador_neutro (LLM)", "decision (ok / corregir / descartar)",

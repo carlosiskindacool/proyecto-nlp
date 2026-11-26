@@ -3,7 +3,7 @@ Borrador de pares chileno -> neutro con un LLM, usando el diccionario como conte
 Una persona revisa y corrige el borrador después (columna `neutro`) y anota su nombre en `revisor1`
 (un solo revisor por ahora).
 
-python idea_flo/borrador.py [--entrada data/interim/candidatas.csv] [--escenario flo]
+python src/pares/borrador.py [--entrada data/interim/candidatas.csv] [--escenario flo]
     [--backend claude-code|anthropic|gemini|openai|ollama] [--salida annotation/borrador.csv] [--limite 0] [--semilla 1] [--seco]
 
 --limite N toma N oraciones al azar (misma semilla = mismas oraciones), repartidas entre los términos.
@@ -16,7 +16,7 @@ import os
 import random
 import sys
 
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "src", "chilenismos"))
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "chilenismos"))
 from dicc import RUTAS, cargar_entradas, construir_reglas, entradas_en  # noqa: E402
 from llm import SISTEMA, TAM_LOTE, prompt_usuario, traducir  # noqa: E402
 

@@ -57,7 +57,7 @@ def exact_match(traduccion, formas):
 def resumen(datos):
     evaluables = datos[datos["exact_match"].notna()]
     filas = []
-    for conjunto, grupo in [("todos", evaluables), *evaluables.groupby("conjunto")]:
+    for conjunto, grupo in [("todos", evaluables.drop_duplicates(["chileno", "sistema", "traductor"])), *evaluables.groupby("conjunto")]:
         tabla = (grupo.groupby(["traductor", "sistema"], sort=False)["exact_match"]
                       .agg(n_evaluables="size", aciertos="sum", ema="mean").reset_index())
         tabla.insert(0, "conjunto", conjunto)

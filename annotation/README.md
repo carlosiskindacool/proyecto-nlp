@@ -48,21 +48,21 @@ No subas pares con texto de tuits hasta tener esa respuesta.
 ## Cómo se generaron
 
 ```
-python idea_flo/oraciones.py --corpus RUTA/AL/CORPUS --escenario flo --fuentes news    --terminos 100 --max-por-termino 2 --out data/interim/candidatas_noticias.csv
-python idea_flo/oraciones.py --corpus RUTA/AL/CORPUS --escenario flo --fuentes twitter --terminos 100 --max-por-termino 2 --out data/interim/candidatas_tuits.csv
-python idea_flo/borrador.py --entrada data/interim/candidatas_noticias.csv --salida annotation/lote_1_noticias.csv
-python idea_flo/borrador.py --entrada data/interim/candidatas_tuits.csv    --salida annotation/lote_1_tuits.csv
+python src/pares/oraciones.py --corpus RUTA/AL/CORPUS --escenario flo --fuentes news    --terminos 100 --max-por-termino 2 --out data/interim/candidatas_noticias.csv
+python src/pares/oraciones.py --corpus RUTA/AL/CORPUS --escenario flo --fuentes twitter --terminos 100 --max-por-termino 2 --out data/interim/candidatas_tuits.csv
+python src/pares/borrador.py --entrada data/interim/candidatas_noticias.csv --salida annotation/lote_1_noticias.csv
+python src/pares/borrador.py --entrada data/interim/candidatas_tuits.csv    --salida annotation/lote_1_tuits.csv
 ```
 
 **Lote 2 (24-nov-2026, 150 pares, tuits y noticias):** términos nuevos repartidos por frecuencia (50 alta, 50 media, 50 media-baja; un par por término, sin repetir los de los lotes anteriores). Borradores con `claude-sonnet-5-5`.
 
 ```
-python idea_flo/oraciones.py --corpus RUTA/AL/CORPUS --escenario flo --fuentes news --incluir-tuits --max-por-termino 6 --out data/interim/candidatas_lote2.csv
-python idea_flo/seleccionar_lote.py --candidatas data/interim/candidatas_lote2.csv --excluir annotation/lote_1_tuits.csv annotation/lote_1_noticias.csv annotation/lote1.csv --por-nivel 50 --out data/interim/seleccion_lote2.csv
-python idea_flo/borrador.py --entrada data/interim/seleccion_lote2.csv --backend claude-code --modelo claude-sonnet-5-5 --salida data/interim/borrador_lote2.csv
-python idea_flo/revision_excel.py crear --borrador data/interim/borrador_lote2.csv --seleccion data/interim/seleccion_lote2.csv --salida revision_lote_2.xlsx
+python src/pares/oraciones.py --corpus RUTA/AL/CORPUS --escenario flo --fuentes news --incluir-tuits --max-por-termino 6 --out data/interim/candidatas_lote2.csv
+python src/pares/seleccionar_lote.py --candidatas data/interim/candidatas_lote2.csv --excluir annotation/lote_1_tuits.csv annotation/lote_1_noticias.csv annotation/lote1.csv --por-nivel 50 --out data/interim/seleccion_lote2.csv
+python src/pares/borrador.py --entrada data/interim/seleccion_lote2.csv --backend claude-code --modelo claude-sonnet-5-5 --salida data/interim/borrador_lote2.csv
+python src/pares/revision_excel.py crear --borrador data/interim/borrador_lote2.csv --seleccion data/interim/seleccion_lote2.csv --salida revision_lote_2.xlsx
 # después de revisar: Excel -> CSV que leen los sistemas (revisor1 queda con el nombre)
-python idea_flo/revision_excel.py a-csv --excel revision_lote_2.xlsx --salida annotation/lote_2.csv --revisor Flo
+python src/pares/revision_excel.py a-csv --excel revision_lote_2.xlsx --salida annotation/lote_2.csv --revisor Flo
 ```
 
 Flo revisó los 150 pares (129 `ok`, 19 `corregir`, 2 `descartar`). El lote 2 se separó por fuente en `lote_2_tuits.csv` (145 pares) y `lote_2_noticias.csv` (5 pares), y se combinó con el lote 1 en `lote_1_2_tuits.csv` (339 pares, 308 usables) y `lote_1_2_noticias.csv` (98 pares, 77 usables). `lote1.csv` no se mezcla porque se desconoce quién escribió su versión neutra. `lote_2.csv` y los archivos `lote_2_*` traen texto de tuits: no se suben a git sin que Flo lo decida.

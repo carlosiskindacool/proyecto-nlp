@@ -1,7 +1,7 @@
 """
 Busca en el corpus oraciones que contienen términos del diccionario (candidatas para anotar).
 
-python idea_flo/oraciones.py --corpus RUTA/data [--escenario flo] [--fuentes mc4,news,complaints]
+python src/pares/oraciones.py --corpus RUTA/data [--escenario flo] [--fuentes mc4,news,complaints]
     [--max-por-termino 8] [--archivos 61,62] [--out data/interim/candidatas.csv]
 
 Por defecto excluye los tuits: antes de publicar texto de tuits hay que consultar al profesor
@@ -20,7 +20,7 @@ from multiprocessing import Pool
 
 import pyarrow.parquet as pq
 
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "src", "chilenismos"))
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "chilenismos"))
 from dicc import RUTAS, cargar_entradas
 
 TOK = re.compile(r"\w+", re.U)

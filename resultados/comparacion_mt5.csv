@@ -1,0 +1,11 @@
+sistema,escenario,bleu,chrf,n_pares,pares,nota
+mt5_flo_fp32,,82.1,88.8,213,annotation/lote1.csv,google/mt5-small; fp32; ajustado con borradores del LLM
+mt5_flo_fp32,,88.7,93.4,72,annotation/lote_1_noticias.csv,google/mt5-small; fp32; ajustado con borradores del LLM
+mt5_flo_fp32,,80.7,86.2,165,annotation/lote_1_tuits.csv,google/mt5-small; fp32; ajustado con borradores del LLM
+mt5_flo_fp32,,88.4,93.4,77,annotation/lote_1_2_noticias.csv,google/mt5-small; fp32; ajustado con borradores del LLM
+mt5_flo_fp32,,81.8,87.7,308,annotation/lote_1_2_tuits.csv,google/mt5-small; fp32; ajustado con borradores del LLM
+mt5_moe_fp32,,83.2,89.2,213,annotation/lote1.csv,google/mt5-small + MoE 4 expertos top-2; fp32; ajustado con borradores del LLM
+mt5_moe_fp32,,90.1,93.9,72,annotation/lote_1_noticias.csv,google/mt5-small + MoE 4 expertos top-2; fp32; ajustado con borradores del LLM
+mt5_moe_fp32,,82.1,87.2,165,annotation/lote_1_tuits.csv,google/mt5-small + MoE 4 expertos top-2; fp32; ajustado con borradores del LLM
+mt5_moe_fp32,,89.7,94.0,77,annotation/lote_1_2_noticias.csv,google/mt5-small + MoE 4 expertos top-2; fp32; ajustado con borradores del LLM
+mt5_moe_fp32,,83.3,88.5,308,annotation/lote_1_2_tuits.csv,google/mt5-small + MoE 4 expertos top-2; fp32; ajustado con borradores del LLM

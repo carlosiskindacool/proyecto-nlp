@@ -4,7 +4,7 @@ Corre en cadena, en este computador, los pasos del pipeline final que dependen d
 python src/correr_pipeline_local.py [--esperar-borradores] [--lote 4]
 
 Pasos (cada uno escribe su log en logs/cadena_<paso>.log y si uno falla se detiene la cadena):
-  1. (opcional) espera a que termine `idea_flo.borrador[.]py`, que escribe los borradores de entrenamiento nuevos.
+  1. (opcional) espera a que termine `src/pares/borrador.py`, que escribe los borradores de entrenamiento nuevos.
   2. deja `data/interim/borrador_entrenamiento_nuevo.csv` como `borrador_entrenamiento.csv` (el anterior queda como
      `borrador_entrenamiento_v1.csv`).
   3. mT5 denso (models/mt5/mt5.ipynb) y 4. mT5 con MoE (models/mt5_moe/mt5_moe.ipynb), con
@@ -61,7 +61,7 @@ def main():
     if args.esperar_borradores:
         registrar("espero a que terminen los borradores de entrenamiento")
         while subprocess.run(["powershell", "-NoProfile", "-Command",
-                              "if (Get-CimInstance Win32_Process | Where-Object { $_.CommandLine -match 'idea_flo.borrador[.]py' }) { exit 1 }"]).returncode:
+                              "if (Get-CimInstance Win32_Process | Where-Object { $_.CommandLine -match 'pares.borrador[.]py' }) { exit 1 }"]).returncode:
             time.sleep(30)
     nuevo, actual, v1 = ("data/interim/borrador_entrenamiento_nuevo.csv", "data/interim/borrador_entrenamiento.csv",
                          "data/interim/borrador_entrenamiento_v1.csv")

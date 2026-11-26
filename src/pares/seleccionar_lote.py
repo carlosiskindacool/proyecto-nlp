@@ -1,7 +1,7 @@
 """
 Elige las oraciones de un lote nuevo repartidas por frecuencia del término (alta, media, media-baja).
 
-python idea_flo/seleccionar_lote.py --candidatas data/interim/candidatas_lote2.csv
+python src/pares/seleccionar_lote.py --candidatas data/interim/candidatas_lote2.csv
     --excluir annotation/lote_1_tuits.csv annotation/lote_1_noticias.csv annotation/lote1.csv
     --por-nivel 50 --out data/interim/seleccion_lote2.csv
 
@@ -19,7 +19,7 @@ import os
 import random
 import sys
 
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "src", "chilenismos"))
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "chilenismos"))
 from dicc import RUTAS  # noqa: E402
 
 NIVELES = [("alta", 198, 10**9), ("media", 67, 198), ("media_baja", 14, 67)]

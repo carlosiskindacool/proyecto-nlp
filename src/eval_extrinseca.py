@@ -58,11 +58,15 @@ def cargar_salidas(patron):
     if not partes:
         raise SystemExit(f"No hay columnas de sistemas en {patron}")
     datos = pd.concat(partes, ignore_index=True)
+    # Una oración puede estar en varios conjuntos (lote_1_tuits dentro de lote_1_2_tuits): se guarda a qué conjuntos
+    # pertenece según todos los archivos, para que cada sistema se evalúe sobre las mismas oraciones en cada conjunto.
+    pertenencia = datos[["conjunto", "chileno"]].drop_duplicates()
 
     distintas = datos.groupby(["chileno", "sistema"])["salida_es"].nunique()
     if (distintas > 1).any():
         print(f"Aviso: {(distintas > 1).sum()} oraciones con más de una salida en un mismo sistema; se usa la primera")
-    datos = datos.drop_duplicates(["chileno", "sistema"]).reset_index(drop=True)
+    datos = datos.drop(columns="conjunto").drop_duplicates(["chileno", "sistema"]).merge(pertenencia, on="chileno")
+    datos = datos[["conjunto", "termino", "chileno", "sistema", "salida_es"]].reset_index(drop=True)
 
     por_oracion = datos.groupby("chileno")["sistema"].nunique()
     incompletas = por_oracion[por_oracion < len(set(SISTEMAS.values()))]
