@@ -1,11 +1,11 @@
 # idea_flo: sistema C, el plan de datos original de Flo
 
 Código aparte del que usa el equipo. Es el **sistema C** del proyecto: le entrega al LLM la oración y el diccionario revisado, y además arma sus propios pares.
-Visión general de los tres sistemas: [`../README.md`](../README.md). El diccionario revisado que usa: [`../README_flo.md`](../README_flo.md).
+Visión general de los tres sistemas: [`../README.md`](../../README.md). El diccionario revisado que usa: [`../README_flo.md`](../README_flo.md).
 
-![Los 8 sistemas en paralelo](../docs/pipelines_1.png)
+![Los 8 sistemas en paralelo](../../docs/pipelines_1.png)
 
-![Archivos involucrados](../docs/pipelines_3.png)
+![Archivos involucrados](../../docs/pipelines_3.png)
 
 ## Estado
 

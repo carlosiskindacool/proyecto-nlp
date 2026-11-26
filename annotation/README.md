@@ -11,8 +11,19 @@ Visión general del proyecto: [`../README.md`](../README.md). Cómo se generaron
 | `lote_1_noticias.csv` | Lote 1 generado con el plan de Flo, con oraciones de **noticias**. El borrador neutro lo propuso un LLM y lo revisó Flo (72 pares usados, 21 descartados). | Sí |
 | `lote_1_tuits.csv` | Lote 1 generado con oraciones de **tuits**. El borrador neutro lo propuso un LLM y lo revisó Flo (165 pares usados, 29 descartados). | Sí (ver «Tuits») |
 | `lote_2_noticias.csv`, `lote_2_tuits.csv`, `lote_2.csv` | 150 pares nuevos (148 usables) de palabras que no estaban en el lote 1: 145 de tuits y 5 de noticias. Borrador de `claude-sonnet-5-5`, revisado por Flo. | Los de tuits **no** (ver «Tuits») |
-| `lote_1_2_noticias.csv`, `lote_1_2_tuits.csv` | El lote 1 más el lote nuevo: 98 y 339 pares (77 y 308 usables). | Los de tuits **no** (ver «Tuits») |
+| `lote_1_2_noticias.csv`, `lote_1_2_tuits.csv` | Los **lotes ampliados**: el lote 1 más el lote nuevo, 98 y 339 pares (77 y 308 usables). Contienen a los de primera fase (`lote_1_*`), así que sus filas se solapan y no se suman. | Los de tuits **no** (ver «Tuits») |
 | `revision_lote_1_noticias.xlsx`, `revision_lote_1_tuits.xlsx` | El mismo contenido en Excel, para revisar cómodamente (ver «Cómo se revisa un par»). | **No** |
+
+### Nombres de los lotes en el informe
+
+El [informe interno](../docs/informe_interno.md) usa nombres más claros para los conjuntos (los archivos conservan su nombre):
+
+| En el informe | Archivo |
+|---|---|
+| lote base | `lote1.csv` (no comparte ninguna oración con los demás) |
+| lote primera fase noticias y tuits | `lote_1_noticias.csv` y `lote_1_tuits.csv` |
+| palabras nuevas (lote 2) | `lote_2_noticias.csv` y `lote_2_tuits.csv` |
+| lote ampliado noticias y tuits | `lote_1_2_noticias.csv` y `lote_1_2_tuits.csv` (primera fase más palabras nuevas) |
 
 ## Formato
 

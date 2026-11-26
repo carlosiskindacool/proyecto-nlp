@@ -4,7 +4,7 @@
 
 **Cómo se nombra a las personas.** Por números de integrante (tabla de la sección 1). **Cómo se nombran los sistemas.** El sistema que sustituye con el diccionario revisado a mano se llama aquí `reglas_curado`; **en el código y en los CSV de resultados se llama `reglas_flo`** (y en el estudio previo `reglas_flo_con_ambiguos`, `llm_dicc_flo` y `mt5_flo`). El que usa el diccionario automático es `reglas_equipo` en todas partes.
 
-**Las figuras** de las secciones 2 y 4 se generan con `notebooks/graficos_informe.ipynb` (corre en Colab; guarda los PNG en `docs/figuras/`).
+**Las figuras** de las secciones 1, 2 y 4 se generan con `notebooks/graficos_informe.ipynb` (corre en Colab; guarda los PNG en `docs/figuras/`).
 
 **De dónde salen los números.** Fase 1: `archivo/resultados/comparacion_baselines.csv` y `tabla_por_conjunto.md`. Fase 2: los resultados de esa corrida se reemplazaron en la fase 3, así que sus cifras salen del historial de git (commits `0d7eb83` y `1aeef4a`). Fases 3 y 4: `resultados/metricas_normalizador.md`, `resultados/eval_extrinseca.md` y sus variantes. Cada carpeta tiene un README con más detalle (`README.md`, `annotation/README.md`, `data/README.md`).
 
@@ -58,6 +58,28 @@
 
 Los diagramas con más detalle están en la sección que les corresponde: cómo se hizo el diccionario revisado (2.1), los 8 sistemas de la fase 1 (3.1) y los archivos que entran y salen de cada paso (sección 8). Se editan con [draw.io](https://app.diagrams.net) abriendo `docs/pipelines.drawio`.
 
+### 1.4 Mapa de los experimentos
+
+Todos los experimentos del proyecto, con la pregunta que responde cada uno y dónde está el detalle (la sección 4 los desarrolla con sus tablas y figuras).
+
+| # | Fase | Experimento | Pregunta | Resultado, en una línea | Sección |
+|---|---|---|---|---|---|
+| 1 | 1 | Reglas con diccionario automático y con el revisado | ¿Vale la pena revisar el diccionario a mano? | Sí: el BLEU del lote base sube de 84,1 a 89,6 | 4.1 |
+| 2 | 1 | LLM con y sin diccionario | ¿El diccionario ayuda al LLM? | Sí, sobre todo en tuits: 89,4 contra 83,2 de BLEU | 4.1 |
+| 3 | 1 | Sustituir o no los términos ambiguos | ¿Conviene sustituir palabras que también son estándar? | No: empeora (en noticias, de 94,8 a 90,6) | 4.1 |
+| 4 | 1 | Traductores genéricos con pivote por inglés | ¿Basta con un traductor automático? | No: reescriben todo (BLEU de 25 a 50 contra 80 a 94 de la identidad) | 4.1 |
+| 5 | 1 | Versiones del mT5 (texto con ruido o limpio, épocas) | ¿Qué hace mejorar al modelo propio? | Texto limpio y 8 épocas: de 0,1 a 66,1 y a 81,0 de BLEU | 4.1 |
+| 6 | 2 | Primera corrida del pipeline final | ¿Qué rinde cada uno de los 5 sistemas, medido con ERR y con traducción? | Solo `reglas_curado` tiene ERR positivo; los mT5 con 1.500 pares no aprenden | 4.2 |
+| 7 | 3 | Ampliar el diccionario de 443 a 1.985 entradas | ¿Un diccionario más grande mejora las reglas? | Sube el recall y baja la precisión: mejora el lote base, no los lotes de las 100 palabras frecuentes | 4.3 |
+| 8 | 3 | mT5 con 7 veces más pares | ¿Más datos acercan al modelo propio a las reglas? | Mejora mucho (ERR de −21,8 a −9,6), pero sigue bajo 0 | 4.3 |
+| 9 | 3 | Qué hace cada sistema con cada oración | ¿Cómo fallan los mT5? | Cambian algo sin acertar en 56 a 65 % de las oraciones | 4.3 |
+| 10 | 4 | Acuerdo entre revisores | ¿Qué tan confiable es una sola revisión? | Kappa de 0,04 con una sola pareja: no concluyente | 4.4 |
+| 11 | 4 | Otros LLM como generadores de borradores | ¿Otro modelo puede escribir los borradores? | Haiku (85,0 %) y Gemini (82,9 %) sí; Llama 8B (40,2 %) no | 4.4 |
+| 12 | 4 | Glosario es→en por votos entre familias | ¿Se puede completar el glosario sin revisar todo a mano? | Sí: 57 de 60 términos muestreados con glosas válidas (95 %) | 4.4 |
+| 13 | 4 | Efecto de la definición y del número de familias | ¿Qué tanto dependen las glosas de la definición y de cuántos modelos voten? | Poco de la definición (92 a 97 %); la calidad no sube con más familias | 4.4 |
+| 14 | 4 | Evaluación extrínseca final y controles | ¿Normalizar ayuda a traducir al inglés? | Sí: 23,9 % con `reglas_curado` y 18,5 a 19,5 % con los mT5, contra 6,7 % sin normalizar; el orden no depende del glosario | 4.4 |
+| 15 | 4 | Sesgo según quién revisó el término | ¿El resultado favorece lo que revisó el integrante 1? | Sin evidencia de favoritismo, pero se confunde con la frecuencia del término | 4.4 |
+
 ---
 
 ## 2. Recolección de datos, por fases
@@ -98,7 +120,7 @@ Cada par se hizo así: un LLM (`claude-sonnet-5-5`) propuso la versión neutra (
 
 Con lo que había hasta entonces, el integrante 5 corrió por primera vez el pipeline completo (21 a 24-nov-2026). **Los datos de esa corrida:**
 
-- **Diccionario de `reglas_curado`:** el del libro 1 (`data/curado/diccionario_flo_parte1.csv`): **443 entradas**, todas con reemplazo validado, 231 de ellas marcadas como ambiguas. El diccionario completo (1.985 entradas) llegó después (2.3).
+- **Diccionario de `reglas_curado`:** el del libro 1 (`data/curado/diccionario_flo_parte1.csv` (hoy solo en el historial de git, commit `9a3c627`)): **443 entradas**, todas con reemplazo validado, 231 de ellas marcadas como ambiguas. El diccionario completo (1.985 entradas) llegó después (2.3).
 - **Diccionario de `reglas_equipo`:** el automático del Wikcionario (2.1a).
 - **Conjuntos de prueba:** los tres de la fase 1: lote base, lote primera fase noticias y lote primera fase tuits (213 + 72 + 165 pares).
 - **Entrenamiento de los mT5:** los 1.500 pares de la fase 1 (1.416 para entrenar, 75 para validar; 2.1f).
@@ -172,13 +194,13 @@ Como referencias también se miden `mt5_sin_ajustar` (el mismo modelo sin entren
 
 El LLM no usó clave de API: corre con la sesión de Claude Code del integrante 1 (gasta el uso del plan, no se cobra por token). Se le pasan las oraciones en lotes de 10 y devuelve una lista en JSON. El texto de las oraciones se trata como datos, nunca como instrucciones (prompts completos en el Anexo A).
 
-**Métricas de la fase 1.** **BLEU** y **chrF** (`sacrebleu`), sobre todo el conjunto. En todos los sistemas se quitaron los `@usuario` y los emojis de las oraciones y de las referencias antes de medir (son ruido sin jerga y confundían al modelo propio); los resultados con el texto original están en `resultados/comparacion_baselines_texto_original.csv`. Como casi toda la oración no cambia, la identidad ya parte alta (84 a 94 de BLEU): importa la **diferencia con la identidad**, no el valor absoluto.
+**Métricas de la fase 1.** **BLEU** y **chrF** (`sacrebleu`), sobre todo el conjunto. En todos los sistemas se quitaron los `@usuario` y los emojis de las oraciones y de las referencias antes de medir (son ruido sin jerga y confundían al modelo propio); los resultados con el texto original están en `archivo/resultados/comparacion_baselines_texto_original.csv`. Como casi toda la oración no cambia, la identidad ya parte alta (84 a 94 de BLEU): importa la **diferencia con la identidad**, no el valor absoluto.
 
 ### 3.2 Fase 2: primera corrida del pipeline final (5 sistemas)
 
 **Sistemas.** `identidad`; `reglas_equipo` (diccionario automático); `reglas_curado` (con el diccionario del libro 1, 443 entradas, ambiguos sin sustituir; en el código `reglas_flo`); `mt5` y `mt5_moe` (entrenados con los 1.500 pares). Las reglas priorizan las locuciones más largas y antes quitan las menciones `@usuario` y los emojis. Los cinco se miden en los tres conjuntos de la fase 1 (2.2).
 
-**mT5 denso (`models/mt5/mt5.ipynb`, integrante 5).** Notebook de Colab (GPU T4) que ajusta `google/mt5-small` con `data/interim/borrador_entrenamiento.csv`: 8 épocas, Adafactor, tasa de aprendizaje 5e-4, lote de 8, semilla 1 y **precisión fp32** (la T4 no tiene bf16). Guarda el mejor modelo según la pérdida de validación y escribe las predicciones sobre los conjuntos.
+**mT5 denso (`models/mt5/mt5.ipynb`, integrante 5).** Notebook de Colab (GPU T4) que ajusta `google/mt5-small` con `data/interim/borrador_entrenamiento.csv`: 8 épocas, Adafactor, tasa de aprendizaje 5e-4, tamaño de lote (batch) 8, semilla 1 y **precisión fp32** (la T4 no tiene bf16). Guarda el mejor modelo según la pérdida de validación y escribe las predicciones sobre los conjuntos.
 
 **mT5 con mezcla de expertos (`models/mt5_moe/mt5_moe.ipynb`, integrante 5).** Convierte ese mismo mT5 en MoE por *upcycling*: una capa de cada dos (bloques 1, 3, 5 y 7) pasa a ser dispersa, con **4 expertos** que parten como copias de la red densa y un router que manda cada token a los **2 mejores**. El router trabaja en fp32 con un poco de ruido (0,01) y el entrenamiento suma una pérdida de balance de carga y una pérdida z (0,001 cada una). Verifica que, antes de entrenar, el MoE reproduce al denso. Se entrena con los mismos datos y parámetros que el denso, para que la comparación sea justa.
 
@@ -190,7 +212,7 @@ El LLM no usó clave de API: corre con la sesión de Claude Code del integrante 
 
 **Qué cambia respecto de la fase 2:** el diccionario de `reglas_curado` pasa de 443 a **1.985 entradas**; los conjuntos pasan de 3 a **5** (594 oraciones únicas); los mT5 se entrenan con **10.490 pares** en vez de 1.500; el código de las métricas y de la extrínseca es el mismo (con la corrección que se cuenta en 4.4). Las reglas se recalcularon con el diccionario unificado y los dos mT5 se reentrenaron.
 
-**Entrenamiento local (integrante 1).** Se reentrenaron los dos con los 10.490 pares, con los mismos notebooks y parámetros, pero con lote 4 en vez de 8, porque la RTX 3050 de 4 GB no aguanta lote 8 en fp32. `src/ejecutar_notebook_local.py` ejecuta las celdas de los notebooks de Colab sin cambiar el código (con una carpeta local en lugar de Google Drive) y `src/correr_pipeline_local.py` encadena los pasos. Una sola semilla.
+**Entrenamiento local (integrante 1).** Se reentrenaron los dos con los 10.490 pares, con los mismos notebooks y parámetros, pero con tamaño de lote (batch) 4 en vez de 8, porque la RTX 3050 de 4 GB no aguanta lote 8 en fp32. `src/ejecutar_notebook_local.py` ejecuta las celdas de los notebooks de Colab sin cambiar el código (con una carpeta local en lugar de Google Drive) y `src/correr_pipeline_local.py` encadena los pasos. Una sola semilla.
 
 ### 3.4 Fase 4: validación
 
@@ -265,6 +287,8 @@ BLEU / chrF (`archivo/resultados/tabla_por_conjunto.md`):
 
 **Traductores genéricos.** Ambos quedan muy por debajo de no hacer nada (44,5 y 38,5 contra 85,7 de la identidad en el lote base). Reescriben toda la oración en vez de cambiar solo la jerga, pierden mayúsculas, hashtags y nombres, y cambian el sentido de las palabras que no conocen (ver los ejemplos del Anexo B). Esto justifica que el problema necesita un sistema que conozca la jerga y deje intacto el resto.
 
+![BLEU de los traductores genéricos con pivote por inglés frente a la identidad y a reglas_curado](figuras/fig14_traductores_genericos.png)
+
 **Modelo propio (mT5).** `mT5-small` ajustado en la GPU del integrante 1 **todavía no supera a la identidad** (81,0 contra 85,7 en el lote base, y 80,4 contra 82,7 en tuits). Aun así aprendió la tarea: sin ajustar da cerca de 0 de BLEU. Lo que mejoró el resultado fue:
 
 | Versión | BLEU en el lote base |
@@ -306,6 +330,8 @@ Resultados de la corrida del integrante 5: diccionario del libro 1 (443 entradas
 | **reglas_curado** | **21,1** | **18,8** |
 | mT5 denso | 9,4 | 9,4 |
 | mT5 con MoE | 10,3 | 10,5 |
+
+![ERR de la primera corrida (fase 2) por sistema y conjunto](figuras/fig13_err_fase2.png)
 
 **Qué se concluye de la fase 2**
 
@@ -420,6 +446,8 @@ En lote base todas las oraciones tienen jerga; en tuits y noticias entre 22 % y 
 
 **Otros LLM como generadores de borradores (24-nov-2026).** Tasa de `ok` sobre los pares revisados (IC 95 % de Wilson): **Haiku 5.5 85,0 %** (78,8 a 89,6; 167 pares), **Gemini 3.5 flash-lite 82,9 %** (76,6 a 87,9; 170 pares) y **Llama 3.1 8B 40,2 %** (31,9 a 49,0; 122 pares); la referencia, `claude-sonnet-5-5`, quedó en 80,8 % en otra medición (no es una comparación ciega). Haiku y Gemini no se distinguen (McNemar, p = 1,0; con `ok` + `corregir` ambos sirven en ~98 % de los casos; chrF 91,3 y 93,2 contra la versión final). Llama 8B se descarta: solo el 70 % de sus borradores sirven, 19 respuestas vinieron vacías y 10 devolvieron el prompt (chrF 77,0). Límites: la versión final salió del borrador de Sonnet, así que Haiku (misma familia) parte con ventaja; los 200 pares excluyen los descartados de Sonnet, lo que también lo favorece; hay un único revisor; 61 filas quedaron sin revisar y 74 filas exclusivas de Llama se dejaron de revisar a propósito, por lo que las tasas se calculan solo sobre lo revisado. Detalle en `annotation/README.md`.
 
+![Tasa de borradores aceptados sin cambios por modelo, con IC 95 % de Wilson](figuras/fig15_generadores_llm.png)
+
 **Glosario es→en: calibración de la regla de votos.** Con los 93 términos revisados a mano y las 7 familias completas (diccionario, Claude, Google, Cohere, Meta, IBM y Nvidia):
 
 | Coinciden al menos | Términos con glosa aceptada (de 330) | Sin acuerdo | Comparte una glosa con la referencia | Glosas aceptadas que la referencia respalda |
@@ -436,6 +464,8 @@ En lote base todas las oraciones tienen jerga; en tuits y noticias entre 22 % y 
 
 **Cuántas familias hacen falta.** Se probaron todos los subconjuntos de las 6 familias completas en ese momento. De 3 a 6 familias, la coincidencia con la referencia queda estancada en 70 a 77 %: la calidad no mejora al sumar familias (hay un techo que no depende del número de modelos). Lo que sí cambia es la estabilidad: con 6 familias y umbral 4, al quitar una familia se conserva entre 63 % (sin Claude) y 88 % (sin el diccionario) de las glosas aceptadas. Por eso conviene tener unas 8 a 10 familias, y más allá no se espera ganancia.
 
+![Calidad según el número de familias y estabilidad al quitar una](figuras/fig17_cuantas_familias.png)
+
 **Efecto de la definición que ve el modelo.** Se comparó, para cada modelo, la versión con la definición del diccionario curado (la que se usa) con la primera pasada, que usaba solo el Wikcionario en español. Porcentaje de términos en que las dos versiones comparten al menos una glosa equivalente:
 
 | Modelo | Todos los términos | Los 52 sin definición del Wikcionario | Los 278 con definición |
@@ -449,6 +479,8 @@ En lote base todas las oraciones tienen jerga; en tuits y noticias entre 22 % y 
 | IBM (Granite) | 78 % (222 de 284) | 68 % | 80 % |
 
 En general la definición cambia poco la glosa (92 a 97 % de coincidencia en los modelos más estables). Donde sí pesa es en los 52 términos sin definición del Wikcionario (53 a 87 %): ahí el modelo, antes sin pista, ahora recibe la definición del diccionario curado. Cohere e IBM son los menos estables y los que menos coinciden con la referencia, por eso son los candidatos a bajar su peso si se sigue sumando familias.
+
+![Coincidencia de glosas entre la definición curada y la del Wikcionario, por modelo](figuras/fig16_efecto_definicion.png)
 
 **Resultado de la revisión.** Con el umbral 5 quedan 271 términos aceptados y 59 sin acuerdo. El integrante 1 revisó 67 términos y **dos muestras de términos aceptados por votos, 20 y 40 (60 en total)**. Cada término de la muestra se clasificó así: *ok* (las glosas aceptadas sirven tal cual), *incompleta* (las aceptadas sirven pero faltan otras, y se agregaron) o *distinta* (hubo que reemplazar una glosa aceptada).
 
@@ -477,6 +509,10 @@ En general la definición cambia poco la glosa (92 a 97 % de coincidencia en los
 Los dos mT5 mejoran mucho la traducción respecto de no normalizar (de 6,7 a 18 o 19 % con Opus-MT) y quedan unos 5 puntos por debajo de `reglas_curado`; con 1.500 pares quedaban en 9,4 y 10,3 %. El MoE queda 1 punto sobre el denso en «todos» y en casi todos los conjuntos, igual que en la intrínseca; con una semilla esa diferencia no es concluyente. **Comparación con la primera corrida:** gana el mismo sistema y `reglas_curado` queda cerca de su 23,3 / 20,9, pero las oraciones y el glosario cambiaron (446 contra 594), así que no hay que restar las cifras. En noticias hay 68 a 73 oraciones, y ahí `reglas_equipo` queda sobre `reglas_curado` con Opus-MT (22,1 contra 14,7 en lote primera fase noticias): no se exploró y con ese tamaño no se interpreta.
 
 ![Exact Match por sistema con los tres glosarios, con Opus-MT y NLLB](figuras/fig7_extrinseca.png)
+
+**Por conjunto, el orden no es el mismo.** `reglas_curado` es la mejor en el lote base (30,5 % contra 22,5 y 23,5 de los mT5) y en el lote ampliado de tuits (20,8 contra 17,9 y 18,5). Pero en los tuits de primera fase (165 oraciones) queda por debajo de los dos mT5 con Opus-MT (17,6 contra 18,8 y 18,8; con NLLB el denso empata en 13,3 y el MoE llega a 13,9), y en noticias (68 y 73 oraciones) `reglas_equipo` la supera (22,1 y 21,9 contra 14,7 y 17,8). Es plausible que los mT5 rindan mejor justo en las 100 palabras más frecuentes porque son las que más aparecen en su entrenamiento, pero no se comprobó. Gran parte de la ventaja de `reglas_curado` en la fila «todos» viene del lote base.
+
+![Exact Match con Opus-MT por sistema y conjunto](figuras/fig18_extrinseca_por_conjunto.png)
 
 **¿Depende del glosario?** Se recalculó con los dos glosarios de control. Todos, Opus-MT / NLLB:
 
@@ -511,7 +547,7 @@ Cómo se lee: (1) `reglas_curado` rinde más en los términos que decidió el in
 1. **La regla de votos es una buena forma de completar el glosario, con límites.** 57 de 60 términos de las muestras (95 %) quedaron con glosas aceptadas válidas; 46 (77 %) no necesitaron ningún cambio y 11 estaban incompletas. Los 3 errores fueron de sentido o de forma, que es el riesgo conocido del voto: acuerdo no es lo mismo que sentido correcto.
 2. **La calidad del glosario no sube sumando familias, pero la estabilidad sí.** Con más de 3 familias la coincidencia con la referencia se estanca en 70 a 77 %; lo que cambia es cuánto depende el resultado de una familia en particular. Por eso la revisión humana no se reemplaza con más modelos.
 3. **La definición pesa poco, salvo donde no había definición,** y los modelos más débiles (Cohere, IBM) son los más sensibles.
-4. **Normalizar ayuda a traducir, y la conclusión no depende del glosario.** `reglas_curado` traduce bien 23,9 % de los términos ancla (3,6 veces más que sin normalizar), el MoE 19,5 % y el denso 18,5 %, con los tres glosarios probados y en ese orden. En noticias no se puede concluir (68 a 73 oraciones).
+4. **Normalizar ayuda a traducir, y la conclusión no depende del glosario.** `reglas_curado` traduce bien 23,9 % de los términos ancla (3,6 veces más que sin normalizar), el MoE 19,5 % y el denso 18,5 %, con los tres glosarios probados y en ese orden en la fila «todos». Por conjunto hay excepciones: en los tuits de primera fase los mT5 superan por poco a `reglas_curado`, y en noticias (68 a 73 oraciones) no se puede concluir.
 5. **El MoE contra el denso sigue sin decidirse:** gana por un punto en dos de tres glosarios y pierde por 0,4 en el de solo diccionarios.
 6. **El estudio de acuerdo entre revisores no es concluyente** (kappa 0,04, una sola pareja): los dos revisores aplicaron criterios distintos al `descartar`. Hay que aclarar esa regla antes de repetirlo.
 7. **Otros LLM pueden escribir los borradores:** Haiku (85,0 %) y Gemini (82,9 %) quedan al nivel de Sonnet (80,8 %), y Llama 3.1 8B (40,2 %) no sirve. La comparación tiene ventaja para Haiku por ser de la misma familia que el modelo que escribió la versión final.
@@ -525,7 +561,7 @@ Cómo se lee: (1) `reglas_curado` rinde más en los términos que decidió el in
 
 1. **La calidad del diccionario pesa más que la complejidad del modelo.** El mismo código de reglas pasa de empeorar el texto (diccionario automático: ERR de −4 a −56) a mejorarlo (diccionario revisado: ERR de 11 a 30). Ampliar el diccionario de 443 a 1.985 entradas sube el recall pero baja la precisión: ayuda en las palabras nuevas (+1,7 de BLEU en el lote 2 y ERR de 23,4 a 30,0 en el lote base) y no en las 100 más frecuentes (ERR de 13,0 a 10,9 y de 21,0 a 19,5). Las reglas, en cambio, tienen un recall bajo (22 a 34 %) porque no entienden el contexto ni las variantes.
 2. **El modelo propio todavía no alcanza.** Los mT5 aprenden la tarea (F1 de 26 a 29, sin ajustar casi 0) y con 7 veces más pares el ERR mejoró mucho, pero sigue negativo en todos los conjuntos: cambian palabras que no debían, sobre todo en noticias. El MoE queda levemente sobre el denso, con una sola semilla.
-3. **Normalizar ayuda a traducir.** Con `reglas_curado` se traducen bien 23,9 % de los términos ancla, contra 6,7 % sin normalizar; los mT5 llegan a 18,5 y 19,5 %. El orden se mantiene con tres glosarios distintos, así que no depende de cómo se armó el glosario. Los traductores genéricos con pivote por inglés destruyen el texto (BLEU de 25 a 50 frente a 83 a 94 de la identidad).
+3. **Normalizar ayuda a traducir.** Con `reglas_curado` se traducen bien 23,9 % de los términos ancla, contra 6,7 % sin normalizar; los mT5 llegan a 18,5 y 19,5 %. El orden se mantiene con tres glosarios distintos, así que no depende de cómo se armó el glosario (por conjunto hay excepciones: 4.4). Los traductores genéricos con pivote por inglés destruyen el texto (BLEU de 25 a 50 frente a 83 a 94 de la identidad).
 4. **El diccionario no se puede sustituir ciegamente:** los términos ambiguos (palabras estándar muy frecuentes) empeoran el resultado en los tres conjuntos de la fase 1 (por ejemplo, en noticias de 94,8 a 90,6 de BLEU).
 5. **La evaluación es solo tan confiable como sus referencias.** Un solo revisor revisó los pares (el acuerdo con el integrante 2 fue de kappa 0,04 por un criterio distinto del `descartar`), el diccionario lo revisaron cuatro personas con criterios distintos (4.4) y no se halló evidencia de favoritismo hacia lo que revisó el integrante 1, aunque tampoco se puede descartar y el glosario es→en de la extrínseca se completó en parte con votos de modelos (57 de 60 términos muestreados válidos). Los resultados son consistentes entre conjuntos, pero con muestras chicas las diferencias de un punto no son concluyentes.
 6. **Un LLM puede escribir los borradores,** pero no se debe evaluar con ellos solos: el borrador de Sonnet fue aceptado sin cambios en 80,8 % de los pares, y Haiku y Gemini rinden parecido. Los pares de entrenamiento de los mT5 son borradores sin revisión.
@@ -635,6 +671,20 @@ Los archivos con texto de tuits sin filtrar (Excel de revisión, libros del dicc
 - **Exact match (EMA):** proporción de oraciones cuya traducción al inglés contiene una traducción aceptada del término ancla. **Opus-MT y NLLB:** los dos traductores abiertos que se usan para eso.
 - **Kappa de Cohen y alfa de Krippendorff:** miden cuánto coinciden dos revisores (o más) más allá del azar; 0 = como al azar, 1 = acuerdo perfecto.
 - **IC 95 % de Wilson / McNemar:** el primero da un intervalo para una proporción; el segundo compara dos sistemas sobre los mismos pares.
+
+- **LAI:** la proporción de palabras que no cambian en la referencia; es el punto de partida del ERR (la identidad acierta justo esa proporción).
+- **TP, FP, FN:** aciertos (palabras con jerga que se corrigen bien), falsos positivos (palabras que se cambian y no debían) y falsos negativos (palabras con jerga que no se corrigen bien). De ahí salen la precisión, el recall y el F1.
+- **MultiLexNorm:** la evaluación compartida de normalización léxica (W-NUT 2021) de donde sale el ERR. **sacrebleu:** la librería que calcula BLEU y chrF.
+- **Pivote (traducción ida y vuelta):** pasar de español a inglés y volver a español con un traductor, esperando que la jerga salga normalizada; es lo que hacen `mt_ida_vuelta` y `nllb_ida_vuelta`.
+- **Concordancia (acuerdo entre revisores):** cuánto coinciden dos o más personas al revisar los mismos pares. **Bootstrap:** remuestrear los datos muchas veces para calcular un intervalo de confianza.
+
+**Entrenamiento y cómputo**
+- **Encoder y decoder:** las dos mitades del mT5; el encoder lee y resume la oración chilena y el decoder escribe la oración neutra palabra por palabra.
+- **Token:** el pedazo de texto (una palabra o parte de una) con que trabaja el modelo. En el MoE, el enrutador manda cada token a 2 de los 4 expertos.
+- **Prompt:** el texto con instrucciones que se le da a un LLM. **LaBSE:** modelo de *embeddings* multilingües que la propuesta planteaba como control opcional de similitud entre oraciones; no se aplicó.
+- **Semilla:** el número que fija el azar de un entrenamiento. Con una sola semilla no se sabe cuánto de una diferencia pequeña es azar.
+- **Tamaño de lote (batch):** cuántos ejemplos procesa el modelo a la vez al entrenar (8 en Colab, 4 en la GPU local). No es lo mismo que el «lote» de pares.
+- **GPU, T4 y RTX 3050:** la tarjeta gráfica que acelera el entrenamiento; la T4 es la de Colab y la RTX 3050 (4 GB), la del computador local. **fp32:** precisión numérica de 32 bits. **Adafactor:** el algoritmo que ajusta los pesos del modelo, con poco uso de memoria.
 
 **Glosario es→en**
 - **Glosa:** una traducción al inglés de un término (por ejemplo, *right away* para *al tiro*). **`acepta_en`:** la columna del glosario con las glosas aceptadas, separadas por `|`.

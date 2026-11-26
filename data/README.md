@@ -9,7 +9,7 @@ Datos del proyecto. Visión general: [`../README.md`](../README.md).
 | [`curado/`](curado/) | **El diccionario revisado a mano** (libro 1 y repartos 2 a 5): `diccionario_flo.csv` (1.985 filas con definición, reemplazo, marca de ambiguo, variantes y quién lo revisó) y `terminos_descartados.csv` (1.327 que se quitan o se unifican). Es lo que leen los sistemas B y C. | Sí |
 | [`diccionario/`](diccionario/) | El trabajo previo de revisión: términos unidos, acepciones del Wikcionario, entradas de Román y el resumen de las reglas de ortografía. Ningún sistema lo lee; es respaldo y documentación. | Solo en parte (ver abajo) |
 | `raw/` | Descargas que hace `src/chilenismos/diccionario.py` (la caché del Wikcionario). | No |
-| `interim/` | Intermedios: candidatas de oraciones (`candidatas_*.csv`) y `borrador_entrenamiento.csv`, los pares con que se entrena mT5 (10.521 filas desde el 24-nov; la versión de 1.500 pares es `borrador_entrenamiento_v1.csv`). Pueden traer texto de tuits. | Solo `borrador_entrenamiento.csv` y `candidatas_entrenamiento.csv` |
+| `interim/` | Intermedios: candidatas de oraciones (`candidatas_*.csv`), `borrador_entrenamiento.csv` (los pares con que se entrena mT5: 10.521 filas desde el 24-nov; la versión de 1.500 pares es `borrador_entrenamiento_v1.csv`) y los archivos del glosario es→en (ver más abajo). Los de oraciones pueden traer texto de tuits. | Solo `borrador_entrenamiento.csv`, `candidatas_entrenamiento.csv` y los archivos del glosario que no traen tuits |
 | `processed/` | Salidas de los scripts: `diccionario.csv` del equipo, `predicciones_*.csv` y `eval_extrinseca.csv`. | Sí, esos archivos (con `git add -f`); el resto no |
 
 ## `curado/diccionario_flo.csv`
@@ -32,6 +32,22 @@ Datos del proyecto. Visión general: [`../README.md`](../README.md).
 | `notas` | Notas de la revisión |
 
 Más detalle en [`../archivo/README_flo.md`](../archivo/README_flo.md).
+
+## Glosario es→en y glosas de los modelos
+
+La evaluación extrínseca usa un glosario con las traducciones al inglés aceptadas para cada término ancla (el término por el que se eligió cada oración). Cómo se armó está en la sección 3.4 del [informe interno](../docs/informe_interno.md).
+
+| Archivo | Qué es |
+|---|---|
+| `diccionario/glosario_es_en_test.csv` | Glosario base de 330 términos: `termino;reemplazo_es;acepta_en` (glosas separadas por `\|`). 93 revisados a mano y el resto con glosas automáticas del Wikcionario. |
+| `diccionario/glosario_es_en_test_revisado.csv` | Los 93 términos revisados a mano por el integrante 5 (la referencia con que se calibró la regla de votos). |
+| `diccionario/glosario_es_en_final.csv` | **El que usa la extrínseca.** Mismas columnas más `fuente`: `carlos` (93, del glosario revisado), `flo` (81, decididos por el integrante 1 en un Excel) y `votos` (156, aceptados cuando coinciden 5 de 7 familias de modelos). |
+| `diccionario/glosario_es_en_sin_claude.csv`, `glosario_es_en_solo_diccionarios.csv` | Controles: votos sin la familia Claude, y solo lo que dicen los diccionarios (Wikcionario y glosas `[EN]`). |
+| `interim/glosas_<modelo>.json` | `{termino: [glosas]}` que escribió cada modelo a partir de la definición del diccionario curado (sin las glosas `[EN]`). `sonnet`, `haiku`, `gemini`, `cohere`, `ibm`, `openrouter` y `cf_llama`, más `glosas_wikcionario_en.json` y `_es.json`. |
+| `interim/glosas_v1_definiciones_wikcionario/` | La primera pasada, con las definiciones solo del Wikcionario en español; se conserva como control del efecto de la definición. |
+| `interim/respuestas_crudas/` | El texto exacto que devolvió cada modelo antes de leerlo (una línea por llamada), para releerlo con `--reparsear` sin gastar más tokens. Solo hay de IBM y OpenRouter. |
+
+Las glosas parciales de los modelos que no terminaron (Mistral, OpenAI y Alibaba, por el cupo gratuito de Cloudflare) no se suben y no cuentan como votos.
 
 ## `diccionario/`
 

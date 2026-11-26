@@ -3,9 +3,9 @@
 Trabajo de Flo, con ayuda de Claude (asistente de IA) para proponer definiciones, reemplazos y código.
 Lo que propuso Claude lo validó Flo.
 
-Este documento describe el **sistema B** (reglas + diccionario revisado a mano). Visión general de los tres sistemas: [`README.md`](README.md). El sistema C (LLM + plan de datos): [`idea_flo/README.md`](idea_flo/README.md).
+Este documento describe el **sistema B** (reglas + diccionario revisado a mano). Visión general de los tres sistemas: [`README.md`](../README.md). El sistema C (LLM + plan de datos): [`idea_flo/README.md`](idea_flo/README.md).
 
-![Los 7 sistemas en paralelo](docs/pipelines_1.png)
+![Los 7 sistemas en paralelo](../docs/pipelines_1.png)
 
 ## Qué se hizo
 
@@ -18,11 +18,11 @@ El trabajo previo (con esta estructura; **no se subió al repo, lo tiene solo Fl
 - **Criterio de unificación:** se une el verbo con su forma en -se y las variantes escritas. No se unen participios o adjetivos derivados ni derivados de otra clase gramatical.
 - **Resultado del libro 1:** 433 términos aceptados y 220 descartados (nombres propios, palabras estándar sin sentido chileno, ruido).
 
-![Cómo se hizo el diccionario revisado](docs/pipelines_2.png)
+![Cómo se hizo el diccionario revisado](../docs/pipelines_2.png)
 
 ### 2. Qué hay en la rama
 
-![Archivos involucrados](docs/pipelines_3.png)
+![Archivos involucrados](../docs/pipelines_3.png)
 
 | Archivo | Qué es |
 |---|---|
@@ -65,7 +65,7 @@ python src/chilenismos/baselines.py --escenario flo --incluir-ambiguos --sin-mt5
 
 ## Resultados
 
-BLEU / chrF en los tres conjuntos de pares, medidos sobre texto sin `@usuario` ni emojis (`resultados/comparacion_baselines.csv`; tabla completa con los 8 sistemas en el [README global](README.md)), con el sistema A como punto de comparación:
+BLEU / chrF en los tres conjuntos de pares, medidos sobre texto sin `@usuario` ni emojis (`resultados/comparacion_baselines.csv`; tabla completa con los 8 sistemas en el [README global](../README.md)), con el sistema A como punto de comparación:
 
 | Sistema | lote1.csv (213) | lote_1_noticias (72) | lote_1_tuits (165) |
 |---|---|---|---|
