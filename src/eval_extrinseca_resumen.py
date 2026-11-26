@@ -2,7 +2,7 @@
 Evaluación extrínseca, paso 2 de 2: Exact-Match Accuracy de las traducciones de eval_extrinseca.py.
 
 python src/eval_extrinseca_resumen.py [--traducciones data/processed/eval_extrinseca.csv]
-    [--glosario data/diccionario/glosario_es_en_test.csv]
+    [--glosario data/diccionario/glosario_es_en_final.csv]
     [--out resultados/eval_extrinseca.csv] [--md resultados/eval_extrinseca.md]
 
 No traduce nada: tarda segundos. Si se corrige el glosario, basta con volver a correr este paso.
@@ -92,7 +92,7 @@ def tabla_md(tabla):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--traducciones", default="data/processed/eval_extrinseca.csv")
-    ap.add_argument("--glosario", default="data/diccionario/glosario_es_en_test.csv")
+    ap.add_argument("--glosario", default="data/diccionario/glosario_es_en_final.csv")
     ap.add_argument("--out", default="resultados/eval_extrinseca.csv")
     ap.add_argument("--md", default="resultados/eval_extrinseca.md")
     args = ap.parse_args()

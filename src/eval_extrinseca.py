@@ -32,7 +32,8 @@ import baseline_mt  # noqa: E402
 import baseline_nllb  # noqa: E402
 
 SISTEMAS = {"identidad": "identidad", "reglas_flo": "reglas_flo", "reglas_equipo": "reglas_equipo",
-            "mt5_flo_fp32": "mt5", "mt5_moe_fp32": "mt5_moe"}
+            "mt5_flo_fp32": "mt5", "mt5_moe_fp32": "mt5_moe",
+            "byt5_flo_fp32": "byt5", "mt5_flo_fp32_s2": "mt5_s2", "mt5_flo_fp32_s3": "mt5_s3", "byt5_flo_fp32_s2": "byt5_s2", "byt5_flo_fp32_s3": "byt5_s3"}
 NO_SISTEMA = {"conjunto", "chileno", "neutro", "referencia", "termino"}
 MODELO_MT = "Helsinki-NLP/opus-mt-es-en"
 MODELO_NLLB = "facebook/nllb-200-distilled-600M"
@@ -69,7 +70,7 @@ def cargar_salidas(patron):
     datos = datos[["conjunto", "termino", "chileno", "sistema", "salida_es"]].reset_index(drop=True)
 
     por_oracion = datos.groupby("chileno")["sistema"].nunique()
-    incompletas = por_oracion[por_oracion < len(set(SISTEMAS.values()))]
+    incompletas = por_oracion[por_oracion < datos['sistema'].nunique()]
     if len(incompletas):
         print(f"Aviso: {len(incompletas)} oraciones no tienen salida de todos los sistemas")
     return datos
