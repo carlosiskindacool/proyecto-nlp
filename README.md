@@ -79,7 +79,7 @@ Después de los notebooks, hay que descargar las predicciones de Drive, copiarla
 
 ## Resultados
 
-**Estado (26-nov-2026).** Corrida actual: reglas con el diccionario unificado (1.985 entradas) y mT5 y MoE entrenados con 10.490 pares (GPU local, lote 4, una semilla), en los cinco conjuntos. El análisis completo, por fases, está en el [informe interno](docs/informe_interno.md) (secciones 4.2 a 4.4) y las tablas en `resultados/`. Nombres de los conjuntos: *lote base* = `lote1`; *primera fase* = `lote_1_noticias` y `lote_1_tuits`; *lote ampliado* = `lote_1_2_noticias` y `lote_1_2_tuits`.
+**Estado (27-nov-2026).** Corrida actual: reglas con el diccionario unificado (1.985 entradas) y mT5 y MoE entrenados con 10.490 pares (GPU local, lote 4, una semilla), en los cinco conjuntos. El análisis completo, por fases, está en el [informe interno](docs/informe_interno.md) (secciones 4.2 a 4.5) y las tablas en `resultados/`. Los experimentos que se hicieron después de cerrar la tabla final (tres semillas de mT5 y de ByT5, un LLM con el diccionario como techo, métricas adicionales, sensibilidad al ruido y un piloto en que un LLM decide el diccionario) están en la sección 4.5 del informe; sus scripts en [`src/extras/`](src/extras/README.md) y sus datos en [`resultados/extras/`](resultados/extras/README.md). Nombres de los conjuntos: *lote base* = `lote1`; *primera fase* = `lote_1_noticias` y `lote_1_tuits`; *lote ampliado* = `lote_1_2_noticias` y `lote_1_2_tuits`.
 
 **Intrínseca** ([`resultados/metricas_normalizador.md`](resultados/metricas_normalizador.md)). ERR / F1 por conjunto; 0 es no cambiar nada y un valor negativo significa que el sistema estropea más palabras de las que corrige.
 
@@ -106,12 +106,15 @@ Después de los notebooks, hay que descargar las predicciones de Drive, copiarla
 | identidad | 6,7 | 6,6 |
 | reglas_equipo | 12,0 | 10,4 |
 | **reglas_flo** | **23,9** | **21,0** |
-| mt5 | 18,5 | 16,2 |
-| mt5_moe | 19,5 | 16,7 |
+| mt5 (semilla 1) | 18,5 | 16,2 |
+| mt5_moe (una semilla) | 19,5 | 16,7 |
 
-- **Solo `reglas_flo` mejora el español en la métrica intrínseca.** Los mT5 mejoraron mucho con 10.490 pares pero siguen con ERR negativo; el MoE queda sobre el denso por poco y con una sola semilla.
+Con tres semillas del mT5 denso la media es 20,1 / 17,2 (± 1,4 / 1,0): la diferencia con el MoE no es significativa (informe, 4.4).
+
+- **Solo `reglas_flo` mejora el español en la métrica intrínseca.** Los mT5 mejoraron mucho con 10.490 pares pero siguen con ERR negativo; el MoE y el denso no se distinguen (con tres semillas del denso, el MoE cae dentro de su variación).
 - **Ampliar el diccionario de 443 a 1.985 entradas sube el recall pero baja la precisión:** el ERR de `reglas_flo` mejora en el lote base (23,4 a 30,0) y empeora en noticias y tuits de primera fase. Donde más ayuda es en las palabras nuevas: sobre los 143 tuits de palabras nuevas (`lote_2_tuits.csv`), el BLEU de las reglas es 86,2 con la identidad, 86,5 con el diccionario del libro 1 y 88,2 con el completo.
-- **Al traducir, normalizar ayuda:** con `reglas_flo` se traducen bien 23,9 % de los términos ancla contra 6,7 % sin normalizar; los mT5 llegan a 18,5 y 19,5 %. El orden se mantiene con los dos glosarios de control (`resultados/eval_extrinseca_sin_claude.md` y `eval_extrinseca_solo_diccionarios.md`).
+- **Al traducir, normalizar ayuda:** con `reglas_flo` se traducen bien 23,9 % de los términos ancla contra 6,7 % sin normalizar; el mT5 (semilla 1) llega a 18,5 % y el MoE a 19,5 %. El orden se mantiene con los dos glosarios de control (`resultados/eval_extrinseca_sin_claude.md` y `eval_extrinseca_solo_diccionarios.md`).
+- **Un LLM al que se le da el diccionario (Gemini y Sonnet) lidera en ERR, F1 y Exact Match, con ventaja modesta en el Exact Match y casi empate con las reglas en el estricto** (informe, 4.5.E): ERR de 39,8 con Sonnet y 30,0 con Gemini en las 594 oraciones contra 21,8 de `reglas_flo`, y Exact Match de 26,8 y 27,8 contra 23,9. Usa el diccionario al traducir y es un modelo de nube: sirve de techo, no de reemplazo.
 - **El glosario es→en se completó con votos de modelos:** en dos muestras de 60 términos aceptados por votos, 57 tenían glosas válidas (11 incompletas). Detalle y límites en el informe.
 
 ## Procedencia de los datos (no se vuelven a correr)
@@ -152,7 +155,7 @@ Lo que ya no forma parte del pipeline. Se guardó con sus rutas originales (por 
 
 ## Otras carpetas
 
-- `docs/`: informe interno (`informe_interno.md`, con sus figuras en `figuras/`), presentación, guion y los diagramas de la etapa anterior.
+- `docs/`: informe interno (`informe_interno.md`, con sus figuras en `figuras/`), `uso_de_ia.md` (declaración del uso de IA), presentación, guion y los diagramas de la etapa anterior.
 - `logs/`: registros de la corrida local (`cadena*.log`) y la copia del deck base; no se sube (`.gitignore`).
 - `notebooks/`: `graficos_informe.ipynb`, que genera las figuras del informe (`docs/figuras/`).
 - `configs/`, `reports/`, `tests/`: vacías (`.gitkeep`).

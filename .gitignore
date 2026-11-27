@@ -38,3 +38,6 @@ models/mt5_moe/*.json
 
 # registros y copias de trabajo de las corridas locales (logs/cadena*.log, copia del deck base)
 logs/
+
+# configuración personal del editor (trae rutas locales)
+*.code-workspace

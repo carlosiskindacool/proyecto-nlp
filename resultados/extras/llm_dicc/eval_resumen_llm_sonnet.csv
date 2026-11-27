@@ -1,0 +1,13 @@
+conjunto,traductor,sistema,n_evaluables,aciertos,ema
+todos,mt,llm_sonnet,594,159,26.8
+todos,nllb,llm_sonnet,594,143,24.1
+lote1.csv,mt,llm_sonnet,213,76,35.7
+lote1.csv,nllb,llm_sonnet,213,78,36.6
+lote_1_2_noticias.csv,mt,llm_sonnet,73,10,13.7
+lote_1_2_noticias.csv,nllb,llm_sonnet,73,6,8.2
+lote_1_2_tuits.csv,mt,llm_sonnet,308,73,23.7
+lote_1_2_tuits.csv,nllb,llm_sonnet,308,59,19.2
+lote_1_noticias.csv,mt,llm_sonnet,68,10,14.7
+lote_1_noticias.csv,nllb,llm_sonnet,68,6,8.8
+lote_1_tuits.csv,mt,llm_sonnet,165,40,24.2
+lote_1_tuits.csv,nllb,llm_sonnet,165,35,21.2

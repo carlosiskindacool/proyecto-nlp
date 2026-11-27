@@ -1,0 +1,3381 @@
+{
+ "CHV": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "Chilevisión"
+  ]
+ },
+ "CSM": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "conchasumadre"
+  ]
+ },
+ "PDI": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "Policía de Investigaciones"
+  ]
+ },
+ "RUT": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "Rol Único Tributario"
+  ]
+ },
+ "UF": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "Unidad de Fomento"
+  ]
+ },
+ "Viejito Pascuero": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "abrir el tarro": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "divulgar",
+   "revelar"
+  ]
+ },
+ "achuntar": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "acertar",
+   "dar en el blanco"
+  ]
+ },
+ "acogotar": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "afilador": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "afuerino": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "extranjero",
+   "persona de fuera"
+  ]
+ },
+ "agarrar": {
+  "decision": "dejar",
+  "ambiguo": true,
+  "reemplazos": []
+ },
+ "agripado": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "agüita": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "infusión"
+  ]
+ },
+ "ahuevonado": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "estúpido",
+   "tonto"
+  ]
+ },
+ "al aguaite": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "esperando"
+  ]
+ },
+ "al pedo": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "en mal estado"
+  ]
+ },
+ "al seco": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "un solo trago"
+  ]
+ },
+ "al tiro": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "inmediatamente",
+   "en un futuro próximo indeterminado"
+  ]
+ },
+ "al toque": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "en seguida"
+  ]
+ },
+ "alegar": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "quejarse con alguien"
+  ]
+ },
+ "alfajor": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "altiro": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "amarillo": {
+  "decision": "dejar",
+  "ambiguo": true,
+  "reemplazos": [
+   "persona políticamente neutra o moderada"
+  ]
+ },
+ "amarrar": {
+  "decision": "dejar",
+  "ambiguo": true,
+  "reemplazos": [
+   "atar"
+  ]
+ },
+ "ampolleta": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "amurrarse": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "enfurruñarse"
+  ]
+ },
+ "andante": {
+  "decision": "dejar",
+  "ambiguo": true,
+  "reemplazos": [
+   "avanzado",
+   "en movimiento"
+  ]
+ },
+ "andar": {
+  "decision": "dejar",
+  "ambiguo": true,
+  "reemplazos": [
+   "mantener una relación amorosa"
+  ]
+ },
+ "apañar": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "acompañar",
+   "ayudar"
+  ]
+ },
+ "apá": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "arrollado": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "carnita enrollada"
+  ]
+ },
+ "arrugar": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "temer",
+   "asustarse",
+   "cobardemente"
+  ]
+ },
+ "asado": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "aseador": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "atajar": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "atochamiento": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "azul": {
+  "decision": "dejar",
+  "ambiguo": true,
+  "reemplazos": [
+   "hinchas del Universidad de Chile",
+   "aficionado del Universidad de Chile"
+  ]
+ },
+ "bacán": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "de muy buena calidad",
+   "amistoso y agradable",
+   "altivo o insolente",
+   "muy atractivo y popular",
+   "de manera excelente"
+  ]
+ },
+ "bajón": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "situación desalentadora o triste",
+   "hambre posterior al consumo de marihuana"
+  ]
+ },
+ "banderillero": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "persona que da órdenes a vehículos en zona de construcción"
+  ]
+ },
+ "bencina": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "gasolina"
+  ]
+ },
+ "bencinera": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "estación de servicio",
+   "estación de combustible"
+  ]
+ },
+ "berlín": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "betún": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "blufear": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "engañar"
+  ]
+ },
+ "brígido": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "peligroso",
+   "difícil",
+   "impresionante",
+   "preparado"
+  ]
+ },
+ "buena": {
+  "decision": "dejar",
+  "ambiguo": true,
+  "reemplazos": [
+   "hola",
+   "satisfacción",
+   "aprobación"
+  ]
+ },
+ "buena onda": {
+  "decision": "dejar",
+  "ambiguo": true,
+  "reemplazos": [
+   "agradable",
+   "encantador"
+  ]
+ },
+ "cabro": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "cabro chico": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "cacha": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "cachada": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "cachar": {
+  "decision": "dejar",
+  "ambiguo": true,
+  "reemplazos": [
+   "comprender",
+   "darse cuenta"
+  ]
+ },
+ "cacharse": {
+  "decision": "dejar",
+  "ambiguo": true,
+  "reemplazos": [
+   "imaginarse",
+   "concebir"
+  ]
+ },
+ "cachaña": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "habilidad para eludir rivales",
+   "especie de loro"
+  ]
+ },
+ "cachiporra": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "fanfarrón",
+   "alardoso",
+   "presumido"
+  ]
+ },
+ "cachiporrearse": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "alabarse",
+   "fanfarronear",
+   "presumir"
+  ]
+ },
+ "cacho": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "cachurear": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "buscar objetos de escaso valor",
+   "reciclar objetos"
+  ]
+ },
+ "cachureo": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "objeto viejo y abandonado"
+  ]
+ },
+ "cachurero": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "persona que guarda objetos inútiles"
+  ]
+ },
+ "cafiche": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "persona aprovechadora",
+   "mujer amante"
+  ]
+ },
+ "cafichear": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "explotar sexualmente",
+   "abusar económicamente"
+  ]
+ },
+ "cagado": {
+  "decision": "dejar",
+  "ambiguo": true,
+  "reemplazos": [
+   "avergonzado",
+   "desesperado"
+  ]
+ },
+ "cagar": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "cahuín": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "chisme",
+   "alboroto"
+  ]
+ },
+ "calendarizar": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "caleta": {
+  "decision": "dejar",
+  "ambiguo": true,
+  "reemplazos": [
+   "lugar apartado",
+   "mucho"
+  ]
+ },
+ "caluga": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "tableta de caramelo",
+   "envase pequeño"
+  ]
+ },
+ "calzonudo": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "pusilánime",
+   "timorato"
+  ]
+ },
+ "cancelar": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "cancha": {
+  "decision": "dejar",
+  "ambiguo": true,
+  "reemplazos": [
+   "terreno",
+   "recinto",
+   "aperitivo"
+  ]
+ },
+ "canuto": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "caramayola": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "caramañola"
+  ]
+ },
+ "carne de perro": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "carrete": {
+  "decision": "dejar",
+  "ambiguo": true,
+  "reemplazos": [
+   "fiesta",
+   "actividad social"
+  ]
+ },
+ "carretear": {
+  "decision": "dejar",
+  "ambiguo": true,
+  "reemplazos": [
+   "salir de fiesta",
+   "divertirse"
+  ]
+ },
+ "cascar": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "cazuela": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "cerrear": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "chamullo": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "engaño",
+   "farsa",
+   "relato falso"
+  ]
+ },
+ "chamuyo": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "engaño",
+   "fraude",
+   "artimaña"
+  ]
+ },
+ "chana": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "mujer de clase baja",
+   "mujer poco atractiva"
+  ]
+ },
+ "chancho": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "pedo",
+   "flatulencia"
+  ]
+ },
+ "chanta": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "mentiroso",
+   "engañoso",
+   "estafador"
+  ]
+ },
+ "chascón": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "desordenado",
+   "desaliñado",
+   "partidario del PDC",
+   "seguidor del heavy metal"
+  ]
+ },
+ "chata": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "camioneta",
+   "pickup"
+  ]
+ },
+ "chau": {
+  "decision": "dejar",
+  "ambiguo": true,
+  "reemplazos": [
+   "adiós",
+   "hasta luego"
+  ]
+ },
+ "chela": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "chichero": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "chico": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "chicotear los caracoles": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "acelerar la actividad",
+   "urgir la tarea"
+  ]
+ },
+ "china": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "chino": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "chipear": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "chiripiorca": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "meltdown mental"
+  ]
+ },
+ "chora": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "chorear": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "irritar",
+   "enfadar"
+  ]
+ },
+ "choreo": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "chorito": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "vulva",
+   "clítoris"
+  ]
+ },
+ "choro": {
+  "decision": "dejar",
+  "ambiguo": true,
+  "reemplazos": [
+   "mucamo",
+   "ladrón",
+   "mucamo (persona que tiene por costumbre u oficio el apropiarse de cosas que no le pertenecen)",
+   "mucamo (de trato cordial y ameno)",
+   "mucamo (que tiene coraje par)"
+  ]
+ },
+ "chuchoca": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "desorden",
+   "agitación"
+  ]
+ },
+ "chunchul": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "intestino delgado del ganado preparado como alimento",
+   "cosa arrugada, retorcida o desaliñada"
+  ]
+ },
+ "chupar": {
+  "decision": "dejar",
+  "ambiguo": true,
+  "reemplazos": [
+   "beber",
+   "robar"
+  ]
+ },
+ "chuta": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "¡chucha!",
+   "¡hostia!"
+  ]
+ },
+ "ciboulette": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "cebollino"
+  ]
+ },
+ "cobrar": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "coche": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "cojones": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "coleado": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "reprobado"
+  ]
+ },
+ "colgarse": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "saltar",
+   "aprobarse"
+  ]
+ },
+ "colo colo": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "completo": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "concha de su madre": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "¡Maldición!",
+   "¡Carajo!"
+  ]
+ },
+ "conchetumadre": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "¡Qué mala suerte!",
+   "¡Qué barbaridad!"
+  ]
+ },
+ "conchetumare": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "¡Qué mala persona!",
+   "¡Qué situación tan extrema!"
+  ]
+ },
+ "copete": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "bebida alcohólica"
+  ]
+ },
+ "copucha": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "mentira",
+   "vejiga"
+  ]
+ },
+ "copuchar": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "Contar y oír chismes"
+  ]
+ },
+ "copuchear": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "chismosear",
+   "charlar de chismes"
+  ]
+ },
+ "corchete": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "corneta": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "pene",
+   "miembro viril"
+  ]
+ },
+ "correr": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "echar",
+   "despedir",
+   "expulsar",
+   "evadir",
+   "eludir"
+  ]
+ },
+ "correrse": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "evadir",
+   "eludir",
+   "esquivar",
+   "salirse"
+  ]
+ },
+ "cortachurro": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "cortado": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "sin plata",
+   "malhumorado",
+   "indisposición"
+  ]
+ },
+ "cortadora de pasto": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "cortar": {
+  "decision": "dejar",
+  "ambiguo": true,
+  "reemplazos": [
+   "detener",
+   "cesar"
+  ]
+ },
+ "corte": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "corto": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "cranear": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "pensar",
+   "reflexionar"
+  ]
+ },
+ "creerse el cuento": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "autoconvencerse",
+   "volverse arrogante"
+  ]
+ },
+ "cresta": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "¡ay!",
+   "¡oye!"
+  ]
+ },
+ "cruzado": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "cuestión": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "cuete": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "cigarro de marihuana",
+   "pedo"
+  ]
+ },
+ "culiao": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "persona despreciable",
+   "individuo"
+  ]
+ },
+ "culiar": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "tener relaciones sexuales"
+  ]
+ },
+ "curado": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "persona borracha"
+  ]
+ },
+ "curar": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "embriagar"
+  ]
+ },
+ "curarse": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "emborracharse"
+  ]
+ },
+ "cuático": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "exagerado",
+   "excéntrico",
+   "esnob"
+  ]
+ },
+ "cálifont": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "de tomo y lomo": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "dedo sin uña": {
+  "decision": "dejar",
+  "ambiguo": true,
+  "reemplazos": [
+   "pene"
+  ]
+ },
+ "dejar la embarrada": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "meter la pata",
+   "errar",
+   "cometer un error"
+  ]
+ },
+ "descueve": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "despacito por las piedras": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": [
+   "con mucho cuidado",
+   "con mucha prudencia"
+  ]
+ },
+ "desubicado": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "detonado": {
+  "decision": "dejar",
+  "ambiguo": true,
+  "reemplazos": [
+   "muy enojado",
+   "furioso",
+   "rabioso"
+  ]
+ },
+ "diuca": {
+  "decision": "dejar",
+  "ambiguo": true,
+  "reemplazos": [
+   "pene"
+  ]
+ },
+ "doméstica": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "dulce": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "el Pulento": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "Dios"
+  ]
+ },
+ "embarrarla": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "cometer un error",
+   "equivocarse"
+  ]
+ },
+ "empanada": {
+  "decision": "dejar",
+  "ambiguo": true,
+  "reemplazos": []
+ },
+ "empilucharse": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "quitarse la ropa"
+  ]
+ },
+ "encarador": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "valiente",
+   "atrevido"
+  ]
+ },
+ "enchuecarse": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "torcerse"
+  ]
+ },
+ "enchularse": {
+  "decision": "dejar",
+  "ambiguo": true,
+  "reemplazos": [
+   "arreglarse",
+   "maquillarse",
+   "peinarse"
+  ]
+ },
+ "enfermo del chape": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "engañito": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "pequeño regalo",
+   "obsequio de poco valor"
+  ]
+ },
+ "engrupido": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "engreído",
+   "pretencioso",
+   "engañoso",
+   "ilusionado"
+  ]
+ },
+ "engrupidor": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "engreído",
+   "mentiroso",
+   "fingidor"
+  ]
+ },
+ "enojón": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "irascible",
+   "irritable",
+   "sensible"
+  ]
+ },
+ "ensillar": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "enterrar": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "entrete": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "divertido"
+  ]
+ },
+ "entretelón": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "era": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "erís": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "escobillón": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "escoba"
+  ]
+ },
+ "facho": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "fascista",
+   "persona de derecha"
+  ]
+ },
+ "facho pobre": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "fascista de clase baja"
+  ]
+ },
+ "faena": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "trabajo",
+   "tarea"
+  ]
+ },
+ "familia Miranda": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "grupo de miradores"
+  ]
+ },
+ "farrear": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "salir de fiesta",
+   "divertirse",
+   "ir de parranda"
+  ]
+ },
+ "feriado": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "fiaca": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "pereza",
+   "flojera",
+   "ganas de no hacer nada"
+  ]
+ },
+ "fiestoca": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "fiesta",
+   "reunión de diversión"
+  ]
+ },
+ "filete": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "finde": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "fin de semana"
+  ]
+ },
+ "flaite": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "persona marginal",
+   "individuo antisocial"
+  ]
+ },
+ "flectar": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "flojera": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "pereza"
+  ]
+ },
+ "flojo": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "poco predispuesto a trabajar",
+   "lento en realizar tareas"
+  ]
+ },
+ "fomedad": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "fonda": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "establecimiento provisorio de comida y bebida"
+  ]
+ },
+ "fono": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "frenillo": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "friqueado": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "con frustración",
+   "con contrariedad",
+   "con fastidio"
+  ]
+ },
+ "fuerte": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "funa": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "acto público de repudio"
+  ]
+ },
+ "funado": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "objeto de una funa"
+  ]
+ },
+ "funar": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "efectuar una funa"
+  ]
+ },
+ "funero": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "relacionado con una funa"
+  ]
+ },
+ "furgón": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "gallada": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "gente común",
+   "los demás"
+  ]
+ },
+ "gallo": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "persona cualquiera",
+   "reemplazante en la industria del salitre"
+  ]
+ },
+ "gamba": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "ganar": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "ganarse": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "garpar": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "gil": {
+  "decision": "dejar",
+  "ambiguo": true,
+  "reemplazos": [
+   "ingenuo",
+   "novato",
+   "persona sin experiencia"
+  ]
+ },
+ "golilla": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "gorreo": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "gritonear": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "gritar",
+   "gritar fuerte",
+   "hablar en voz muy alta"
+  ]
+ },
+ "guachaca": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "vulgar",
+   "de mal gusto",
+   "inculto"
+  ]
+ },
+ "guagua": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "guagüita": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "bebé",
+   "niño pequeño",
+   "golosina de malvavisco"
+  ]
+ },
+ "guapo": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "guaraca": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "cuerda del trompo",
+   "látigo para caballos"
+  ]
+ },
+ "guata": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "vientre",
+   "vísceras",
+   "bulto en mampostería",
+   "curvatura en gráfico"
+  ]
+ },
+ "guatitas": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "estómago e intestinos de animales",
+   "platos con estómago e intestinos"
+  ]
+ },
+ "guatón": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "con vientre prominente",
+   "millón de pesos"
+  ]
+ },
+ "harto": {
+  "decision": "dejar",
+  "ambiguo": true,
+  "reemplazos": [
+   "muy"
+  ]
+ },
+ "hay café": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "honda": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "hoyo": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "huasquear": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "huear": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "hueco": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "huevada": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "huevado": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "estúpido"
+  ]
+ },
+ "huevear": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "molestar",
+   "fastidiar",
+   "holgazanear"
+  ]
+ },
+ "hueá": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "testículo",
+   "persona tonta",
+   "estupidez",
+   "cosa despreciable",
+   "tema"
+  ]
+ },
+ "hueón": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "tonto",
+   "persona",
+   "amigo"
+  ]
+ },
+ "humita": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "comida de maíz",
+   "corbata doble"
+  ]
+ },
+ "inflar": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "irse al chancho": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "actuar sin tino",
+   "actuar sin mesura"
+  ]
+ },
+ "julepe": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "conmoción",
+   "miedo y sorpresa"
+  ]
+ },
+ "kínder": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "pre-kinder",
+   "preescolar"
+  ]
+ },
+ "lana": {
+  "decision": "dejar",
+  "ambiguo": true,
+  "reemplazos": [
+   "dinero",
+   "persona de baja condición social"
+  ]
+ },
+ "las pelotas": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "rehusarse a aceptar o cumplir"
+  ]
+ },
+ "lata": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "cosa aburrida"
+  ]
+ },
+ "latero": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "persona aburrida"
+  ]
+ },
+ "lavaseco": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "lavandería comercial"
+  ]
+ },
+ "lesear": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "perder el tiempo",
+   "tomar el pelo"
+  ]
+ },
+ "lesera": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "cosa sin importancia"
+  ]
+ },
+ "leso": {
+  "decision": "dejar",
+  "ambiguo": true,
+  "reemplazos": [
+   "ingenuo",
+   "despistado",
+   "imprudente"
+  ]
+ },
+ "loco": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "lucrecia": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "luego": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "macabeo": {
+  "decision": "dejar",
+  "ambiguo": true,
+  "reemplazos": [
+   "sumiso",
+   "sumisa"
+  ]
+ },
+ "macuco": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "malicia": {
+  "decision": "dejar",
+  "ambiguo": true,
+  "reemplazos": [
+   "licor",
+   "bebida alcohólica"
+  ]
+ },
+ "mamadera": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "mamarse": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "aguantar"
+  ]
+ },
+ "mangazo": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "puñetazo"
+  ]
+ },
+ "manta": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "prenda rectangular",
+   "prenda femenina ligera"
+  ]
+ },
+ "maravilla": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "marraqueta": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "hogaza de pan",
+   "genitales femeninos"
+  ]
+ },
+ "mayo": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "mayonesa"
+  ]
+ },
+ "meca": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "excremento",
+   "¡me cago en la leche!"
+  ]
+ },
+ "medio": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "impresionante"
+  ]
+ },
+ "merequetengue": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "movimiento rápido y exagerado"
+  ]
+ },
+ "metido": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "entrometido"
+  ]
+ },
+ "michi": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "micro": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "minoca": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "mina",
+   "mujer joven"
+  ]
+ },
+ "mochilear": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "mono": {
+  "decision": "dejar",
+  "ambiguo": true,
+  "reemplazos": [
+   "dibujos animados"
+  ]
+ },
+ "mote con huesillo": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "murra": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "más que la cresta": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "más que lo habitual",
+   "más intensamente"
+  ]
+ },
+ "más rato": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "en un momento más",
+   "más tarde"
+  ]
+ },
+ "negro": {
+  "decision": "dejar",
+  "ambiguo": true,
+  "reemplazos": []
+ },
+ "no pescar": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "hacerse el desentendido",
+   "no darse por aludido",
+   "no prestar atención"
+  ]
+ },
+ "notebook": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "noviar": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "novillo": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "ternera macho",
+   "carne de ternera macho"
+  ]
+ },
+ "ocupar": {
+  "decision": "dejar",
+  "ambiguo": true,
+  "reemplazos": [
+   "usar",
+   "emplear",
+   "necesitar"
+  ]
+ },
+ "olorosar": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "once": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "té o café con leche y pan"
+  ]
+ },
+ "oncena": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "onda": {
+  "decision": "dejar",
+  "ambiguo": true,
+  "reemplazos": [
+   "estilo",
+   "moda",
+   "aptitud",
+   "estado de ánimo",
+   "ambiente"
+  ]
+ },
+ "paco": {
+  "decision": "dejar",
+  "ambiguo": true,
+  "reemplazos": [
+   "rojizo",
+   "funcionario policial",
+   "persona que vigila"
+  ]
+ },
+ "pacos": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "paja": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "sensación de aburrimiento o pereza"
+  ]
+ },
+ "pajarón": {
+  "decision": "dejar",
+  "ambiguo": true,
+  "reemplazos": [
+   "distraído"
+  ]
+ },
+ "palta": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "pana": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "papa": {
+  "decision": "dejar",
+  "ambiguo": true,
+  "reemplazos": [
+   "simple",
+   "agujero de calcetines"
+  ]
+ },
+ "para más recacha": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "además"
+  ]
+ },
+ "parado": {
+  "decision": "dejar",
+  "ambiguo": true,
+  "reemplazos": [
+   "exhibicionista"
+  ]
+ },
+ "paragua": {
+  "decision": "dejar",
+  "ambiguo": true,
+  "reemplazos": [
+   "cigarrillo de marihuana"
+  ]
+ },
+ "parrillar": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "pasada": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "pasapelotas": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "recolector de balones"
+  ]
+ },
+ "pastel": {
+  "decision": "dejar",
+  "ambiguo": true,
+  "reemplazos": [
+   "error",
+   "metedura de pata"
+  ]
+ },
+ "patear": {
+  "decision": "dejar",
+  "ambiguo": true,
+  "reemplazos": [
+   "dejar",
+   "romper la relación"
+  ]
+ },
+ "patiperro": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "viajero frecuente"
+  ]
+ },
+ "pavo": {
+  "decision": "dejar",
+  "ambiguo": true,
+  "reemplazos": [
+   "tonto",
+   "crédulo",
+   "despistado",
+   "olvidadizo",
+   "pasajero evasor",
+   "grupo de bailadores"
+  ]
+ },
+ "pechuga": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "sensación de abatimiento"
+  ]
+ },
+ "pega": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "trabajo",
+   "ocupación"
+  ]
+ },
+ "peinarse": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "pelambre": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "pelar": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "hablar mal de alguien"
+  ]
+ },
+ "pelarse": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "hurtar, apropiarse indebidamente de un bien ajeno",
+   "besar apasionadamente a alguien que no conoces, o que conociste recientemente, especialmente en una fiesta"
+  ]
+ },
+ "pelotas": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "persona tonta, ingenua o fácil de engañar"
+  ]
+ },
+ "pelotear": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "hacer que alguien lleve a cabo trámites de un lugar a otro"
+  ]
+ },
+ "penca": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "órgano que presenta el macho de los mamíferos, de forma eréctil, en el que desembocan los conductos del tracto génitourinario",
+   "de calidad inferior"
+  ]
+ },
+ "peo": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "Transcripción coloquial de la pronunciación laxa de pedo, en la que la consonante dental se elide habitualmente"
+  ]
+ },
+ "pernil": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "paleta de cerdo"
+  ]
+ },
+ "perra": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "vientre prominente"
+  ]
+ },
+ "perro": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "pinza para la ropa",
+   "pinza para batería"
+  ]
+ },
+ "pesado": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "desagradable de tratar"
+  ]
+ },
+ "pescar": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "tomar en cuenta",
+   "prestar atención"
+  ]
+ },
+ "pichanga": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "partido de fútbol informal",
+   "embutidos y encurtidos",
+   "plato de papas fritas con carnes y embutidos",
+   "juego de naipes"
+  ]
+ },
+ "pichar": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "expeler por la uretra un fluido"
+  ]
+ },
+ "picle": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "encurtido"
+  ]
+ },
+ "pico": {
+  "decision": "dejar",
+  "ambiguo": true,
+  "reemplazos": [
+   "definitivamente no"
+  ]
+ },
+ "pifiar": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "abuchear"
+  ]
+ },
+ "pifiarse": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "abuchearse"
+  ]
+ },
+ "pilgua": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "bolsa de red hecha con fibra de chupón"
+  ]
+ },
+ "pilsen": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "pilucho": {
+  "decision": "dejar",
+  "ambiguo": true,
+  "reemplazos": [
+   "que no lleva ropa, que se la ha quitado casi por completo",
+   "cierta prenda de vestir de una sola pieza para bebés"
+  ]
+ },
+ "pimentón": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "pimiento"
+  ]
+ },
+ "pinche": {
+  "decision": "dejar",
+  "ambiguo": true,
+  "reemplazos": [
+   "objeto formado por dos trozos flexibles de plástico o metal, que se usa para sostener en su sitio porciones del cabello",
+   "persona con quien se tiene una relación amorosa no formalizada"
+  ]
+ },
+ "pinta": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "categoría"
+  ]
+ },
+ "piola": {
+  "decision": "dejar",
+  "ambiguo": true,
+  "reemplazos": [
+   "discreto",
+   "simpático"
+  ]
+ },
+ "piscola": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "bebida"
+  ]
+ },
+ "pistolear": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "medir velocidad",
+   "pedir dinero"
+  ]
+ },
+ "piticiego": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "miopía"
+  ]
+ },
+ "pito": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "cigarrillo"
+  ]
+ },
+ "pituto": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "trabajo esporádico",
+   "relación influyente"
+  ]
+ },
+ "piñiñento": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "mugriento"
+  ]
+ },
+ "plop": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "¡Qué sorpresa!",
+   "¡Qué asombroso!"
+  ]
+ },
+ "po": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "¡Qué impaciencia!",
+   "¡Qué alegría!"
+  ]
+ },
+ "pobla": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "pollo": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "polola": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "novia",
+   "pareja"
+  ]
+ },
+ "pololear": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "salir con alguien",
+   "mantener una relación sentimental"
+  ]
+ },
+ "pololearse": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "pololeo": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "pololo": {
+  "decision": "dejar",
+  "ambiguo": true,
+  "reemplazos": [
+   "pareja",
+   "novio"
+  ]
+ },
+ "pompi": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "poncho": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "por detroit": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "anal"
+  ]
+ },
+ "porfiado": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "postón": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "balín"
+  ]
+ },
+ "poto": {
+  "decision": "dejar",
+  "ambiguo": true,
+  "reemplazos": [
+   "ano",
+   "trasero"
+  ]
+ },
+ "prensado": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "marihuana comprimida"
+  ]
+ },
+ "previa": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "reunión previa",
+   "encuentro previo"
+  ]
+ },
+ "pucha": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "¡ay!",
+   "¡oh!"
+  ]
+ },
+ "puchada": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "pucho": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "colilla de cigarrillo",
+   "cigarrillo",
+   "pequeña cantidad restante",
+   "último hijo"
+  ]
+ },
+ "pulento": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "magnífico",
+   "estupendo",
+   "de calidad superior"
+  ]
+ },
+ "pulpería": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "tienda de barrio",
+   "tienda de vecindad"
+  ]
+ },
+ "puro": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "únicamente",
+   "solo"
+  ]
+ },
+ "puta": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "¡maldición!",
+   "¡enojo!"
+  ]
+ },
+ "pájaro verde": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "licor casero",
+   "bebida clandestina"
+  ]
+ },
+ "quedado": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "queque": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "qué huevada": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "¡qué cosa!",
+   "¡qué barbaridad!"
+  ]
+ },
+ "raja": {
+  "decision": "dejar",
+  "ambiguo": true,
+  "reemplazos": [
+   "culo",
+   "nalgas",
+   "suerte"
+  ]
+ },
+ "rasca": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "persona de bajo nivel cultural",
+   "cosa de mala calidad"
+  ]
+ },
+ "rayarse": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "volverse loco",
+   "desvariar"
+  ]
+ },
+ "recauchaje": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "reconstitución de neumáticos",
+   "procedimiento quirúrgico de mejora física"
+  ]
+ },
+ "redbanc": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "reducir": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "comprar y vender objetos robados"
+  ]
+ },
+ "regalonear": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "pamper, indulge",
+   "caress"
+  ]
+ },
+ "rico": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "atractivo físico"
+  ]
+ },
+ "riles": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "desechos",
+   "residuos industriales líquidos"
+  ]
+ },
+ "rocha": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "sospecha",
+   "atención",
+   "cuidado"
+  ]
+ },
+ "rotisería": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "establecimiento de comida para llevar"
+  ]
+ },
+ "runrún": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "salado": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "sapear": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "informar",
+   "observar",
+   "fisgonear"
+  ]
+ },
+ "sapo": {
+  "decision": "dejar",
+  "ambiguo": true,
+  "reemplazos": [
+   "persona que sube y baja de los microbuses",
+   "vagina y vulva",
+   "monedero pequeño",
+   "juego de precisión",
+   "defecto visual en piedra preciosa",
+   "que delata",
+   "que observa sin discreción"
+  ]
+ },
+ "schop": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "seguro": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "sepa Moya": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": [
+   "quién sabe"
+  ]
+ },
+ "señalética": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": [
+   "letreros y avisos oficiales"
+  ]
+ },
+ "shop": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "siútico": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "afectado",
+   "presumido"
+  ]
+ },
+ "sonar": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "fracasar",
+   "terminar mal",
+   "caer en graves problemas"
+  ]
+ },
+ "sorprender": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "estafar",
+   "engañar"
+  ]
+ },
+ "subir al columpio": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "empezar a chancear a costa de alguien"
+  ]
+ },
+ "suche": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "empleado de escasa importancia",
+   "de última categoría"
+  ]
+ },
+ "taimarse": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "adoptar o mantener una decisión o actitud pese a pedidos o argumentos razonables en contra",
+   "volverse taimado"
+  ]
+ },
+ "talla": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "helado que viene con el palito de madera",
+   "dicho gracioso, con ánimo de hacer reír"
+  ]
+ },
+ "tapado": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "abrigo largo",
+   "campera con mangas"
+  ]
+ },
+ "tarado": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "torpe",
+   "desacertado"
+  ]
+ },
+ "tarar": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "causar deficiencia",
+   "dejar con discapacidad intelectual"
+  ]
+ },
+ "tejer": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "manejar sutilmente",
+   "gestionar discretamente"
+  ]
+ },
+ "tenida": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "terremoto": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "movimiento telúrico",
+   "sismo"
+  ]
+ },
+ "terrible": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "muy",
+   "excesivamente",
+   "demasiado"
+  ]
+ },
+ "testear": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "examinar",
+   "verificar",
+   "controlar"
+  ]
+ },
+ "tinca": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "canica",
+   "pelota de cristal",
+   "esfera de juego"
+  ]
+ },
+ "tincar": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "impulsar",
+   "sugerir",
+   "apetecer",
+   "presentir"
+  ]
+ },
+ "tirar": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "tirarse las huevas": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "estar ocioso",
+   "no trabajar"
+  ]
+ },
+ "toma": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "asentamiento informal",
+   "ocupación de terrenos"
+  ]
+ },
+ "tomate": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "tony": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "torta": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "bizcocho",
+   "pastel dulce"
+  ]
+ },
+ "trabuco": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "escopeta"
+  ]
+ },
+ "trucho": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "falso",
+   "fingido",
+   "inauténtico"
+  ]
+ },
+ "tusa": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "melena"
+  ]
+ },
+ "tuto": {
+  "decision": "dejar",
+  "ambiguo": true,
+  "reemplazos": [
+   "pierna de ave",
+   "pierna femenina",
+   "cansancio",
+   "chupón"
+  ]
+ },
+ "ubicar": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "encontrar",
+   "localizar"
+  ]
+ },
+ "vacunar": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "estafar",
+   "defraudar"
+  ]
+ },
+ "validador": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "lector de tarjetas"
+  ]
+ },
+ "vega": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "vitrinear": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "volado": {
+  "decision": "dejar",
+  "ambiguo": true,
+  "reemplazos": [
+   "bajo los efectos de drogas",
+   "no atento"
+  ]
+ },
+ "wea": {
+  "decision": "dejar",
+  "ambiguo": true,
+  "reemplazos": [
+   "huevada"
+  ]
+ },
+ "webear": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "huevear"
+  ]
+ },
+ "weón": {
+  "decision": "dejar",
+  "ambiguo": true,
+  "reemplazos": [
+   "huevón"
+  ]
+ },
+ "wn": {
+  "decision": "dejar",
+  "ambiguo": true,
+  "reemplazos": [
+   "huevón"
+  ]
+ },
+ "xuxa": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "chucha"
+  ]
+ },
+ "ya": {
+  "decision": "dejar",
+  "ambiguo": true,
+  "reemplazos": [
+   "vale",
+   "de acuerdo",
+   "está bien"
+  ]
+ },
+ "yapa": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "yegua": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "mujer inmoral",
+   "pastel de manzana"
+  ]
+ },
+ "yeta": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "mala suerte",
+   "desgracia"
+  ]
+ },
+ "agua": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "al agua": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "sin premio",
+   "nada"
+  ]
+ },
+ "anda": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "animal": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "barata": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "cucaracha"
+  ]
+ },
+ "brillo": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "diversión",
+   "aventura amorosa"
+  ]
+ },
+ "buzo": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "vestimenta deportiva",
+   "pantalón y chaqueta deportiva"
+  ]
+ },
+ "calle": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "carabinero": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "bebida de vino y vermú"
+  ]
+ },
+ "cari": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "color gris-pardo"
+  ]
+ },
+ "casas": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "construcción principal de un fundo"
+  ]
+ },
+ "casino": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "cebolla": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "melancólico"
+  ]
+ },
+ "cesante": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "desempleado"
+  ]
+ },
+ "chacha": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "chapa": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "documento de identidad",
+   "nombre falso"
+  ]
+ },
+ "chocolate": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "sangre"
+  ]
+ },
+ "cigarro": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "cinco": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "moneda de cinco centavos",
+   "cosa de poco valor"
+  ]
+ },
+ "cocina": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "lugar de reuniones secretas"
+  ]
+ },
+ "comer": {
+  "decision": "dejar",
+  "ambiguo": true,
+  "reemplazos": []
+ },
+ "comercial": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "comida": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "de a poco": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "de más": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "defensa": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "dije": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "entero": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "fome": {
+  "decision": "dejar",
+  "ambiguo": true,
+  "reemplazos": [
+   "aburrido",
+   "insulso",
+   "sin gracia"
+  ]
+ },
+ "frutillar": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "gato": {
+  "decision": "dejar",
+  "ambiguo": true,
+  "reemplazos": [
+   "símbolo #",
+   "árbol de la especie Salix"
+  ]
+ },
+ "grupo": {
+  "decision": "dejar",
+  "ambiguo": true,
+  "reemplazos": [
+   "conjunto",
+   "colectivo",
+   "banda"
+  ]
+ },
+ "hace": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "hallulla": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "igual": {
+  "decision": "dejar",
+  "ambiguo": true,
+  "reemplazos": [
+   "cualquiera que sea",
+   "lo que sea"
+  ]
+ },
+ "intendente": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "interno": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "preso",
+   "reo"
+  ]
+ },
+ "jamón": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "lancha": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "rocío matinal congelado"
+  ]
+ },
+ "living": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "sala"
+  ]
+ },
+ "luego de": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "después de"
+  ]
+ },
+ "manga": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "túnel transportable de material liviano y sólido para proteger de la lluvia y el sol en aeropuertos",
+   "túnel para proteger a futbolistas de agresiones del público al salir a la cancha"
+  ]
+ },
+ "maracuyá": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "medialuna": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "escenario deportivo en forma de media luna que alberga el rodeo chileno"
+  ]
+ },
+ "minor": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "mojar": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "sobornar"
+  ]
+ },
+ "no más": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "solamente",
+   "sin más",
+   "de todos modos"
+  ]
+ },
+ "pasto": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "césped"
+  ]
+ },
+ "pelota": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "Persona de poca inteligencia o fácil de engañar."
+  ]
+ },
+ "pituco": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "Dicho de una persona, que ostentosamente pertenece o simula pertenecer a una clase social pudiente.",
+   "Dicho de un lugar o de una cosa, propia de un pituco."
+  ]
+ },
+ "polera": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "prenda de vestir para el torso y los hombros, de tela ligera y sin abotonaduras, que se lleva como ropa interior o como vestimenta informal."
+  ]
+ },
+ "polerón": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "(sin definición en español)"
+  ]
+ },
+ "privado": {
+  "decision": "dejar",
+  "ambiguo": true,
+  "reemplazos": [
+   "área privada",
+   "espacio reservado"
+  ]
+ },
+ "puesto": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "pájaro": {
+  "decision": "dejar",
+  "ambiguo": true,
+  "reemplazos": [
+   "miembro",
+   "miembro viril"
+  ]
+ },
+ "raro": {
+  "decision": "dejar",
+  "ambiguo": true,
+  "reemplazos": [
+   "homosexual"
+  ]
+ },
+ "rodeo": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "romano": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "ruca": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "choza",
+   "cabaña"
+  ]
+ },
+ "sitio": {
+  "decision": "dejar",
+  "ambiguo": true,
+  "reemplazos": [
+   "terreno",
+   "lote"
+  ]
+ },
+ "sucursal": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "relación extramarital",
+   "amante"
+  ]
+ },
+ "tarro": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "teléfono": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "golpe fuerte en los oídos"
+  ]
+ },
+ "toque": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "inspiración",
+   "contacto"
+  ]
+ },
+ "trabajador": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "ave similar al picaflor"
+  ]
+ },
+ "vamos": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ },
+ "verde": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "policía"
+  ]
+ },
+ "volante": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "extremo"
+  ]
+ },
+ "quiltro": {
+  "decision": "dejar",
+  "ambiguo": false,
+  "reemplazos": [
+   "perro mestizo",
+   "perro callejero"
+  ]
+ },
+ "trutro": {
+  "decision": "quitar",
+  "ambiguo": false,
+  "reemplazos": []
+ }
+}

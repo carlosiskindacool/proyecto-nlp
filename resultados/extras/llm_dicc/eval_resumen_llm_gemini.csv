@@ -1,0 +1,13 @@
+conjunto,traductor,sistema,n_evaluables,aciertos,ema
+todos,mt,llm_gemini,594,165,27.8
+todos,nllb,llm_gemini,594,148,24.9
+lote1.csv,mt,llm_gemini,213,73,34.3
+lote1.csv,nllb,llm_gemini,213,73,34.3
+lote_1_2_noticias.csv,mt,llm_gemini,73,14,19.2
+lote_1_2_noticias.csv,nllb,llm_gemini,73,11,15.1
+lote_1_2_tuits.csv,mt,llm_gemini,308,78,25.3
+lote_1_2_tuits.csv,nllb,llm_gemini,308,64,20.8
+lote_1_noticias.csv,mt,llm_gemini,68,13,19.1
+lote_1_noticias.csv,nllb,llm_gemini,68,11,16.2
+lote_1_tuits.csv,mt,llm_gemini,165,42,25.5
+lote_1_tuits.csv,nllb,llm_gemini,165,35,21.2

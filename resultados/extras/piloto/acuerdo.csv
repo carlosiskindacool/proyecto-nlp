@@ -1,0 +1,6 @@
+﻿modelo,términos,acuerdo dejar/quitar,kappa,quita lo que el humano quitó,quita lo que el humano dejó,ambiguo igual,1er reemplazo igual,algún reemplazo en común
+gemini,488,66 %,0.17,43/68,143/420,239/277,103/254,134/254
+haiku,488,71 %,0.25,46/68,119/420,257/301,126/274,151/274
+cohere,487,70 %,0.18,38/68,118/419,261/301,94/268,108/268
+ibm,488,65 %,0.05,26/68,130/420,209/290,64/253,77/253
+consenso,488,65 %,0.17,44/68,149/420,240/271,101/247,132/247
